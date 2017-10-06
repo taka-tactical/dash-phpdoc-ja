@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>矩形を描く</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gmagickdraw.polyline.html">GmagickDraw::polyline</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gmagickdraw.rotate.html">GmagickDraw::rotate</a></div>
+ <div class="up"><a href="class.gmagickdraw.html">GmagickDraw</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="gmagickdraw.rectangle" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">GmagickDraw::rectangle</h1>
+  <p class="verinfo">(PECL gmagick &gt;= Unknown)</p><p class="refpurpose"><span class="refname">GmagickDraw::rectangle</span> &mdash; <span class="dc-title">矩形を描く</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-gmagickdraw.rectangle-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.gmagickdraw.html" class="type GmagickDraw">GmagickDraw</a></span> <span class="methodname"><strong>GmagickDraw::rectangle</strong></span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y2</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   二つの座標を指定して、現在の描画色と線幅そして塗りつぶし設定を使った矩形を描きます。
+  </p>
+
+   
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-gmagickdraw.rectangle-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">x1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       最初の x 座標。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">y1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       最初の y 座標。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">x2</code></dt>
+
+     <dd>
+
+      <p class="para">
+       二番目の x 座標。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">y2</code></dt>
+
+     <dd>
+
+      <p class="para">
+       二番目の y 座標。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-gmagickdraw.rectangle-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に GmagickDraw オブジェクトを返します。
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="118631""></a>
+  <div class="note">
+   <strong class="user">vitalick dot pugach at gmail dot com</strong>
+   <a href="#118631" class="date">12-Jan-2016 09:11</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Создаем белый прямоугольник внизу изображения. [Create a white rectangle at the bottom of the image.]<br />
+$image = "<a href="http://localhost/files/upload/399000/399357/cmsimage8KEGF3.jpg" rel="nofollow" target="_blank">http://localhost/files/upload/399000/399357/cmsimage8KEGF3.jpg</a>";<br />
+<br />
+list($width, $height) = getimagesize($image);<br />
+<br />
+$gmagicDraw = new GmagickDraw();<br />
+$gmagicDraw-&gt;setfillcolor("#fff");<br />
+$gmagicDraw-&gt;rectangle(0, $height - $height * 0.02, $width, $height);<br />
+<br />
+$gImage = new Gmagick();<br />
+$gImage-&gt;readImage($image);<br />
+$gImage-&gt;drawimage($gmagicDraw);<br />
+$gImage-&gt;writeimage(DOCROOT . "files/temp/img". $someId);</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="gmagickdraw.polyline.html">GmagickDraw::polyline</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="gmagickdraw.rotate.html">GmagickDraw::rotate</a></div>
+ <div class="up"><a href="class.gmagickdraw.html">GmagickDraw</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

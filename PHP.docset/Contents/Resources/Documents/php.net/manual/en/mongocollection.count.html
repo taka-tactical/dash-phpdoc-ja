@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>コレクション内のドキュメント数を数える</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.construct.html">MongoCollection::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></div>
+ <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mongocollection.count" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCollection::count</h1>
+  <p class="verinfo">(PECL mongo &gt;=0.9.0)</p><p class="refpurpose"><span class="refname">MongoCollection::count</span> &mdash; <span class="dc-title">コレクション内のドキュメント数を数える</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocollection.count-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><strong>MongoCollection::count</strong></span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$query</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = array()</span></span>
+  ]] )</div>
+
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-mongocollection.count-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">query</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       マッチさせるフィールドを持つ連想配列あるいはオブジェクト。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">options</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       インデックス作成用のオプションの配列。現在使えるオプションは、以下のとおりです。
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>名前</th>
+           <th>型</th>
+           <th>説明</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><var class="varname"><var class="varname">hint</var></var></td>
+           <td><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span></td>
+           <td>
+            <p class="para">
+             クエリに用いるインデックス。文字列を渡すと、インデックス名として扱います。
+             配列やオブジェクトを渡した場合は、インデックスの作成に使う仕様
+             (<span class="function"><a href="mongocollection.createindex.html" class="function">MongoCollection::createIndex()</a></span> の最初の引数)
+             に対応します。
+            </p>
+            <span class="simpara">このオプションは、MongoDB 2.6 以降で使えます。</span>
+           </td>
+          </tr>
+
+          <tr>
+           <td><var class="varname"><var class="varname">limit</var></var></td>
+           <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+           <td>マッチしたドキュメントを返す件数の上限。</td>
+          </tr>
+
+          <tr>
+           <td><var class="varname"><var class="varname">maxTimeMS</var></var></td>
+           <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+           <td>
+            <p class="para">
+             累積処理時間 (待ち時間は含まない) の上限を、ミリ秒単位で指定します。
+             この時間内に処理が完了しなかった場合は、
+             <a href="class.mongoexecutiontimeoutexception.html" class="classname">MongoExecutionTimeoutException</a> をスローします。
+            </p>
+            <span class="simpara">このオプションは、MongoDB 2.6 以降で使えます。</span>
+           </td>
+          </tr>
+
+          <tr>
+           <td><var class="varname"><var class="varname">skip</var></var></td>
+           <td><span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span></td>
+           <td>マッチしたドキュメントのうち、結果を返す前に読み飛ばすドキュメントの数。</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocollection.count-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   query にマッチするドキュメントの数を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocollection.count-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   エラーが発生してサーバーがコマンドを実行できなかった場合は
+   <a href="class.mongoresultexception.html" class="classname">MongoResultException</a> をスローします。
+  </p>
+  <p class="para">
+   <var class="varname"><var class="varname">maxTimeMS</var></var> を超えたためにコマンドが失敗した場合は
+   <a href="class.mongoexecutiontimeoutexception.html" class="classname">MongoExecutionTimeoutException</a> をスローします。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongocollection.count-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.6.0</td>
+       <td>
+        二番目のパラメータが配列 <code class="parameter">options</code> に変わりました。
+        <code class="parameter">limit</code> や <code class="parameter">skip</code>
+        を二番目、三番目のパラメータとして渡す方法は、非推奨になりました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>1.0.7</td>
+       <td>
+        <code class="parameter">limit</code> および <code class="parameter">skip</code> が
+        それぞれ二番目、三番目のパラメータとして追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocollection.count-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-1549">
+   <p><strong>例1 <span class="function"><strong>MongoCollection::count()</strong></span> の例</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">3</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">)));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.construct.html">MongoCollection::__construct</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></div>
+ <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>OAuth ヘッダ文字列シグネチャを生成する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oauth.getlastresponseinfo.html">OAuth::getLastResponseInfo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oauth.getrequesttoken.html">OAuth::getRequestToken</a></div>
+ <div class="up"><a href="class.oauth.html">OAuth</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="oauth.getrequestheader" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">OAuth::getRequestHeader</h1>
+  <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">OAuth::getRequestHeader</span> &mdash; <span class="dc-title">OAuth ヘッダ文字列シグネチャを生成する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-oauth.getrequestheader-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><strong>OAuth::getRequestHeader</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$url</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$extra_parameters</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   最後の HTTP メソッド、URL そしてパラメータ文字列あるいは配列にもとづいて OAuth ヘッダ文字列シグネチャを生成します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-oauth.getrequestheader-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">http_method</code></dt>
+
+    <dd>
+
+     <p class="para">
+      リクエストの HTTP メソッド。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">url</code></dt>
+
+    <dd>
+
+     <p class="para">
+      リクエストの URL。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">extra_parameters</code></dt>
+
+    <dd>
+
+     <p class="para">
+      パラメータ文字列あるいは配列。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-oauth.getrequestheader-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   生成されたリクエストヘッダを文字列で返します。失敗した場合に <strong><code>FALSE</code></strong> を返します
+  </p>
+ </div>
+
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120317""></a>
+  <div class="note">
+   <strong class="user">me at chrishowie dot com</strong>
+   <a href="#120317" class="date">13-Dec-2016 07:03</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The documentation does not specify the difference between passing a string and passing an array for the third parameter.&nbsp; We spent two days debugging before reading the C source code to figure out that there is a significant and undocumented difference between the two.<br />
+<br />
+"a=1" and array("a" =&gt; 1) are handled very differently!<br />
+<br />
+If you are making a POST/PUT request (or anything with an entity body) then you should pass that as a string.<br />
+<br />
+If you are making a request with a query string, you should pass that as an associative array.<br />
+<br />
+If you pass "a=1" intending that to specify the query string, the generated signature will be invalid -- it will process this as if you were POSTing the content "a=1" instead.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="oauth.getlastresponseinfo.html">OAuth::getLastResponseInfo</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="oauth.getrequesttoken.html">OAuth::getRequestToken</a></div>
+ <div class="up"><a href="class.oauth.html">OAuth</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

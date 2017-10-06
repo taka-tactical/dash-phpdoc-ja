@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Alternation and repetition</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="parle.regex.charclass.html">Character Classes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="parle.regex.anchors.html">Anchors</a></div>
+ <div class="up"><a href="parle.pattern.matching.html">Pattern matching</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="parle.regex.alternation" class="section">
+  <h2 class="title">Alternation and repetition</h2>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Alternation and repetition</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Sequence</th><th>Greedy</th><th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>...|...</td><td>-</td><td>Try subpatterns in alternation.</td>
+      </tr>
+
+      <tr>
+       <td>*</td><td>yes</td><td>Match 0 or more times.</td>
+      </tr>
+
+      <tr>
+       <td>+</td><td>yes</td><td>Match 1 or more times.</td>
+      </tr>
+
+      <tr>
+       <td>?</td><td>yes</td><td>Match 0 or 1 times.</td>
+      </tr>
+
+      <tr>
+       <td>{n}</td><td>no</td><td>Match exactly n times.</td>
+      </tr>
+
+      <tr>
+       <td>{n,}</td><td>yes</td><td>Match at least n times.</td>
+      </tr>
+
+      <tr>
+       <td>{n,m}</td><td>yes</td><td>Match at least n times but no more than m times.</td>
+      </tr>
+
+      <tr>
+       <td>*?</td><td>no</td><td>Match 0 or more times.</td>
+      </tr>
+
+      <tr>
+       <td>+?</td><td>no</td><td>Match 1 or more times.</td>
+      </tr>
+
+      <tr>
+       <td>??</td><td>no</td><td>Match 0 or 1 times.</td>
+      </tr>
+
+      <tr>
+       <td>{n,}?</td><td>no</td><td>Match at least n times.</td>
+      </tr>
+
+      <tr>
+       <td>{n,m}?</td><td>no</td><td>Match at least n times but no more than m times.</td>
+      </tr>
+
+      <tr>
+       <td>{MACRO}</td><td>-</td><td>Include the regex MACRO in the current regex.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="parle.regex.charclass.html">Character Classes</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="parle.regex.anchors.html">Anchors</a></div>
+ <div class="up"><a href="parle.pattern.matching.html">Pattern matching</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

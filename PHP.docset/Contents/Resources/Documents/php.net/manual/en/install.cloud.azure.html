@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Azure App Services</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.cloud.html">クラウドコンピューティングプラットフォームへのインストール</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.cloud.ec2.html">Amazon EC2</a></div>
+ <div class="up"><a href="install.cloud.html">クラウドコンピューティングプラットフォームへのインストール</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.cloud.azure" class="sect1">
+  <h2 class="title">Azure App Services</h2>
+  <p class="para">
+    PHP は、Azure App Services (aka Microsoft Azure, Windows Azure, Azure Web Apps) 上でもよく使われています。
+  </p>
+  <p class="para">Azure App Services は、ウェブアプリケーションをホストする Windows Web Servers のプールを管理します。自前の Azure Compute VM などで自前のウェブサーバーを管理する方法の代替となるものです。
+  </p>
+  <p class="para">Azure App Services のウェブサイトでは、PHP がはじめから有効になっています。Azure Portal でウェブサイトを選択すると、どのバージョンの PHP を使うかを選ぶことができます。デフォルトよりも新しいバージョンを使うこともできます。
+  </p>
+
+  <p class="para">つまり Azure App Services 上では、その他の Windows サーバー上と同様に PHP や拡張モジュールが動くということです。
+
+  Windows 上での知識の多くがそのまま使えるので、<a href="install.windows.troubleshooting.html" class="link">Windows のトラブルシューティングページ</a> も参照ください。
+
+  しかし、Azure App Services の管理インターフェイスは、Windows サーバーとは少し異なります。
+  </p>
+
+  <ul class="itemizedlist">
+    <li class="listitem">
+      <p class="para">Azure portal: ウェブサイトの作成や設定変更、削除を行います。<a href="https://portal.azure.com/" class="link external" title="Link : https://portal.azure.com/">&raquo;&nbsp;Azure Portal</a>
+      </p>
+    </li>
+    <li class="listitem">
+      <p class="para">Kudu Dashboard: [your web site name].azurewebsites.net の Kudu dashboard は <a href="https://your_web_site_name.scm.azurewebsites.net/" class="link external" title="Link : https://your_web_site_name.scm.azurewebsites.net/">&raquo;&nbsp;https://[your web site name].scm.azurewebsites.net/</a> です。このダッシュボードには、デバッグやファイル管理そしてサイト拡張といった機能があります。サイト拡張とは、PHP のプレビュー版などの追加プログラムをウェブサイトに追加するための Azure の機構のことです。
+      </p>
+    </li>
+    <li class="listitem">
+      <p class="para">IIS Manager や Server Manager や RDP は使えません。</p>
+    </li>
+  </ul>
+
+  <p class="para">PHP SDK も用意されていて、自分の PHP コードからさまざまな Azure Service を使うことができます。<a href="https://github.com/Azure/azure-sdk-for-php" class="link external" title="Link : https://github.com/Azure/azure-sdk-for-php">&raquo;&nbsp;Azure SDK for PHP</a> を参照ください。
+  </p>
+  
+  <p class="para">詳細な情報は <a href="https://azure.microsoft.com/en-us/develop/php/" class="link external" title="Link : https://azure.microsoft.com/en-us/develop/php/">&raquo;&nbsp;Azure PHP Developer Center</a> を参照ください。
+  </p>
+
+  <div class="sect2">
+    <h3 class="title">WinCache</h3>
+  <p class="para">WinCache は Azure App Services でデフォルトで有効になっています。そのままにしておくことを推奨します。
+
+  もし PHP を自分でビルドするなら、WinCache も有効にしておくべきです。
+  </p>
+  </div>
+
+  <div class="sect2">
+    <h3 class="title">カスタム PHP ビルド</h3>
+  <p class="para">自分でビルドした PHP を D:\Home にアップロードします (C:\ への書き込み権限はありません)。そして、Azure Portal で、.php の SCRIPT_PROCESSOR に php-cgi.exe への絶対パスを設定します。
+  </p>
+  </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="114518""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#114518" class="date">03-Mar-2014 06:08</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The "Azure SDK for PHP" link provided above (which points to the Interoperability Bridges website) has been deprecated in favour of an SDK hosted on GitHub...<br />
+<a href="http://github.com/WindowsAzure/azure-sdk-for-php" rel="nofollow" target="_blank">http://github.com/WindowsAzure/azure-sdk-for-php</a><br />
+<br />
+There is also a supporting "PHP Developer Center" website:<br />
+<a href="http://www.windowsazure.com/en-us/develop/php/" rel="nofollow" target="_blank">http://www.windowsazure.com/en-us/develop/php/</a><br />
+<br />
+I did try editing the URL for the "Azure SDK for PHP" myself, but the URLs seem to be stored in a separate file which I was unable to find.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.cloud.html">クラウドコンピューティングプラットフォームへのインストール</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.cloud.ec2.html">Amazon EC2</a></div>
+ <div class="up"><a href="install.cloud.html">クラウドコンピューティングプラットフォームへのインストール</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>PHP 7 でのエラー</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.errors.basics.html">基本</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.html">例外(exceptions)</a></div>
+ <div class="up"><a href="language.errors.html">エラー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.errors.php7" class="sect1">
+ <h2 class="title">PHP 7 でのエラー</h2>
+
+ <p class="para">
+  PHP 7 は大半のエラーがどのようにPHPから報告されるかを変更しています。
+  PHP 5 で使われていたこれまでのエラー報告メカニズムを使うかわりに、
+  大半のエラーを <a href="class.error.html" class="classname">Error</a> 例外としてスローするようになったのです。
+ </p>
+
+ <p class="para">
+  通常の例外と同様、<a href="class.error.html" class="classname">Error</a> 例外も、
+  最初にマッチした
+  <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a>
+  ブロックで現れます。
+  マッチするブロックがなければ、<span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span>
+  で設定したデフォルトの例外ハンドラが呼ばれます。
+  デフォルトの例外ハンドラもない場合は、例外が fatal error に変換されて、
+  これまでのバージョンのエラーと同じように扱われます。
+ </p>
+
+ <p class="para">
+  <a href="class.error.html" class="classname">Error</a> クラスは
+  <a href="class.exception.html" class="classname">Exception</a> を継承していないので、
+  キャッチし損ねた例外を
+  <code class="code">catch (Exception $e) { ... }</code>
+  ブロックで受け止めているような PHP 5 のコードでは、
+  <a href="class.error.html" class="classname">Error</a> をキャッチできません。
+  <code class="code">catch (Error $e) { ... }</code> ブロックを用意するか、あるいは
+  <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> でハンドラを設定する必要があります。
+ </p>
+
+ <div class="sect2" id="language.errors.php7.hierarchy">
+  <h3 class="title"><a href="class.error.html" class="classname">Error</a> の階層</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara"><a href="class.throwable.html" class="classname">Throwable</a></span>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara"><a href="class.error.html" class="classname">Error</a></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara"><a href="class.arithmeticerror.html" class="classname">ArithmeticError</a></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a></span>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.assertionerror.html" class="classname">AssertionError</a></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.parseerror.html" class="classname">ParseError</a></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><a href="class.typeerror.html" class="classname">TypeError</a></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><a href="class.argumentcounterror.html" class="classname">ArgumentCountError</a></span>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><a href="class.exception.html" class="classname">Exception</a></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">...</span>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121497""></a>
+  <div class="note">
+   <strong class="user">ryan dot jentzsch@{gmail} dot com</strong>
+   <a href="#121497" class="date">09-Aug-2017 06:41</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+An excellent blog post on the difference between exceptions, throwables and how PHP 7 handles these can be found here: https://trowski.com/2015/06/24/throwable-exceptions-and-errors-in-php7/</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121265""></a>
+  <div class="note">
+   <strong class="user">Teo</strong>
+   <a href="#121265" class="date">23-Jun-2017 12:23</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Maybe you want to suppress warnings in errlog? If so, then just prepend function name with @ sign.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120822""></a>
+  <div class="note">
+   <strong class="user">Egor Gubanov</strong>
+   <a href="#120822" class="date">16-Mar-2017 10:59</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+What should I do to let the program to react to warnings? I've already tried to write try/catch construction, but it doesn't working.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120257""></a>
+  <div class="note">
+   <strong class="user">lubaev dot ka at gmail dot com</strong>
+   <a href="#120257" class="date">02-Dec-2016 02:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+php 7.1<br />
+<br />
+try {<br />
+&nbsp;&nbsp; // Code that may throw an Exception or ArithmeticError.<br />
+} catch (ArithmeticError | Exception $e) {<br />
+&nbsp;&nbsp; // pass<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119652""></a>
+  <div class="note">
+   <strong class="user">demis dot palma at tiscali dot it</strong>
+   <a href="#119652" class="date">26-Jul-2016 08:04</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Throwable does not work on PHP 5.x.<br />
+<br />
+To catch both exceptions and errors in PHP 5.x and 7, add a catch block for Exception AFTER catching Throwable first.<br />
+Once PHP 5.x support is no longer needed, the block catching Exception can be removed.<br />
+<br />
+try<br />
+{<br />
+&nbsp;&nbsp; // Code that may throw an Exception or Error.<br />
+}<br />
+catch (Throwable $t)<br />
+{<br />
+&nbsp;&nbsp; // Executed only in PHP 7, will not match in PHP 5<br />
+}<br />
+catch (Exception $e)<br />
+{<br />
+&nbsp;&nbsp; // Executed only in PHP 5, will not be reached in PHP 7<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118610""></a>
+  <div class="note">
+   <strong class="user">hungry dot rahly at gmail dot com</strong>
+   <a href="#118610" class="date">08-Jan-2016 09:26</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+You can catch both exceptions and errors by catching(Throwable)</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.errors.basics.html">基本</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.html">例外(exceptions)</a></div>
+ <div class="up"><a href="language.errors.html">エラー</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

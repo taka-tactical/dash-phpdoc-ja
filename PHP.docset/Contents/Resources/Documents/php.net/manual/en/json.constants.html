@@ -1,0 +1,519 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>定義済み定数</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="json.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.jsonserializable.html">JsonSerializable</a></div>
+ <div class="up"><a href="book.json.html">JSON</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="json.constants" class="appendix">
+ <h1>定義済み定数</h1>
+
+ <p class="simpara">
+以下の定数が定義されています。
+この関数の拡張モジュールが PHP 組み込みでコンパイルされているか、
+実行時に動的にロードされている場合のみ使用可能です。
+</p>
+ <p class="para">
+  次の定数は、<span class="function"><a href="function.json-last-error.html" class="function">json_last_error()</a></span> が返すエラーの型を表します。
+ </p>
+ <dl>
+
+  
+   <dt id="constant.json-error-none">
+    <strong><code>JSON_ERROR_NONE</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     エラーが発生しませんでした。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-depth">
+    <strong><code>JSON_ERROR_DEPTH</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     スタックの深さが最大に達しました。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-state-mismatch">
+    <strong><code>JSON_ERROR_STATE_MISMATCH</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     アンダーフローあるいはモードの不一致が発生しました。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-ctrl-char">
+    <strong><code>JSON_ERROR_CTRL_CHAR</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     制御文字エラー。おそらくエンコードが間違っています。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-syntax">
+    <strong><code>JSON_ERROR_SYNTAX</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     構文エラー。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-utf8">
+    <strong><code>JSON_ERROR_UTF8</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     正しくエンコードされていないなど、不正な形式の UTF-8 文字。
+     この定数は PHP 5.3.3 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-recursion">
+    <strong><code>JSON_ERROR_RECURSION</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> に渡した配列やオブジェクトに再帰参照が含まれており、エンコードできません。
+     <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong> オプションを指定した場合は、
+     再帰参照の部分を <strong><code>NULL</code></strong> にエンコードします。
+    </p>
+    <p class="para">
+     この定数は PHP 5.5.0 以降で使用可能です。
+    </p>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-inf-or-nan">
+    <strong><code>JSON_ERROR_INF_OR_NAN</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> に渡した値の中に
+     <a href="language.types.float.html#language.types.float.nan" class="link"><strong><code>NAN</code></strong></a>
+     あるいは <a href="function.is-infinite.html" class="link"><strong><code>INF</code></strong></a> が含まれています。
+     <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong> オプションを指定した場合は、
+     これらの特殊な数値を <em>0</em> にエンコードします。
+    </p>
+    <p class="para">
+     この定数は PHP 5.5.0 以降で使用可能です。
+    </p>
+   </dd>
+
+  
+  
+   <dt id="constant.json-error-unsupported-type">
+    <strong><code>JSON_ERROR_UNSUPPORTED_TYPE</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> が対応していない型、たとえば <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> などが渡されました。
+     <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong> オプションを指定した場合は、
+     これらを <strong><code>NULL</code></strong> にエンコードします。
+    </p>
+    <p class="para">
+     この定数は PHP 5.5.0 以降で使用可能です。
+    </p>
+   </dd>
+
+  
+ </dl>
+
+
+ <p class="para">
+  次の定数は、
+  <span class="function"><a href="function.json-encode.html" class="function">json_encode()</a></span> のオプションとして組み合わせて使用します。
+ </p>
+ <dl>
+
+  
+   <dt id="constant.json-hex-tag">
+    <strong><code>JSON_HEX_TAG</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     すべての &lt; および &gt; をそれぞれ \u003C および \u003E に変換します。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-hex-amp">
+    <strong><code>JSON_HEX_AMP</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     すべての &amp; を \u0026 に変換します。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-hex-apos">
+    <strong><code>JSON_HEX_APOS</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     すべての &#039; を \u0027 に変換します。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-hex-quot">
+    <strong><code>JSON_HEX_QUOT</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+     この定数は PHP 5.3.0 以降で使用可能です。
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     すべての &quot; を \u0022 に変換します。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-force-object">
+    <strong><code>JSON_FORCE_OBJECT</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     非連想配列を使用した場合に、配列ではなくオブジェクトを出力します。
+     出力を受け取る側がオブジェクトを期待しており、配列が空っぽである場合などに特に便利です。
+     この定数は PHP 5.3.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-numeric-check">
+    <strong><code>JSON_NUMERIC_CHECK</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     数値形式の文字列を数値としてエンコードします。
+     PHP 5.3.3 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-bigint-as-string">
+    <strong><code>JSON_BIGINT_AS_STRING</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     大きな整数値を、文字列型でエンコードします。
+     PHP 5.4.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-pretty-print">
+    <strong><code>JSON_PRETTY_PRINT</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     返される結果の書式を、スペースを使って整えます。
+     PHP 5.4.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-unescaped-slashes">
+    <strong><code>JSON_UNESCAPED_SLASHES</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <em>/</em> をエスケープしません。
+     PHP 5.4.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-unescaped-unicode">
+    <strong><code>JSON_UNESCAPED_UNICODE</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     マルチバイト Unicode 文字をそのままの形式で扱います (デフォルトでは \uXXXX にエスケープします)。
+     PHP 5.4.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+  
+   <dt id="constant.json-partial-output-on-error">
+    <strong><code>JSON_PARTIAL_OUTPUT_ON_ERROR</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     エンコード不可能な値は代替値に置き換え、処理を続行します。
+     PHP 5.5.0 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+ 
+   <dt id="constant.json-preserve-zero-fraction">
+    <strong><code>JSON_PRESERVE_ZERO_FRACTION</code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>)
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <span class="type"><a href="language.types.float.html" class="type float">float</a></span> 型の値を常に float 値としてエンコードするようにします。
+     PHP 5.6.6 以降で使用可能です。
+    </span>
+   </dd>
+
+  
+ </dl>
+
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="119565""></a>
+  <div class="note">
+   <strong class="user">majid4466 at gmail dot com</strong>
+   <a href="#119565" class="date">08-Jul-2016 02:57</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+To get a really clean json string use these three constants like so:<br />
+<br />
+<span class="default">&lt;?php<br />
+$array </span><span class="keyword">= [</span><span class="string">'?'</span><span class="keyword">, </span><span class="string">'<a href="http://example.com/some/cool/page" rel="nofollow" target="_blank">http://example.com/some/cool/page</a>'</span><span class="keyword">, </span><span class="string">'337'</span><span class="keyword">];<br />
+</span><span class="default">$bad&nbsp;&nbsp; </span><span class="keyword">= </span><span class="default">json_encode</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">); <br />
+</span><span class="default">$good&nbsp; </span><span class="keyword">= </span><span class="default">json_encode</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">,&nbsp; </span><span class="default">JSON_UNESCAPED_UNICODE </span><span class="keyword">| </span><span class="default">JSON_UNESCAPED_SLASHES </span><span class="keyword">| </span><span class="default">JSON_NUMERIC_CHECK</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// $bad would be&nbsp; ["\u20ac","http:\/\/example.com\/some\/cool\/page","337"]<br />
+// $good would be ["?","<a href="http://example.com/some/cool/page" rel="nofollow" target="_blank">http://example.com/some/cool/page</a>",337]<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118371""></a>
+  <div class="note">
+   <strong class="user">JuanP</strong>
+   <a href="#118371" class="date">24-Nov-2015 10:42</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Updated format values list:<br />
+<br />
+&nbsp;&nbsp;&nbsp; JSON_HEX_TAG =&gt; 1<br />
+&nbsp;&nbsp;&nbsp; JSON_HEX_AMP =&gt; 2<br />
+&nbsp;&nbsp;&nbsp; JSON_HEX_APOS =&gt; 4<br />
+&nbsp;&nbsp;&nbsp; JSON_HEX_QUOT =&gt; 8<br />
+&nbsp;&nbsp;&nbsp; JSON_FORCE_OBJECT =&gt; 16<br />
+&nbsp;&nbsp;&nbsp; JSON_NUMERIC_CHECK =&gt; 32<br />
+&nbsp;&nbsp;&nbsp; JSON_UNESCAPED_SLASHES =&gt; 64<br />
+&nbsp;&nbsp;&nbsp; JSON_PRETTY_PRINT =&gt; 128<br />
+&nbsp;&nbsp;&nbsp; JSON_UNESCAPED_UNICODE =&gt; 256<br />
+&nbsp;&nbsp;&nbsp; JSON_PARTIAL_OUTPUT_ON_ERROR =&gt; 512<br />
+&nbsp;&nbsp;&nbsp; JSON_PRESERVE_ZERO_FRACTION =&gt; 1024</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117466""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#117466" class="date">14-Jun-2015 04:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I am working with "Marathi Language Data" and I found that when I encoded Marathi data to json using json_encode it returned me unicode values of each character like below:<br />
+<br />
+Program : <br />
+<br />
+<span class="default">&lt;?php<br />
+$ar </span><span class="keyword">= array(</span><span class="string">"word" </span><span class="keyword">=&gt; </span><span class="string">"????"</span><span class="keyword">);<br />
+echo </span><span class="default">json_encode</span><span class="keyword">(</span><span class="default">$ar</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+Output of program is : <br />
+<br />
+{"word":"\u0927\u093e\u0921\u0938"}<br />
+<br />
+This is not expected output because what I need is output as<br />
+<br />
+{"word":"????"}<br />
+<br />
+So I used following code:<br />
+<br />
+<span class="default">&lt;?php<br />
+$ar </span><span class="keyword">= array(</span><span class="string">"word" </span><span class="keyword">=&gt; </span><span class="string">"????"</span><span class="keyword">);<br />
+echo </span><span class="default">json_encode</span><span class="keyword">(</span><span class="default">$ar</span><span class="keyword">, </span><span class="default">JSON_UNESCAPED_UNICODE</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+And I got the required output as :<br />
+<br />
+{"word":"????"}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117167""></a>
+  <div class="note">
+   <strong class="user">on5wis at mac dot com</strong>
+   <a href="#117167" class="date">24-Apr-2015 06:27</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+since json_encode expects a UTF-8 string there is no need to encode the ? symbol.<br />
+<br />
+I suggest you try to echo : json_encode('?');<br />
+It gives: "\u20ac"<br />
+I'm running PHP 5.6.5 on the CLI, on MacOS X 10.10</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115783""></a>
+  <div class="note">
+   <strong class="user">Yzmir Ramirez</strong>
+   <a href="#115783" class="date">23-Sep-2014 09:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you curious of the numeric values of the constants, as of JSON 1.2.1, the constants have the following values (not that you should use the numbers directly):<br />
+<br />
+JSON_HEX_TAG =&gt; 1<br />
+JSON_HEX_AMP =&gt; 2<br />
+JSON_HEX_APOS =&gt; 4<br />
+JSON_HEX_QUOT =&gt; 8<br />
+JSON_FORCE_OBJECT =&gt; 16<br />
+JSON_NUMERIC_CHECK =&gt; 32<br />
+JSON_UNESCAPED_SLASHES =&gt; 64<br />
+JSON_PRETTY_PRINT =&gt; 128<br />
+JSON_UNESCAPED_UNICODE =&gt; 256<br />
+<br />
+JSON_ERROR_DEPTH =&gt; 1<br />
+JSON_ERROR_STATE_MISMATCH =&gt; 2<br />
+JSON_ERROR_CTRL_CHAR =&gt; 3<br />
+<br />
+JSON_ERROR_SYNTAX =&gt; 4<br />
+<br />
+JSON_ERROR_UTF8 =&gt; 5<br />
+JSON_OBJECT_AS_ARRAY =&gt; 1<br />
+<br />
+JSON_BIGINT_AS_STRING =&gt; 2</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="json.resources.html">リソース型</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.jsonserializable.html">JsonSerializable</a></div>
+ <div class="up"><a href="book.json.html">JSON</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

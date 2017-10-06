@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>callable をクロージャに変換します。</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="closure.call.html">Closure::call</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.generator.html">Generator</a></div>
+ <div class="up"><a href="class.closure.html">Closure</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="closure.fromcallable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Closure::fromCallable</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.1.0)</p><p class="refpurpose"><span class="refname">Closure::fromCallable</span> &mdash; <span class="dc-title">callable をクロージャに変換します。</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-closure.fromcallable-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <span class="methodname"><strong>Closure::fromCallable</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callable</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   現在のスコープを用いて、指定された <code class="parameter">callable</code> から新しい
+   <a href="functions.anonymous.html" class="link">無名関数</a> を作って返します。
+   このメソッドは、現在のスコープで <code class="parameter">callable</code>
+   が呼び出し可能かどうかをチェックし、可能でなければ <strong class="classname">TypeError
+   </strong> をスローします。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-closure.fromcallable-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">callable</code></dt>
+
+    <dd>
+
+     <p class="para">
+      変換する callable。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-closure.fromcallable-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   新しく作られた <a href="class.closure.html" class="classname">Closure</a> を返します。
+   <code class="parameter">callable</code> が現在のスコープで呼び出し可能でなければ、
+   <a href="class.typeerror.html" class="classname">TypeError</a> をスローします。
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121057""></a>
+  <div class="note">
+   <strong class="user">igorchernin at yahoo dot com</strong>
+   <a href="#121057" class="date">08-May-2017 05:13</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+It seems that the result of the "fromCallable" behaves a little bit different then an original Lambda function.<br />
+<br />
+class A {<br />
+&nbsp;&nbsp;&nbsp; private $name;<br />
+&nbsp;&nbsp;&nbsp; public function __construct($name)<br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; $this-&gt;name = $name;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}<br />
+<br />
+// test callable<br />
+function getName()<br />
+{<br />
+&nbsp;&nbsp; &nbsp;&nbsp; return $this-&gt;name;<br />
+}<br />
+$bob = new A("Bob");<br />
+<br />
+$cl1 = Closure::fromCallable("getName");<br />
+$cl1 = $cl1-&gt;bindTo($bob, 'A');<br />
+<br />
+//This will retrieve: Uncaught Error: Cannot access private property A::$name <br />
+$result = $cl1();<br />
+echo $result;<br />
+<br />
+//But for a Lambda function<br />
+$cl2 = function() {<br />
+&nbsp;&nbsp;&nbsp; return $this-&gt;name;<br />
+};<br />
+$cl2 = $cl2-&gt;bindTo($bob, 'A');<br />
+$result = $cl2();<br />
+<br />
+// This will print Bob<br />
+echo $result;</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="closure.call.html">Closure::call</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.generator.html">Generator</a></div>
+ <div class="up"><a href="class.closure.html">Closure</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

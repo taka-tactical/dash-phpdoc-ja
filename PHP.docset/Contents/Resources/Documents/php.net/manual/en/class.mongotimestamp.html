@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>MongoTimestamp クラス</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="class.mongomaxkey.html">MongoMaxKey</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongotimestamp.construct.html">MongoTimestamp::__construct</a></div>
+ <div class="up"><a href="mongo.types.html">型</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.mongotimestamp" class="reference">
+
+ <h1 class="title">MongoTimestamp クラス</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL mongo &gt;=1.0.1)</p>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">このクラスを定義している拡張モジュールは非推奨です。
+かわりに <a href="set.mongodb.html" class="link">MongoDB</a> 拡張モジュールを使うべきです。
+このクラスの代替として、以下が使えます。</p>
+   <ul class="simplelist">
+    <li class="member"><a href="class.mongodb-bson-timestamp.html" class="classname">MongoDB\BSON\Timestamp</a></li>
+   </ul>
+  </div>
+
+
+  <div class="section" id="mongotimestamp.intro">
+   <h2 class="title">はじめに</h2>
+   <p class="para">
+    <strong class="classname">MongoTimestamp</strong> は、MongoDB がレプリケーションやシャーディングで使う内部的な型です。
+    タイムスタンプ (エポックからの経過秒数) 4 バイトと増分 4 で構成されています。
+    この型は、時刻や日付の値を (ドキュメントの &quot;createdAt&quot; フィールドなどに) 格納するために使うものではありません。
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     MongoDB のレプリケーション oplog やシャーディングにかかわる書き込みをしているのでなければ、さっさと
+     <a href="class.mongodate.html" class="classname">MongoDate</a> のほうに行きましょう。
+     このクラスはあなたの求めているものではありません。
+    </span>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="mongotimestamp.synopsis">
+   <h2 class="title">クラス概要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">MongoTimestamp</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Fields */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname">$<var class="varname">sec</var></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+      <var class="varname">$<var class="varname">inc</var></var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="mongotimestamp.construct.html" class="methodname">__construct</a></span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$sec</code><span class="initializer"> = time()</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$inc</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="mongotimestamp.tostring.html" class="methodname">__toString</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+ 
+
+   }</div>
+
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="mongotimestamp.construct.html">MongoTimestamp::__construct</a> &mdash; 新しいタイムスタンプを作成する</li><li><a href="mongotimestamp.tostring.html">MongoTimestamp::__toString</a> &mdash; このタイムスタンプを文字列形式で返す</li></ul>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="class.mongomaxkey.html">MongoMaxKey</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongotimestamp.construct.html">MongoTimestamp::__construct</a></div>
+ <div class="up"><a href="mongo.types.html">型</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

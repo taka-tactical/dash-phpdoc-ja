@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>文字列を逆順にする</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strrchr.html">strrchr</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strripos.html">strripos</a></div>
+ <div class="up"><a href="ref.strings.html">String 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.strrev" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strrev</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">strrev</span> &mdash; <span class="dc-title">文字列を逆順にする</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.strrev-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><strong>strrev</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <code class="parameter">string</code> を逆順にして返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strrev-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">string</code></dt>
+
+     <dd>
+
+      <p class="para">
+       逆順にしたい文字列。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strrev-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   逆順にした文字列を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.strrev-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-5542">
+    <p><strong>例1 <span class="function"><strong>strrev()</strong></span> で文字列を逆順にする</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strrev</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello&nbsp;world!"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;出力は&nbsp;"!dlrow&nbsp;olleH"&nbsp;となります<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>   
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="62422""></a>
+  <div class="note">
+   <strong class="user">carmel.alex at gmail.com</strong>
+   <a href="#62422" class="date">28-Feb-2006 09:54</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This function support utf-8 encoding<br />
+<br />
+function utf8_strrev($str){<br />
+&nbsp;&nbsp;&nbsp; preg_match_all('/./us', $str, $ar);<br />
+&nbsp;&nbsp;&nbsp; return join('',array_reverse($ar[0]));<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.strrchr.html">strrchr</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.strripos.html">strripos</a></div>
+ <div class="up"><a href="ref.strings.html">String 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

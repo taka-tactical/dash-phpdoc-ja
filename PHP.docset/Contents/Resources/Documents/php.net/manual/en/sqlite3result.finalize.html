@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>結果セットを閉じる</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="sqlite3result.fetcharray.html">SQLite3Result::fetchArray</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="sqlite3result.numcolumns.html">SQLite3Result::numColumns</a></div>
+ <div class="up"><a href="class.sqlite3result.html">SQLite3Result</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="sqlite3result.finalize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3Result::finalize</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">SQLite3Result::finalize</span> &mdash; <span class="dc-title">結果セットを閉じる</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sqlite3result.finalize-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>SQLite3Result::finalize</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   結果セットを閉じます。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sqlite3result.finalize-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3result.finalize-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> を返します。
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="119892""></a>
+  <div class="note">
+   <strong class="user">lukegamitchell at gmail dot com</strong>
+   <a href="#119892" class="date">16-Sep-2016 12:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+A simple example using finalize().<br />
+<br />
+// Open the database connection<br />
+$db = new SQLite3('database.db');<br />
+<br />
+// Prepare a query for execution<br />
+$query = $db-&gt;prepare('SELECT user_id FROM users WHERE username=:username');<br />
+$query-&gt;bindValue(':username', $_COOKIE['username'], SQLITE3_TEXT);<br />
+<br />
+// Execute the query<br />
+$result = $query-&gt;execute();<br />
+<br />
+// Store the result of the query<br />
+$id = $result-&gt;fetchArray(SQLITE3_NUM)[0];<br />
+<br />
+// Close the result set and database connection<br />
+$result-&gt;finalize();<br />
+$db-&gt;close();<br />
+<br />
+Of course you should be more careful and clean your cookie, etc.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="sqlite3result.fetcharray.html">SQLite3Result::fetchArray</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="sqlite3result.numcolumns.html">SQLite3Result::numColumns</a></div>
+ <div class="up"><a href="class.sqlite3result.html">SQLite3Result</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

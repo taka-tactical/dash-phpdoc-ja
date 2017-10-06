@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>PHP 5.6.x から PHP 7.0.x への移行</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration71.windows-support.html">Windows Support</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.incompatible.html">下位互換性のない変更点</a></div>
+ <div class="up"><a href="appendices.html">付録</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration70" class="appendix">
+ <h1>PHP 5.6.x から PHP 7.0.x への移行</h1>
+<h2>目次</h2><ul class="chunklist chunklist_appendix"><li><a href="migration70.incompatible.html">下位互換性のない変更点</a></li><li><a href="migration70.new-features.html">新機能</a></li><li><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能</a></li><li><a href="migration70.changed-functions.html">変更された関数</a></li><li><a href="migration70.new-functions.html">新しい関数</a></li><li><a href="migration70.classes.html">新しいクラスおよびインターフェイス</a></li><li><a href="migration70.constants.html">新しいグローバル定数</a></li><li><a href="migration70.sapi-changes.html">SAPI モジュールの変更</a></li><li><a href="migration70.removed-exts-sapis.html">削除された拡張モジュールおよび SAPI</a></li><li><a href="migration70.other-changes.html">その他の変更</a></li></ul>
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ <div id="migration70.intro" class="sect1">
+  <p class="para">
+   PHP 7.0 は新しいメジャーバージョンではありますが、
+   過去のバージョンからの移行をできるだけスムーズに行えるよう心がけています。
+   このリリースで主に注力したのは、これまでのバージョンで廃止予定とされていた機能の削除や、
+   言語としての一貫性の向上です。
+  </p>
+  <p class="para">
+   <a href="migration70.incompatible.html" class="link">互換性がない変更</a>
+   が多少あり、また、考慮すべき
+   <a href="migration70.new-features.html" class="link">新機能</a> があります。よって、
+   実運用環境の PHP をこのバージョンにあげる前に、あらゆるコードをテストすべきです。
+  </p>
+
+  <p class="para">
+   これらのバージョンへの移行ガイドも参照ください。
+   <a href="migration5.html" class="link">5.0.x</a>、
+   <a href="migration51.html" class="link">5.1.x</a>、
+   <a href="migration52.html" class="link">5.2.x</a>、
+   <a href="migration53.html" class="link">5.3.x</a>、
+   <a href="migration54.html" class="link">5.4.x</a>、
+   <a href="migration55.html" class="link">5.5.x</a> および
+   <a href="migration56.html" class="link">5.6.x</a>。
+  </p>
+ </div>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121660""></a>
+  <div class="note">
+   <strong class="user">agilare at gmail dot com</strong>
+   <a href="#121660" class="date">20-Sep-2017 07:30</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+In the french version of this page, this warning should be removed :<br />
+<br />
+&gt; Avertissement<br />
+&gt; <br />
+&gt; PHP 7.0 est encore en developpement et les fonctionnalites et changements notes dans cette section sont sujets a changement d'ici la version finale 7.0.0, bien que cela ait peu de chances d'arriver. Veuillez consulter attentivement ce guide de migration avant de deployer une version 7.0 en production.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121396""></a>
+  <div class="note">
+   <strong class="user">contact at kalculator dot ro</strong>
+   <a href="#121396" class="date">19-Jul-2017 03:44</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Hello! How can I upgrade PHP 5.6.25 to PHP 7.1.7? If I can keep "Configure Command".<br />
+A nice summer!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration71.windows-support.html">Windows Support</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.incompatible.html">下位互換性のない変更点</a></div>
+ <div class="up"><a href="appendices.html">付録</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

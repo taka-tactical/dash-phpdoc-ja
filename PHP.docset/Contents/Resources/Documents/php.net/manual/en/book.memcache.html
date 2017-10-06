@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Memcache</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-unbind.html">ldap_unbind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intro.memcache.html">はじめに</a></div>
+ <div class="up"><a href="refs.remote.other.html">その他のサービス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="book.memcache" class="book">
+ <h1 class="title">Memcache</h1>
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="intro.memcache.html">はじめに</a></li><li><a href="memcache.setup.html">インストール/設定</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="memcache.requirements.html">要件</a></li><li><a href="memcache.installation.html">インストール手順</a></li><li><a href="memcache.ini.html">実行時設定</a></li><li><a href="memcache.resources.html">リソース型</a></li></ul></li><li><a href="memcache.constants.html">定義済み定数</a></li><li><a href="memcache.examples.html">例</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="memcache.examples-overview.html">基本的な使用法</a></li></ul></li><li><a href="class.memcache.html">Memcache</a> &mdash; Memcache クラス<ul class="chunklist chunklist_book chunklist_children"><li><a href="memcache.add.html">Memcache::add</a> &mdash; サーバーに項目を追加する</li><li><a href="memcache.addserver.html">Memcache::addServer</a> &mdash; コネクションプールに memcached サーバーを追加する</li><li><a href="memcache.close.html">Memcache::close</a> &mdash; memcached サーバーとの接続を閉じる</li><li><a href="memcache.connect.html">Memcache::connect</a> &mdash; memcached サーバーへの接続をオープンする</li><li><a href="memcache.decrement.html">Memcache::decrement</a> &mdash; 項目の値を減らす</li><li><a href="memcache.delete.html">Memcache::delete</a> &mdash; サーバーから項目を削除する</li><li><a href="memcache.flush.html">Memcache::flush</a> &mdash; サーバー上のすべての既存項目を消去する</li><li><a href="memcache.get.html">Memcache::get</a> &mdash; サーバーから項目を取得する</li><li><a href="memcache.getextendedstats.html">Memcache::getExtendedStats</a> &mdash; プール内のすべてのサーバーの統計情報を取得する</li><li><a href="memcache.getserverstatus.html">Memcache::getServerStatus</a> &mdash; サーバーの状態を返す</li><li><a href="memcache.getstats.html">Memcache::getStats</a> &mdash; サーバーの統計情報を取得する</li><li><a href="memcache.getversion.html">Memcache::getVersion</a> &mdash; サーバーのバージョンを返す</li><li><a href="memcache.increment.html">Memcache::increment</a> &mdash; 項目の値を増やす</li><li><a href="memcache.pconnect.html">Memcache::pconnect</a> &mdash; memcached サーバーへの持続的な接続をオープンする</li><li><a href="memcache.replace.html">Memcache::replace</a> &mdash; 既存項目の値を置換する</li><li><a href="memcache.set.html">Memcache::set</a> &mdash; データをサーバーに格納する</li><li><a href="memcache.setcompressthreshold.html">Memcache::setCompressThreshold</a> &mdash; 大きな値に対する自動圧縮処理を有効にする</li><li><a href="memcache.setserverparams.html">Memcache::setServerParams</a> &mdash; サーバーのパラメータおよび状態を、実行時に変更する</li></ul></li><li><a href="ref.memcache.html">Memcache 関数</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.memcache-debug.html">memcache_debug</a> &mdash; デバッグ出力のオン/オフを切り替える</li></ul></li></ul></div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121617""></a>
+  <div class="note">
+   <strong class="user">xrobau at gmail dot com</strong>
+   <a href="#121617" class="date">07-Sep-2017 10:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Note that the Memcache 3.0.8 module DOES NOT WORK WITH PHP 7 (or higher)<br />
+<br />
+There is an open bug about this - see https://bugs.php.net/bug.php?id=72887 and over 1 year old at time of writing - however, it appears that development of this module has been abandoned and the MemcacheD module is now the only way to access Memcache through PHP.<br />
+<br />
+If you are writing a NEW tool, and you want to use Memcache, use the MemcacheD library.&nbsp; If you are trying to repair an old tool, you'll either have to stick with PHP 5.6, or, spend the time reworking your code to use MemcacheD.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116757""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#116757" class="date">24-Feb-2015 05:25</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I ran Gabriel's test above and had different results. I did find differences in the objects. For instance:<br />
+&nbsp; 'val' =&gt; string(7) "4542.32"<br />
+&nbsp; 'valD' =&gt; double(4542.32)<br />
+<br />
+But, I think this could be resolved. Fairly easily.<br />
+<br />
+&nbsp;The main issue with the test was that one port is used. I ran another instance of memcached on a different port and changed the code slightly.&nbsp; I used this code and had better success:<br />
+<br />
+$servers = array(array('localserv', 11212));<br />
+$memcache = new Memcache;<br />
+$memcacheD = new Memcached;<br />
+$memcache-&gt;addServer('localserv', 11211);<br />
+$memcacheD-&gt;addServers($servers);<br />
+$memcacheD-&gt;setOption(Memcached::OPT_BINARY_PROTOCOL, true);<br />
+<br />
+$checks = array(<br />
+&nbsp;&nbsp;&nbsp; 123,<br />
+&nbsp;&nbsp;&nbsp; 4542.32,<br />
+&nbsp;&nbsp;&nbsp; 'a string',<br />
+&nbsp;&nbsp;&nbsp; true,<br />
+&nbsp;&nbsp;&nbsp; array(123, 'string'),<br />
+&nbsp;&nbsp;&nbsp; (object)array('key1' =&gt; 'value1'),<br />
+);<br />
+foreach ($checks as $i =&gt; $value) {<br />
+&nbsp;&nbsp;&nbsp; print "Checking WRITE with Memcache\n";<br />
+&nbsp;&nbsp;&nbsp; $key = 'cachetest' . $i;<br />
+&nbsp;&nbsp;&nbsp; $memcache-&gt;set($key, $value);<br />
+&nbsp;&nbsp;&nbsp; usleep(100);<br />
+&nbsp;&nbsp;&nbsp; $val = $memcache-&gt;get($key);<br />
+&nbsp;&nbsp;&nbsp; $valD = $memcacheD-&gt;get($key);<br />
+&nbsp;&nbsp;&nbsp; if ($val !== $valD) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print "Not compatible!";<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var_dump(compact('val', 'valD'));<br />
+&nbsp;&nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print "WAS COMPAT\n";<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; print "Checking WRITE with MemcacheD\n";<br />
+&nbsp;&nbsp;&nbsp; $key = 'cachetest' . $i;<br />
+&nbsp;&nbsp;&nbsp; $memcacheD-&gt;set($key, $value);<br />
+&nbsp;&nbsp;&nbsp; usleep(100);<br />
+&nbsp;&nbsp;&nbsp; $val = $memcache-&gt;get($key);<br />
+&nbsp;&nbsp;&nbsp; $valD = $memcacheD-&gt;get($key);<br />
+&nbsp;&nbsp;&nbsp; if ($val !== $valD) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print "Not compatible!";<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; var_dump(compact('val', 'valD'));<br />
+&nbsp;&nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print "WAS COMPAT\n";<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115666""></a>
+  <div class="note">
+   <strong class="user">gabriel dot maybrun at demandmedia dot com</strong>
+   <a href="#115666" class="date">05-Sep-2014 08:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+GOTCHA: Recently I was tasked with moving from PECL memcache to PECL memcached and ran into a major problem -- memcache and memcached serialize data differently, meaning that data written with one library can't necessarily be read with the other library.<br />
+<br />
+For example, If you write an object or an array with memcache, it's interpreted as an integer by memcached.&nbsp; If you write it with memcached, it's interpreted as a string by memcache.<br />
+<br />
+tl;dr - You can't safely switch between memcache and memcached without a either a cache flush or isolated cache environments.<br />
+<br />
+<span class="default">&lt;?php<br />
+$memcache </span><span class="keyword">= new </span><span class="default">Memcache</span><span class="keyword">;<br />
+</span><span class="default">$memcacheD </span><span class="keyword">= new </span><span class="default">Memcached</span><span class="keyword">;<br />
+</span><span class="default">$memcache</span><span class="keyword">-&gt;</span><span class="default">addServer</span><span class="keyword">(</span><span class="default">$host</span><span class="keyword">);<br />
+</span><span class="default">$memcacheD</span><span class="keyword">-&gt;</span><span class="default">addServers</span><span class="keyword">(</span><span class="default">$servers</span><span class="keyword">);<br />
+<br />
+</span><span class="default">$checks </span><span class="keyword">= array(<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">123</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">4542.32</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; </span><span class="string">'a string'</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">true</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; array(</span><span class="default">123</span><span class="keyword">, </span><span class="string">'string'</span><span class="keyword">),<br />
+&nbsp;&nbsp;&nbsp; (object)array(</span><span class="string">'key1' </span><span class="keyword">=&gt; </span><span class="string">'value1'</span><span class="keyword">),<br />
+);<br />
+foreach (</span><span class="default">$checks </span><span class="keyword">as </span><span class="default">$i </span><span class="keyword">=&gt; </span><span class="default">$value</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; print </span><span class="string">"Checking WRITE with Memcache\n"</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$key </span><span class="keyword">= </span><span class="string">'cachetest' </span><span class="keyword">. </span><span class="default">$i</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$memcache</span><span class="keyword">-&gt;</span><span class="default">set</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">usleep</span><span class="keyword">(</span><span class="default">100</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$val </span><span class="keyword">= </span><span class="default">$memcache</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$valD </span><span class="keyword">= </span><span class="default">$memcacheD</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; if (</span><span class="default">$val </span><span class="keyword">!== </span><span class="default">$valD</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print </span><span class="string">"Not compatible!"</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">compact</span><span class="keyword">(</span><span class="string">'val'</span><span class="keyword">, </span><span class="string">'valD'</span><span class="keyword">));<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; print </span><span class="string">"Checking WRITE with MemcacheD\n"</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$key </span><span class="keyword">= </span><span class="string">'cachetest' </span><span class="keyword">. </span><span class="default">$i</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$memcacheD</span><span class="keyword">-&gt;</span><span class="default">set</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">usleep</span><span class="keyword">(</span><span class="default">100</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$val </span><span class="keyword">= </span><span class="default">$memcache</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$valD </span><span class="keyword">= </span><span class="default">$memcacheD</span><span class="keyword">-&gt;</span><span class="default">get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; if (</span><span class="default">$val </span><span class="keyword">!== </span><span class="default">$valD</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; print </span><span class="string">"Not compatible!"</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">compact</span><span class="keyword">(</span><span class="string">'val'</span><span class="keyword">, </span><span class="string">'valD'</span><span class="keyword">));<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-unbind.html">ldap_unbind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intro.memcache.html">はじめに</a></div>
+ <div class="up"><a href="refs.remote.other.html">その他のサービス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

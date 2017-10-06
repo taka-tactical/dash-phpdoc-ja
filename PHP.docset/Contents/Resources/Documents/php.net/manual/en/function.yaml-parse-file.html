@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>ファイルからの YAML ストリームをパースする</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaml-emit.html">yaml_emit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaml-parse-url.html">yaml_parse_url</a></div>
+ <div class="up"><a href="ref.yaml.html">Yaml 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.yaml-parse-file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaml_parse_file</h1>
+  <p class="verinfo">(PECL yaml &gt;= 0.4.0)</p><p class="refpurpose"><span class="refname">yaml_parse_file</span> &mdash; <span class="dc-title">ファイルからの YAML ストリームをパースする</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.yaml-parse-file-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>yaml_parse_file</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$pos</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$ndocs</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$callbacks</code><span class="initializer"> = null</span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   指定したファイルから読み込んだ YAML ドキュメントストリーム全体あるいはその一部を、PHP の変数に変換します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.yaml-parse-file-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ファイルへのパス。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">pos</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ストリームから取り出すドキュメント (<em>-1</em>
+       はすべてのドキュメント、<em>0</em> は最初のドキュメント、...)。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ndocs</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">ndocs</code> を渡すと、
+       ストリーム内で見つかったドキュメントの数がそこに格納されます。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">callbacks</code></dt>
+
+     <dd>
+
+      <p class="para">
+       YAML ノードのコンテンツハンドラ。
+       YAML タグ =&gt; <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> 形式の連想配列となります。
+       詳細は<a href="yaml.callbacks.parse.html" class="link">パースコールバック</a>
+       を参照ください。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaml-parse-file-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   適切な PHP の型に変換した結果を返します。
+   失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   <code class="parameter">pos</code> が <em>-1</em> の場合は配列を返します。
+   配列の各要素が、ストリーム内で見つかった個々のドキュメントとなります。
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.yaml-parse-file-notes">
+  <h3 class="title">注意</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    <em>!php/object</em> タグを使ったノードの
+    <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> を有効にしている場合に、
+    ユーザーからの信頼できない入力を
+    <span class="function"><strong>yaml_parse_file()</strong></span>
+    で処理するのは危険です。
+    この挙動を無効にするには、ini 設定の <em>yaml.decode_php</em> を利用します。
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.yaml-parse-file-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.yaml-parse.html" class="function" rel="rdfs-seeAlso">yaml_parse()</a> - YAML ストリームをパースする</span></li>
+    <li class="member"><span class="function"><a href="function.yaml-parse-url.html" class="function" rel="rdfs-seeAlso">yaml_parse_url()</a> - URL からの YAML ストリームをパースする</span></li>
+    <li class="member"><span class="function"><a href="function.yaml-emit.html" class="function" rel="rdfs-seeAlso">yaml_emit()</a> - YAML 形式にした値を返す</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="117774""></a>
+  <div class="note">
+   <strong class="user">Arne L.</strong>
+   <a href="#117774" class="date">07-Aug-2015 06:34</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As Jesse Donat mentioned the type will be infered automatically. To enforce some type you can use the callback facility like this:<br />
+<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">function </span><span class="default">cb_yaml_date</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">, </span><span class="default">$tag</span><span class="keyword">, </span><span class="default">$flags</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; return new </span><span class="default">DateTime</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">);<br />
+}<br />
+<br />
+</span><span class="default">$yaml </span><span class="keyword">= &lt;&lt;&lt;YAML<br />
+</span><span class="string">event1:<br />
+&nbsp; name: My Event<br />
+&nbsp; date: !date 25.05.2001<br />
+</span><span class="keyword">YAML;<br />
+<br />
+</span><span class="default">$ndocs </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br />
+</span><span class="default">$data </span><span class="keyword">= </span><span class="default">yaml_parse</span><span class="keyword">(</span><span class="default">$yaml</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$ndocs</span><span class="keyword">, array(</span><span class="string">'!date' </span><span class="keyword">=&gt; </span><span class="string">'cb_yaml_date'</span><span class="keyword">));<br />
+<br />
+</span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+The above example will output something similar to:<br />
+<br />
+&nbsp;&nbsp;&nbsp; Array<br />
+&nbsp;&nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; [event1] =&gt; Array<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [name] =&gt; My Event<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [date] =&gt; DateTime Object<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [date] =&gt; 2001-05-25 00:00:00<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [timezone_type] =&gt; 3<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [timezone] =&gt; Europe/Berlin<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )<br />
+&nbsp;&nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )<br />
+&nbsp;&nbsp;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; )<br />
+<br />
+BTW if you want to have large numbers you are probably using BC Math. Thus, you simple enclose your number in quotes:<br />
+<br />
+<span class="default">&lt;?php<br />
+$yaml </span><span class="keyword">= &lt;&lt;&lt;YAML<br />
+</span><span class="string">largenumber: '14695760472279668267313200104308'<br />
+</span><span class="keyword">YAML;<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="105353""></a>
+  <div class="note">
+   <strong class="user">Jesse Donat</strong>
+   <a href="#105353" class="date">11-Aug-2011 06:34</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This is entirely dependent on type detection - as far as I can find there is no way to force a type and for instance when you have a very long integer as a value - in my case 1313035348823 it gets limited to 2147483647 - PHP's max integer.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaml-emit.html">yaml_emit</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaml-parse-url.html">yaml_parse_url</a></div>
+ <div class="up"><a href="ref.yaml.html">Yaml 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

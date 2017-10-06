@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>取得するレコードの範囲を指定する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-present.html">yaz_present</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaz-record.html">yaz_record</a></div>
+ <div class="up"><a href="ref.yaz.html">YAZ 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.yaz-range" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaz_range</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.1, PECL yaz &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">yaz_range</span> &mdash; <span class="dc-title">
+   取得するレコードの範囲を指定する
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.yaz-range-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type void">void</span></span> <span class="methodname"><strong>yaz_range</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$id</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$start</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$number</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   取得するレコードの範囲を指定します。
+  </p>
+  <p class="para">
+   この関数は、<span class="function"><a href="function.yaz-search.html" class="function">yaz_search()</a></span> あるいは
+   <span class="function"><a href="function.yaz-present.html" class="function">yaz_present()</a></span> の前にコールしなければなりません。
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.yaz-range-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <span class="function"><a href="function.yaz-connect.html" class="function">yaz_connect()</a></span> が返す接続リソース。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">start</code></dt>
+
+     <dd>
+
+      <p class="para">
+       取得する最初のレコードの位置を指定します。レコード番号は
+       1 から <span class="function"><a href="function.yaz-hits.html" class="function">yaz_hits()</a></span> までです。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">number</code></dt>
+
+     <dd>
+
+      <p class="para">
+       取得するレコードの数を指定します。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaz-range-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   値を返しません。
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="118148""></a>
+  <div class="note">
+   <strong class="user">andrew dot isherwood at ptfs-europe dot com</strong>
+   <a href="#118148" class="date">14-Oct-2015 06:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Note that yaz_range probably doesn't do what you think it's going to to do. i.e. cause the result set to be returned according to the "start" and "number" parameters you supply.<br />
+<br />
+Quoting this thread:<br />
+<a href="http://lists.indexdata.dk/pipermail/yazlist/2006-November/001752.html" rel="nofollow" target="_blank">http://lists.indexdata.dk/pipermail/yazlist/2006-November/001752.html</a><br />
+<br />
+"Generally, the record offset that you give to yaz_record() is the offset into the result set, not into any subset identified by yaz_range(). This is crucial: The yaz_range() function is strictly there to help you write more optimized client code; you do not need to call it.<br />
+<br />
+In other words, if you want to display record numbers 10 to 20 from your set, you loop from 10 to 20 and call yaz_record() for each record. The underlying code will retrieve records as necessary on demand.<br />
+<br />
+However, if you call yaz_range() before you call yaz_wait(), the underlying code will optimize it's behavior.. it will either ask the <br />
+server to return records along with the search recult, or submit a single present request to fetch the records (if you're not asking for too many).. it makes no difference in a quick hack, but it can make a dramatic difference if you're designing for many users or heavy traffic. Your loop over yaz_record() will be the same whether you have called yaz_range() first, or not."</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-present.html">yaz_present</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.yaz-record.html">yaz_record</a></div>
+ <div class="up"><a href="ref.yaz.html">YAZ 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

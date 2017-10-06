@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Returns the BSON representation of a PHP value</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mongodb.bson-fromjson.html">MongoDB\BSON\fromJSON</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mongodb.bson-tocanonicalextendedjson.html">MongoDB\BSON\toCanonicalExtendedJSON</a></div>
+ <div class="up"><a href="ref.bson.functions.html">関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mongodb.bson-fromphp" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\BSON\fromPHP</h1>
+  <p class="verinfo">(mongodb &gt;=1.0.0)</p><p class="refpurpose"><span class="refname">MongoDB\BSON\fromPHP</span> &mdash; <span class="dc-title">Returns the BSON representation of a PHP value</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mongodb.bson-fromphp-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><strong>MongoDB\BSON\fromPHP</strong></span>
+    ( <span class="methodparam"><span class="type"><span class="type array|object">array|object</span></span> <code class="parameter">$value</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Serializes a PHP array or object (e.g. document) to its
+   <a href="https://docs.mongodb.com/manual/reference/bson-types/" class="link external" title="Link : https://docs.mongodb.com/manual/reference/bson-types/">&raquo;&nbsp;BSON</a> representation. The
+   returned binary string will describe a BSON document.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mongodb.bson-fromphp-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">value</code> (<span class="type"><span class="type array|object">array|object</span></span>)</dt>
+
+    <dd>
+
+     <p class="para">
+      PHP value to be serialized.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mongodb.bson-fromphp-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   The serialized BSON document as a binary string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mongodb.bson-fromphp-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <ul class="simplelist">
+   <li class="member">
+    Throws
+    <a href="class.mongodb-driver-exception-unexpectedvalueexception.html" class="classname">MongoDB\Driver\Exception\UnexpectedValueException</a> if
+    the PHP value cannot be converted to BSON. Possible reasons include, but are
+    not limited to, encountering an unexpected
+    <span class="interfacename"><a href="class.mongodb-bson-type.html" class="interfacename">MongoDB\BSON\Type</a></span> instance or
+    <span class="function"><a href="mongodb-bson-serializable.bsonserialize.html" class="function">MongoDB\BSON\Serializable::bsonSerialize()</a></span> failing to
+    return an <span class="type"><a href="language.types.array.html" class="type array">array</a></span> or <strong class="classname">stdClass</strong>.
+   </li>
+  </ul>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mongodb.bson-fromphp-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-1727">
+   <p><strong>例1 <span class="function"><strong>MongoDB\BSON\fromPHP()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">([</span><span style="color: #DD0000">'foo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />echo&nbsp;</span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+0e00000010666f6f000100000000cat 
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mongodb.bson-fromphp-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.mongodb.bson-tophp.html" class="function" rel="rdfs-seeAlso">MongoDB\BSON\toPHP()</a> - Returns the PHP representation of a BSON value</span></li>
+   <li class="member"><a href="https://docs.mongodb.com/manual/reference/bson-types/" class="link external" title="Link : https://docs.mongodb.com/manual/reference/bson-types/">&raquo;&nbsp;MongoDB BSON</a></li>
+   <li class="member"><a href="mongodb.persistence.html" class="xref">Persisting Data</a></li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.mongodb.bson-fromjson.html">MongoDB\BSON\fromJSON</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mongodb.bson-tocanonicalextendedjson.html">MongoDB\BSON\toCanonicalExtendedJSON</a></div>
+ <div class="up"><a href="ref.bson.functions.html">関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

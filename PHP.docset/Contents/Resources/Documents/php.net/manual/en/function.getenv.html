@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>環境変数の値を取得する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.get-resources.html">get_resources</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.getlastmod.html">getlastmod</a></div>
+ <div class="up"><a href="ref.info.html">PHP オプション/情報 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.getenv" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">getenv</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">getenv</span> &mdash; <span class="dc-title">環境変数の値を取得する</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.getenv-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname"><strong>getenv</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$varname</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$local_only</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   環境変数の値を取得します。
+  </p>
+  <p class="para">
+   <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> を使えば、すべての環境変数の一覧を見ることができます。
+   これらの変数の多くは、
+   <a href="http://www.faqs.org/rfcs/rfc3875" class="link external" title="Link : http://www.faqs.org/rfcs/rfc3875">&raquo;&nbsp;RFC 3875</a> の
+   section 4.1, &quot;Request Meta-Variables&quot; に挙げられているものです。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.getenv-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">varname</code></dt>
+
+     <dd>
+
+      <p class="para">
+       変数の名前。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">local_only</code></dt>
+
+     <dd>
+
+      
+      <p class="para">
+       Set to true to only return local environment variables (set by the operating system or putenv).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.getenv-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   <code class="parameter">varname</code> が示す環境変数の値を返し、
+   環境変数 <code class="parameter">varname</code> が存在しない場合は<strong><code>FALSE</code></strong>を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.getenv-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.5.38, 5.6.24, 7.0.9</td>
+      <td>
+       <code class="parameter">local_only</code> パラメーターが追加されました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.getenv-notes">
+  <h3 class="title">注意</h3>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    If PHP is running in a SAPI such as Fast CGI, this function will 
+    always return the value of an environment variable set by the SAPI, 
+    even if <span class="function"><a href="function.putenv.html" class="function">putenv()</a></span> has been used to set a local 
+    environment variable of the same name. Use the <code class="parameter">local_only</code> 
+    parameter to return the value of locally-set environment variables.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.getenv-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-539">
+    <p><strong>例1 <span class="function"><strong>getenv()</strong></span> の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;getenv()&nbsp;の使用例<br /></span><span style="color: #0000BB">$ip&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getenv</span><span style="color: #007700">(</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;または単純にスーパーグローバル（$_SERVER&nbsp;または&nbsp;$_ENV）を使用します<br /></span><span style="color: #0000BB">$ip&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Safely&nbsp;get&nbsp;the&nbsp;value&nbsp;of&nbsp;an&nbsp;environment&nbsp;variable,&nbsp;ignoring&nbsp;whether&nbsp;<br />//&nbsp;or&nbsp;not&nbsp;it&nbsp;was&nbsp;set&nbsp;by&nbsp;a&nbsp;SAPI&nbsp;or&nbsp;has&nbsp;been&nbsp;changed&nbsp;with&nbsp;putenv<br /></span><span style="color: #0000BB">$ip&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getenv</span><span style="color: #007700">(</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;?:&nbsp;</span><span style="color: #0000BB">getenv</span><span style="color: #007700">(</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.getenv-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.putenv.html" class="function" rel="rdfs-seeAlso">putenv()</a> - 環境変数の値を設定する</span></li>
+    <li class="member"><span class="function"><a href="function.apache-getenv.html" class="function" rel="rdfs-seeAlso">apache_getenv()</a> - Apache の subprocess_env 変数を取得する</span></li>
+    <li class="member"><a href="language.variables.superglobals.html" class="link">スーパーグローバル</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121327""></a>
+  <div class="note">
+   <strong class="user">jaraco at jaraco dot com</strong>
+   <a href="#121327" class="date">06-Jul-2017 10:49</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The example on how to fallback produces a syntax error on PHP 5.2:<br />
+<br />
+-bash-3.2$ cat test.php<br />
+<span class="default">&lt;?php<br />
+<br />
+$ip </span><span class="keyword">= </span><span class="default">getenv</span><span class="keyword">(</span><span class="string">'REMOTE_ADDR'</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">) ?: </span><span class="default">getenv</span><span class="keyword">(</span><span class="string">'REMOTE_ADDR'</span><span class="keyword">)<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+-bash-3.2$ /web/cgi-bin/php5 test.php <br />
+Content-type: text/html<br />
+<br />
+&lt;br /&gt;<br />
+&lt;b&gt;Parse error&lt;/b&gt;:&nbsp; syntax error, unexpected ':' in &lt;b&gt;/home/content/25/11223125/test.php&lt;/b&gt; on line &lt;b&gt;3&lt;/b&gt;&lt;br /&gt;<br />
+<br />
+On PHP 5.2, one must write<br />
+<br />
+$ip = getenv('REMOTE_ADDR', true) ? getenv('REMOTE_ADDR', true) : getenv('REMOTE_ADDR')</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119680""></a>
+  <div class="note">
+   <strong class="user">yw()beeznest!com</strong>
+   <a href="#119680" class="date">02-Aug-2016 09:10</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As noted on httpoxy.org, getenv() can confuse you in having you believe that all variables come from a "safe" environment (not all of them do).<br />
+<br />
+In particular, $_SERVER['HTTP_PROXY'] (or its equivalent getenv('HTTP_PROXY')) can be manually set in the HTTP request header, so it should not be considered safe in a CGI environment.<br />
+<br />
+In short, try to avoid using getenv('HTTP_PROXY') without properly filtering it.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117301""></a>
+  <div class="note">
+   <strong class="user">pritisn at gmail dot com</strong>
+   <a href="#117301" class="date">19-May-2015 08:55</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+for quick check of getenv() adding a new env variable -<br />
+if you add a new env variable, make sure not only apache but xampp is also restarted.<br />
+Otherwise getenv() will return false for the newly added env variable.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117022""></a>
+  <div class="note">
+   <strong class="user">hello at jabran dot me</strong>
+   <a href="#117022" class="date">03-Apr-2015 03:47</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Beware that when using this function with PHP built-in server - i.e. php -S localhost:8000&nbsp;- it will return boolean FALSE.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="107421""></a>
+  <div class="note">
+   <strong class="user">php at keith tyler dot com</strong>
+   <a href="#107421" class="date">08-Feb-2012 09:51</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+All of the notes and examples so far have been strictly CGI.<br />
+It should not be understated the usefulness of getenv()/putenv() in CLI as well.<br />
+<br />
+You can pass a number of variables to a CLI script via environment variables, either in Unix/Linux bash/sh with the "VAR='foo'; export $VAR" paradigm, or in Windows with the "set VAR='foo'" paradigm. (Csh users, you're on your own!) getenv("VAR") will retrieve that value from the environment.<br />
+<br />
+We have a system by which we include a file full of putenv() statements storing configuration values that can apply to many different CLI PHP programs. But if we want to override these values, we can use the shell's (or calling application, such as ant) environment variable setting method to do so.<br />
+<br />
+This saves us from having to manage an unmanageable amount of one-off configuration changes per execution via command line arguments; instead we just set the appropriate env var first.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="99134""></a>
+  <div class="note">
+   <strong class="user">eng.mrkto.com</strong>
+   <a href="#99134" class="date">29-Jul-2010 08:36</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This function is useful (compared to $_SERVER, $_ENV) because it searches $varname key in those array case-insensitive manner.<br />
+For example on Windows $_SERVER['Path'] is like you see Capitalized, not 'PATH' as you expected.<br />
+So just: <span class="default">&lt;?php getenv</span><span class="keyword">(</span><span class="string">'path'</span><span class="keyword">) </span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="97763""></a>
+  <div class="note">
+   <strong class="user">chuck dot reeves at gmail dot com</strong>
+   <a href="#97763" class="date">06-May-2010 08:59</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+When writing CLI applications, not that any environment variables that are set in your web server config will not be passed through.&nbsp; PHP will pass through system environment variables that are prefixed based off the safe_mode_allowed_env_vars directive in your php.ini</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="92412""></a>
+  <div class="note">
+   <strong class="user">f dot hartmann2 at gmx dot net</strong>
+   <a href="#92412" class="date">23-Jul-2009 02:42</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+A function returning the remote adress of the visiting browser could look like this:
+<br />
+
+<br />
+<span class="default">&lt;?php
+<br />
+</span><span class="keyword">function </span><span class="default">getIPfromXForwarded</span><span class="keyword">() {
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$ipString</span><span class="keyword">=@</span><span class="default">getenv</span><span class="keyword">(</span><span class="string">"HTTP_X_FORWARDED_FOR"</span><span class="keyword">);
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$addr </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">","</span><span class="keyword">,</span><span class="default">$ipString</span><span class="keyword">);
+<br />
+&nbsp;&nbsp;&nbsp; return </span><span class="default">$addr</span><span class="keyword">[</span><span class="default">sizeof</span><span class="keyword">(</span><span class="default">$addr</span><span class="keyword">)-</span><span class="default">1</span><span class="keyword">];
+<br />
+}
+<br />
+</span><span class="default">?&gt;
+<br />
+</span>
+<br />
+Note that some adresses are followed by a whitespace and ip2long(getIPfromXForwarded()) would not return the expected result.
+<br />
+
+<br />
+Make use of trim() in your scripts, either in the function itself, or the surrounding space of the caller.
+<br />
+
+<br />
+Greetings</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="81771""></a>
+  <div class="note">
+   <strong class="user">sam at sambarrow dot com</strong>
+   <a href="#81771" class="date">13-Mar-2008 02:32</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+SERVER_NAME is the name defined in the apache configuration.<br />
+HTTP_HOST is the host header sent by the client when using the more recent versions of the http protocol.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="47247""></a>
+  <div class="note">
+   <strong class="user">renko at &lt;remove&gt;virtual-life dot net</strong>
+   <a href="#47247" class="date">08-Nov-2004 03:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The function 'getenv' does not work if your Server API is ASAPI (IIS).<br />
+<br />
+So, try to don't use getenv('REMOTE_ADDR'), but $_SERVER["REMOTE_ADDR"].</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="39603""></a>
+  <div class="note">
+   <strong class="user">kyong</strong>
+   <a href="#39603" class="date">04-Feb-2004 10:06</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As you know, getenv('DOCUMENT_ROOT') is useful.<br />
+However, under CLI environment(I tend to do quick check<br />
+if it works or not), it doesn't work without modified php.ini<br />
+file. So I add "export DOCUMENT_ROOT=~" in my .bash_profile.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.get-resources.html">get_resources</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.getlastmod.html">getlastmod</a></div>
+ <div class="up"><a href="ref.info.html">PHP オプション/情報 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

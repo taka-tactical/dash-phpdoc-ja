@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>パースする XML を含む URI を設定する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xmlreader.next.html">XMLReader::next</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xmlreader.read.html">XMLReader::read</a></div>
+ <div class="up"><a href="class.xmlreader.html">XMLReader</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="xmlreader.open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">XMLReader::open</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.1.0, PHP 7)</p><p class="refpurpose"><span class="refname">XMLReader::open</span> &mdash; <span class="dc-title">パースする XML を含む URI を設定する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-xmlreader.open-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> 
+   <span class="methodname"><strong>XMLReader::open</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$URI</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   パースされる XML ドキュメントを含む URI を設定します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-xmlreader.open-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">URI</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ドキュメントを指す URI。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">encoding</code></dt>
+
+     <dd>
+
+      <p class="para">
+       ドキュメントのエンコーディングあるいは <strong><code>NULL</code></strong>。
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <a href="libxml.constants.html" class="link">LIBXML_*</a> 定数のビットマスク。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-xmlreader.open-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   静的にコールされた場合には <a href="class.xmlreader.html" class="classname">XMLReader</a> を返します。
+   失敗した場合に <strong><code>FALSE</code></strong> を返します
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-xmlreader.open-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">このメソッドは、静的にコールすることも
+<em class="emphasis">できはしますが</em>、<strong><code>E_STRICT</code></strong> エラーが発生します。</p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-xmlreader.open-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.2.0</td>
+       <td>
+        <code class="parameter">encoding</code> および <code class="parameter">options</code>
+        が追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-xmlreader.open-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="xmlreader.xml.html" class="methodname" rel="rdfs-seeAlso">XMLReader::xml()</a> - パースする XML を含むデータを設定する</span></li>
+    <li class="member"><span class="methodname"><a href="xmlreader.close.html" class="methodname" rel="rdfs-seeAlso">XMLReader::close()</a> - XMLReader の入力を閉じる</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121033""></a>
+  <div class="note">
+   <strong class="user">den at nurfuerspam dot de</strong>
+   <a href="#121033" class="date">29-Apr-2017 07:08</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you like to read the XML from HTTP whit a POST request, you can use libxml_set_streams_context.<br />
+Example:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$param </span><span class="keyword">= array(</span><span class="string">'http' </span><span class="keyword">=&gt; array(<br />
+&nbsp;&nbsp;&nbsp; </span><span class="string">'method' </span><span class="keyword">=&gt; </span><span class="string">'POST'</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; </span><span class="string">'header' </span><span class="keyword">=&gt; </span><span class="string">"Content-type: application/x-www-form-urlencoded\r\n"</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; </span><span class="string">'content' </span><span class="keyword">=&gt; </span><span class="default">http_build_query</span><span class="keyword">(array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'post_param1' </span><span class="keyword">=&gt; </span><span class="string">'value1'</span><span class="keyword">,<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'post_param2' </span><span class="keyword">=&gt; </span><span class="string">'value2'</span><span class="keyword">,<br />
+&nbsp;&nbsp;&nbsp; )),<br />
+));<br />
+</span><span class="default">libxml_set_streams_context</span><span class="keyword">(</span><span class="default">stream_context_create</span><span class="keyword">(</span><span class="default">$param</span><span class="keyword">));<br />
+</span><span class="default">$reader </span><span class="keyword">= </span><span class="default">XMLReader</span><span class="keyword">::</span><span class="default">open</span><span class="keyword">(</span><span class="string">'https://example.com/get.php?get_param=value3'</span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120266""></a>
+  <div class="note">
+   <strong class="user">dave at sophoservices dot com</strong>
+   <a href="#120266" class="date">03-Dec-2016 04:43</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+When using the XmlReader to read local XML files, remember it the open function requests a URI. Add 'file://' to the front of the FULL path to the XML. Otherwise you may get:<br />
+<br />
+PHP Warning:&nbsp; XMLReader::open(): Unable to open source data in ...</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120044""></a>
+  <div class="note">
+   <strong class="user">mood(_a_)twolate.com</strong>
+   <a href="#120044" class="date">14-Oct-2016 08:03</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For some reasons, the open() method keep throwing me this error :<br />
+<br />
+PHP Warning:&nbsp; XMLReader::open(): Unable to open source data in /var/www/nota/ethamap/fat_xml.php<br />
+<br />
+It doesn't make sense as the xml file target hosted on my server is perfectly reachable. Adding this line before invoking open() fixed it : <br />
+<br />
+libxml_disable_entity_loader(false); <br />
+<br />
+Please view https://bugs.php.net/bug.php?id=62577<br />
+It is somehow related.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116147""></a>
+  <div class="note">
+   <strong class="user">alvaro at demogracia dot com</strong>
+   <a href="#116147" class="date">14-Nov-2014 09:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+XML can optionally declare its own encoding:<br />
+<br />
+&nbsp;&nbsp;&nbsp; &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />
+<br />
+You can use the $encoding parameter to provide this information (if missing) or override it (if wrong).<br />
+<br />
+Output is always UTF-8 (that's how libxml works).</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="85741""></a>
+  <div class="note">
+   <strong class="user">crungmungus at gmail dot com</strong>
+   <a href="#85741" class="date">16-Sep-2008 02:11</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Windows users remember to enable php_openssl.dll in your php.ini if you want to be able to use this function (and others) with a HTTPS URL.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="xmlreader.next.html">XMLReader::next</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="xmlreader.read.html">XMLReader::read</a></div>
+ <div class="up"><a href="class.xmlreader.html">XMLReader</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>はじめに</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.mssql.html">Mssql</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mssql.setup.html">インストール/設定</a></div>
+ <div class="up"><a href="book.mssql.html">Mssql</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.mssql" class="preface">
+  <h1 class="title">はじめに</h1>
+
+  <div class="warning"><strong class="warning">警告</strong>
+   
+<p class="para">
+ この機能は PHP 7.0.0 で <em class="emphasis">削除</em> されました。
+</p>
+<p class="para">
+ この機能の代替として、これらが使えます。
+</p>
+
+   <ul class="simplelist">
+    <li class="member"><a href="ref.pdo-sqlsrv.html" class="link">PDO_SQLSRV</a> (Windows のみ)</li>
+    <li class="member"><a href="ref.pdo-odbc.html" class="link">PDO_ODBC</a></li>
+    <li class="member"><a href="book.sqlsrv.html" class="link">SQLSRV</a> (Windows のみ)</li>
+    <li class="member"><a href="book.uodbc.html" class="link">Unified ODBC API</a></li>
+   </ul>
+  </div>
+ 
+  <p class="para">
+   以下の関数によりMS SQL Server データベースにアクセス可能となります。
+  </p>
+  <p class="para">
+   この拡張モジュールは、Windows 版では PHP 5.3 以降使うことができません。
+  </p>
+  <p class="para">
+   SQLSRV という別の MS SQL 接続用拡張モジュールが、Microsoft から <a href="http://msdn.microsoft.com/en-us/sqlserver/ff657782.aspx" class="link external" title="Link : http://msdn.microsoft.com/en-us/sqlserver/ff657782.aspx">&raquo;&nbsp;http://msdn.microsoft.com/en-us/sqlserver/ff657782.aspx</a> で公開されています。
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120808""></a>
+  <div class="note">
+   <strong class="user">yanko dot costa at gmail dot com</strong>
+   <a href="#120808" class="date">15-Mar-2017 12:02</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The microsoft SQLSRV driver for linux is functional.<br />
+<br />
+According Microsoft, version 4.0 (for Linux):<br />
+&nbsp;&nbsp;&nbsp; Ubuntu 15.04 (64-bit)<br />
+&nbsp;&nbsp;&nbsp; Ubuntu 16.04 (64-bit)<br />
+&nbsp;&nbsp;&nbsp; Red Hat Enterprise Linux 7 (64-bit)<br />
+<br />
+(https://docs.microsoft.com/en-us/sql/connect/php/system-requirements-for-the-php-sql-driver)<br />
+<br />
+Instalations notes for Linux:<br />
+(https://github.com/Microsoft/msphpsql)</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119206""></a>
+  <div class="note">
+   <strong class="user">rjaehnrich at gmail dot com</strong>
+   <a href="#119206" class="date">19-Apr-2016 06:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+to use MSSQL-connections on Linux with PHP7 you can use PDO with PDO_DBLIB.<br />
+<br />
+Install driver using this command: <br />
+sudo apt-get install php7.0-sybase<br />
+<br />
+then simply connect with this:<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; $dsn </span><span class="keyword">= </span><span class="string">"dblib:host=" </span><span class="keyword">. </span><span class="default">$host </span><span class="keyword">. </span><span class="string">":1433;dbname=" </span><span class="keyword">. </span><span class="default">$database</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$dblink </span><span class="keyword">= new </span><span class="default">PDO </span><span class="keyword">(</span><span class="default">$dsn</span><span class="keyword">, </span><span class="default">$user</span><span class="keyword">, </span><span class="default">$pass</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+I got problems when i used the hostname, so i switched to the IP of the server.<br />
+<br />
+Later I got problems to insert records into MSSQL-table.<br />
+This settings helped me out:<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; $dblink</span><span class="keyword">-&gt;</span><span class="default">exec</span><span class="keyword">(</span><span class="string">"SET ANSI_WARNINGS ON"</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$dblink</span><span class="keyword">-&gt;</span><span class="default">exec</span><span class="keyword">(</span><span class="string">"SET ANSI_PADDING ON"</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$dblink</span><span class="keyword">-&gt;</span><span class="default">exec</span><span class="keyword">(</span><span class="string">"SET ANSI_NULLS ON"</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$dblink</span><span class="keyword">-&gt;</span><span class="default">exec</span><span class="keyword">(</span><span class="string">"SET QUOTED_IDENTIFIER ON"</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$dblink</span><span class="keyword">-&gt;</span><span class="default">exec</span><span class="keyword">(</span><span class="string">"SET CONCAT_NULL_YIELDS_NULL ON"</span><span class="keyword">);<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="95172""></a>
+  <div class="note">
+   <strong class="user">alvaro at demogracia dot com</strong>
+   <a href="#95172" class="date">16-Dec-2009 05:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+SQLSRV is not exactly a "driver": it's a completely different PHP extension to access SQL Server databases and it has its own syntax and features. It's a Windows-only library developed and maintained by Microsoft and it's not related to the built-in SQL Server extension described here.<br />
+<br />
+(Whatever, it's quite feature-rich and it's easy to learn.)</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.mssql.html">Mssql</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mssql.setup.html">インストール/設定</a></div>
+ <div class="up"><a href="book.mssql.html">Mssql</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

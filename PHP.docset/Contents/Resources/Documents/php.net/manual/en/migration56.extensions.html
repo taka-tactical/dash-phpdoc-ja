@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>その他の拡張モジュールに対する変更</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration56.openssl.html">PHP 5.6.x における OpenSSL 関連の変更</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration56.constants.html">新しいグローバル定数</a></div>
+ <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration56.extensions" class="sect1">
+ <h2 class="title">その他の拡張モジュールに対する変更</h2>
+
+ <div class="sect2" id="migration56.extensions.curl">
+  <h3 class="title"><a href="book.curl.html" class="link">cURL</a></h3>
+
+  <p class="para">
+   cURL ライブラリで非推奨とされてきた以下の定数が、削除されました。
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLOPT_CLOSEPOLICY</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_CALLBACK</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_LEAST_RECENTLY_USED</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_LEAST_TRAFFIC</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_OLDEST</code></strong>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>CURLCLOSEPOLICY_SLOWEST</code></strong>
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.extensions.oci8">
+  <h3 class="title"><a href="book.oci8.html" class="link">OCI8</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Oracle Database 12c の暗黙の結果セットをサポートするようになりました。
+     新しい関数 <span class="function"><a href="function.oci-get-implicit-resultset.html" class="function">oci_get_implicit_resultset()</a></span> を利用します。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     SELECT に対して <em>oci_execute($s, OCI_NO_AUTO_COMMIT)</em>
+     を使った場合に、接続を閉じるときに、不要な内部 ROLLBACK を起動することがなくなりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     DTrace プローブが追加されました。
+     <em>--enable-dtrace</em> オプションで制御します。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.oci-internal-debug.html" class="function">oci_internal_debug()</a></span> は、何もしない関数になりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span> における OCI8 の出力フォーマットが変わりました。
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.extensions.zip">
+  <h3 class="title"><a href="book.zip.html" class="link">Zip</a></h3>
+
+  <p class="para">
+   設定オプション <em>--with-libzip</em> が追加されました。
+   これを指定すると、システムにインストールされている libzip を利用します。
+   libzip バージョン 0.11 が必須です。0.11.2 以降を推奨します。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration56.extensions.mysqli">
+  <h3 class="title"><a href="book.mysqli.html" class="link">MySQLi</a></h3>
+  <p class="para">
+   新しいオプション <a href="mysqli.configuration.html#ini.mysqli.rollback-on-cached-plink" class="link">mysqli.rollback_on_cached_plink</a>
+   が追加されました。ロールバックした接続を、持続的接続プールに戻します。
+  </p>
+ </div>
+
+ 
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration56.openssl.html">PHP 5.6.x における OpenSSL 関連の変更</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration56.constants.html">新しいグローバル定数</a></div>
+ <div class="up"><a href="migration56.html">PHP 5.5.x から PHP 5.6.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

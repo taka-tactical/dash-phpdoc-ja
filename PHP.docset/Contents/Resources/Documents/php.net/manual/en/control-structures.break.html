@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>break</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.foreach.html">foreach</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.continue.html">continue</a></div>
+ <div class="up"><a href="language.control-structures.html">制御構造</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="control-structures.break" class="sect1">
+ <h2 class="title"><em>break</em></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <p class="simpara">
+  <em>break</em>は、現在実行中の
+  <em>for</em>, <em>foreach</em>,
+  <em>while</em>, <em>do-while</em>,
+  <em>switch</em> 構造の実行を終了します。
+ </p>
+ <p class="simpara">
+  <em>break</em> では、オプションの引数で
+  ネストしたループ構造を抜ける数を指定することができます。
+  この引数のデフォルトは <em>1</em> で、直近のループ構造からだけ抜けます。
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'one'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'two'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'three'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'four'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'stop'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'five'</span><span style="color: #007700">);<br />while&nbsp;(list(,&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'stop'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;ここでは、'break&nbsp;1;'と書くこともできます&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$val</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;オプション引数を使用します&nbsp;*/<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while&nbsp;(++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"At&nbsp;5&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;switch&nbsp;構造のみを抜けます&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"At&nbsp;10;&nbsp;quitting&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;switch&nbsp;と&nbsp;while&nbsp;を抜けます&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong><em>break</em> の変更履歴</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       <em>break 0;</em> が使えなくなりました。今までのバージョンでは、これは
+       <em>break 1;</em> と同じ意味に解釈されていました。
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       数値引数の部分に変数を渡すこと (例: <em>$num = 2; break $num;</em>)
+       ができなくなりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121615""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#121615" class="date">07-Sep-2017 06:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you are wondering, break and break() are equivalent:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+&nbsp; </span><span class="keyword">break(</span><span class="default">2</span><span class="keyword">);<br />
+<br />
+&nbsp; break </span><span class="default">2</span><span class="keyword">;&nbsp;&nbsp; </span><span class="comment">//same result <br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="109050""></a>
+  <div class="note">
+   <strong class="user">steve at electricpocket dot com</strong>
+   <a href="#109050" class="date">16-Jun-2012 09:32</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+A break statement that is in the outer part of a program (e.g. not in a control loop) will end the script. This caught me out when I mistakenly had a break in an if statement<br />
+<br />
+i.e.<br />
+<br />
+<span class="default">&lt;?php <br />
+</span><span class="keyword">echo </span><span class="string">"hello"</span><span class="keyword">;<br />
+if (</span><span class="default">true</span><span class="keyword">) break;<br />
+echo </span><span class="string">" world"</span><span class="keyword">; <br />
+</span><span class="default">?&gt;<br />
+</span><br />
+will only show "hello"</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="101455""></a>
+  <div class="note">
+   <strong class="user">RK</strong>
+   <a href="#101455" class="date">17-Dec-2010 01:09</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If the numerical argument is higher than the number of things which can be broken out of, it seems to me like the execution of the entire program is stopped.<br />
+My program had 8 nested loops. Didn't bother counting them, but wrote: break 10. - Result: Code following the loops was not processed.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="72429""></a>
+  <div class="note">
+   
+   <a href="#72429" class="date">18-Jan-2007 03:12</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you wonder how to end execution of a function (as I did), it's that simple: return<br />
+<br />
+function foo($a) {<br />
+&nbsp;if(!$a) return;<br />
+&nbsp;echo 'true';<br />
+&nbsp;// some other code<br />
+}<br />
+<br />
+foo(true) will echo 'true', foo(false) won't echo anything (as return ends execution of the function. Of course, therefore there is no need for 'else' before 'echo').</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="60226""></a>
+  <div class="note">
+   <strong class="user">traxer at gmx dot net</strong>
+   <a href="#60226" class="date">30-Dec-2005 03:53</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+vlad at vlad dot neosurge dot net wrote on 04-Jan-2003 04:21<br />
+<br />
+&gt; Just an insignificant side not: Like in C/C++, it's not <br />
+&gt; necessary to break out of the default part of a switch <br />
+&gt; statement in PHP.<br />
+<br />
+It's not necessary to break out of any case of a switch&nbsp; statement in PHP, but if you want only one case to be executed, you have do break out of it (even out of the default case).<br />
+<br />
+Consider this:<br />
+<br />
+<span class="default">&lt;?php<br />
+$a </span><span class="keyword">= </span><span class="string">'Apple'</span><span class="keyword">;<br />
+switch (</span><span class="default">$a</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; default:<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; echo </span><span class="string">'$a is not an orange&lt;br&gt;'</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; case </span><span class="string">'Orange'</span><span class="keyword">:<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; echo </span><span class="string">'$a is an orange'</span><span class="keyword">;<br />
+}<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+This prints (in PHP 5.0.4 on MS-Windows):<br />
+$a is not an orange<br />
+$a is an orange<br />
+<br />
+Note that the PHP documentation does not state the default part must be the last case statement.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="control-structures.foreach.html">foreach</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="control-structures.continue.html">continue</a></div>
+ <div class="up"><a href="language.control-structures.html">制御構造</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

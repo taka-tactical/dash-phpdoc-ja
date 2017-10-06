@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>双方向リンクリストにまだノードがあるかどうかを調べる</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="spldoublylinkedlist.unshift.html">SplDoublyLinkedList::unshift</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.splstack.html">SplStack</a></div>
+ <div class="up"><a href="class.spldoublylinkedlist.html">SplDoublyLinkedList</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="spldoublylinkedlist.valid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplDoublyLinkedList::valid</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p><p class="refpurpose"><span class="refname">SplDoublyLinkedList::valid</span> &mdash; <span class="dc-title">双方向リンクリストにまだノードがあるかどうかを調べる</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-spldoublylinkedlist.valid-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname"><strong>SplDoublyLinkedList::valid</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   双方向リンクリストにまだノードがあるかどうかを調べます。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-spldoublylinkedlist.valid-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-spldoublylinkedlist.valid-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   双方向リンクリストにまだノードが含まれる場合に <strong><code>TRUE</code></strong>、
+   そうでない場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121558""></a>
+  <div class="note">
+   <strong class="user">phpdude at zootal dot com</strong>
+   <a href="#121558" class="date">24-Aug-2017 06:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The docs say "Check whether the doubly linked list contains more nodes". I do not believe this is correct.<br />
+<br />
+Example:<br />
+<br />
+$dlist = new SplDoublyLinkedList;<br />
+$data=[1,2,3,4,5];<br />
+<br />
+foreach($data as $d)<br />
+&nbsp;&nbsp;&nbsp; $dlist-&gt;push($d);<br />
+$dlist-&gt;rewind();<br />
+<br />
+for($i=0;$i&lt;6;$i++)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; $currentValue = $dlist-&gt;current();<br />
+&nbsp;&nbsp;&nbsp; $currentValid = $dlist-&gt;valid();<br />
+<br />
+&nbsp;&nbsp;&nbsp; $status = $currentValid ? 'True' : 'False';<br />
+&nbsp;&nbsp;&nbsp; echo 'Current value is: ' . $currentValue . ' Valid status is: ' . $status . "\n";<br />
+<br />
+&nbsp;&nbsp;&nbsp; $dlist-&gt;next();<br />
+}<br />
+<br />
+Output:<br />
+<br />
+Current value is: 1 Valid status is: True<br />
+Current value is: 2 Valid status is: True<br />
+Current value is: 3 Valid status is: True<br />
+Current value is: 4 Valid status is: True<br />
+Current value is: 5 Valid status is: True<br />
+Current value is:&nbsp; Valid status is: False<br />
+<br />
+Note that when we are on the last node of the list, value = 5, the valid() function returns true. Yet we are on the last node of the list, and there are no more nodes. If the valid() function were checking to see if there were any more nodes on the list, it would return false, not true.<br />
+<br />
+If you look at the docs for Iterator::valid, they say "Checks if current position is valid". I believe that is in fact what valid() does, it checks to see if the *current* position is valid, *not* if there are any more nodes.<br />
+<br />
+Be aware of this or it will bite you. You can happily iterate to the end of the list, run valid(), think there is one more node, do a next(), grab the value, and you get null instead of the last node of the list.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121357""></a>
+  <div class="note">
+   <strong class="user">lincoln dot du dot j at gmail dot com</strong>
+   <a href="#121357" class="date">12-Jul-2017 02:39</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+$a = new SplDoublyLinkedList;<br />
+$arr=[1,2,3,4,5,6,7,8,9];<br />
+<br />
+for($i=0;$i&lt;count($arr);$i++){<br />
+&nbsp;&nbsp;&nbsp; $a-&gt;add($i,$arr[$i]);<br />
+}<br />
+<br />
+$a-&gt;rewind();<br />
+<br />
+while($a-&gt;valid()){<br />
+&nbsp;&nbsp;&nbsp; echo 'key ', $a-&gt;key(), ' value ', $a-&gt;current(),"\n";<br />
+&nbsp;&nbsp;&nbsp; $a-&gt;next();<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="spldoublylinkedlist.unshift.html">SplDoublyLinkedList::unshift</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.splstack.html">SplStack</a></div>
+ <div class="up"><a href="class.spldoublylinkedlist.html">SplDoublyLinkedList</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

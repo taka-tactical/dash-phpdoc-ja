@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Windows でのおすすめの構成</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.tools.html">Windows 上での PHP インストーラ</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.manual.html">Windows 上での PHP の手動インストール</a></div>
+ <div class="up"><a href="install.windows.html">Windows システムへのインストール</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="install.windows.recommended" class="sect1">
+<h2 class="title">Windows でのおすすめの構成</h2>
+
+<div class="sect2">
+  <h3 class="title">OpCache</h3>
+
+<p class="para">
+  OpCache を有効にすることを強く推奨します。この拡張モジュールは Windows 版の PHP に含まれています。
+  これは PHP スクリプトをコンパイルして最適化したうえで、メモリにキャッシュします。
+  そのため、ページを読み込むたびにコンパイルされることがなくなります。
+</p>
+<p class="para">
+php.ini では、次のように設定します。
+<div class="example" id="install.unix.nginx.configure.nginx">
+      <p><strong>例1 OpCache の推奨構成</strong></p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+zend_extension=php_opcache.dll
+opcache.enable=On
+opcache.cli_enable=On
+</pre></div>
+      </div>
+    </div>
+    
+そしてウェブサーバーを再起動します。
+
+詳細な情報は <a href="opcache.configuration.html" class="link">OpCache の実行時設定</a> を参照ください。
+</p>
+
+</div>
+<div class="sect2">
+  <h3 class="title">WinCache</h3>
+
+<p class="para">
+IIS を使うなら、WinCache を有効にすることを推奨します。特に、共有ウェブホスティング環境やネットワークファイルストレージ (NAS) での利用の際におすすめです。
+
+すべての PHP アプリケーションが、WinCache のファイルキャッシュ機能の恩恵を受けられます。ファイルシステム上での操作が、メモリにキャッシュされるのです。
+
+WinCache は、メモリ内のユーザーオブジェクトをキャッシュして、<var class="varname"><var class="varname">php.exe</var></var> や <var class="varname"><var class="varname">php-cgi.exe</var></var> のプロセス間で共有することもできます (複数リクエストでのオブジェクトの共有)。
+
+主要なウェブアプリケーションの多くは、プラグインや拡張モジュールあるいは設定オプションで WinCache のユーザーオブジェクトキャッシュを使えるようになっています。
+
+ハイパフォーマンスを求めるなら、アプリケーション内でオブジェクトキャッシュを利用すべきです。
+
+<a href="http://pecl.php.net/package/WinCache" class="link external" title="Link : http://pecl.php.net/package/WinCache">&raquo;&nbsp;http://pecl.php.net/package/WinCache</a> から WinCache DLL (あるいは tgz) をダウンロードして、PHP の拡張モジュール用ディレクトリ (php.ini の extensions_dir) に配置しましょう。
+
+php.ini では、次のように設定します。
+<div class="example" id="install.unix.nginx.configure.nginx.location">
+      <p><strong>例2 WinCache の推奨構成</strong></p>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+
+extension=php_wincache.dll
+wincache.fcenabled=1
+wincache.ocenabled=1
+
+</pre></div>
+      </div>
+    </div>
+
+詳細な情報は <a href="http://php.net/manual/ja/wincache.configuration.php" class="link external" title="Link : http://php.net/manual/ja/wincache.configuration.php">&raquo;&nbsp;http://php.net/manual/ja/wincache.configuration.php</a> を参照ください。
+</p>
+
+</div>
+  <div class="sect2">
+    <h3 class="title">IIS の構成</h3>
+
+    <p class="para">IIS マネージャーで FastCGI モジュールをインストールして、<var class="varname"><var class="varname">`.php`</var></var> へのハンドラマッピングを追加します。ここでは、<var class="varname"><var class="varname">PHP-CGI.exe</var></var> へのパスを指定します (<var class="varname"><var class="varname">PHP.exe</var></var> ではありません)。</p>
+
+  <p class="para">
+
+  コマンドラインツール APPCMD を使えば、IIS の構成をスクリプト化できます。
+  </p>
+</div>
+
+<div class="sect2">
+  <h3 class="title">データベース</h3>
+
+    <p class="para">おそらく、データベースサーバーも必要となることでしょう。主要なデータベースは PHP 用の拡張モジュールを提供しています。もしウェブサイトへのアクセスがそれほど多くないのなら、ウェブサーバーと同じマシンでデータベースを動かすこともできます。主要なデータベースの多くは Windows 上でも動作します。</p>
+
+    <p class="para">PHP には mysqli 拡張モジュールと pdo_mysql 拡張モジュールが含まれています。PHP 5.5 と 5.6 には mysql 拡張モジュールが含まれています (これは 7.0 で非推奨となりました)。</p>
+
+    <p class="para"><a href="https://dev.mysql.com/downloads/windows/" class="link external" title="Link : https://dev.mysql.com/downloads/windows/">&raquo;&nbsp;https://dev.mysql.com/downloads/windows/</a> を参照ください。</p>
+    </div>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="install.windows.tools.html">Windows 上での PHP インストーラ</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="install.windows.manual.html">Windows 上での PHP の手動インストール</a></div>
+ <div class="up"><a href="install.windows.html">Windows システムへのインストール</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

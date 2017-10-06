@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Return Unicode character by code point value</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="intlchar.chartype.html">IntlChar::charType</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intlchar.digit.html">IntlChar::digit</a></div>
+ <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intlchar.chr" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::chr</h1>
+  <p class="verinfo">(PHP 7)</p><p class="refpurpose"><span class="refname">IntlChar::chr</span> &mdash; <span class="dc-title">Return Unicode character by code point value</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-intlchar.chr-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname"><strong>IntlChar::chr</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$codepoint</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns a string containing the character specified by the Unicode code point value.
+  </p>
+  <p class="para">
+   This function compliments <span class="function"><a href="intlchar.ord.html" class="function">IntlChar::ord()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intlchar.chr-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">codepoint</code></dt>
+
+    <dd>
+
+     <p class="para">コードポイントを表す <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> 型の値 (例: <em class="emphasis">U+2603 SNOWMAN</em> を表す <em>0x2603</em>)、あるいは UTF-8 文字列としてエンコードされた文字 (例: <em>&quot;\u{2603}&quot;</em>)。</p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.chr-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   A string containing the single character specified by the Unicode code point value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-intlchar.chr-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-2974">
+   <p><strong>例1 さまざまなコードポイントの例</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$values&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">"A"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">63</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">123</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9731</span><span style="color: #007700">];<br />foreach&nbsp;(</span><span style="color: #0000BB">$values&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">));<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+   <div class="example-contents screen">
+    <div class="cdata"><pre>
+string(1) &quot;A&quot;
+string(1) &quot;A&quot;
+string(1) &quot;{&quot;
+string(3) &quot;?&quot;
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-intlchar.chr-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="intlchar.ord.html" class="function" rel="rdfs-seeAlso">IntlChar::ord()</a> - Return Unicode code point value of character</span></li>
+    <li class="member"><span class="function"><a href="function.chr.html" class="function" rel="rdfs-seeAlso">chr()</a> - 特定の文字を返す</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="intlchar.chartype.html">IntlChar::charType</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="intlchar.digit.html">IntlChar::digit</a></div>
+ <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

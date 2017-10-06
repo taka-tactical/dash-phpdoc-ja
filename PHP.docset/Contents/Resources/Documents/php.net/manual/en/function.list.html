@@ -1,0 +1,761 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>配列と同様の形式で、複数の変数への代入を行う</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ksort.html">ksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.natcasesort.html">natcasesort</a></div>
+ <div class="up"><a href="ref.array.html">配列 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.list" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">list</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">list</span> &mdash; <span class="dc-title">配列と同様の形式で、複数の変数への代入を行う</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.list-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><strong>list</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var1</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$...</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><a href="function.array.html" class="function">array()</a></span> と同様に、
+   この関数は実際には関数ではなく言語構造です。
+   <span class="function"><strong>list()</strong></span> は、
+   単一の操作で一連の変数に値を代入するために使われます。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    <span class="function"><strong>list()</strong></span> は数値添字の配列でのみ動作します。
+    また、添字は 0 から始まることを想定しています。
+   </p>
+  </p></blockquote>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    PHP 5 では、<span class="function"><strong>list()</strong></span>は、最も右のパラメータから値を代入します。
+    PHP 7 では、<span class="function"><strong>list()</strong></span>は、最も左のパラメータから値を代入します。
+   </p>
+   <p class="para">
+    プレーンな変数を使用している場合には、このことを気にする必要はありません。
+    しかし、添字配列を使用している場合には、配列の添字の順番が
+    <span class="function"><strong>list()</strong></span>
+    に書いたものと同じく左から右となることを通常は期待しますが、
+    PHP 5 ではそうはなりません。この配列の添字は逆の順番となります。
+   </p>
+   <p class="para">
+    一般論として、特定の操作順に依存することは避けたほうがいいでしょう。
+    将来的に、その順番が変更される可能性があるからです。
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="para">
+    <span class="function"><strong>list()</strong></span> を実行して配列を変更
+    (<em>list($a, $b) = $b</em> など)
+    した場合の挙動は未定義です。
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.list-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">var1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       変数。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.list-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   代入した配列を返します。
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.list-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.order" class="link">
+         代入操作が行われる順番が変わりました
+        </a>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.empty" class="link">
+         <span class="function"><strong>list()</strong></span> の式をまったくの空にすることはできなくなりました
+        </a>。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        <a href="migration70.incompatible.html#migration70.incompatible.variable-handling.list.string" class="link">
+         文字列は扱えなくなりました
+        </a>。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.list-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-5666">
+    <p><strong>例1 <span class="function"><strong>list()</strong></span> の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$info&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'コーヒー'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'茶色'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'カフェイン'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;すべての変数の取得<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$drink</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$power</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$drink</span><span style="color: #DD0000">&nbsp;の色は&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #DD0000">&nbsp;で、</span><span style="color: #0000BB">$power</span><span style="color: #DD0000">&nbsp;が含まれています。\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;一部の変数の取得<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$drink</span><span style="color: #007700">,&nbsp;,&nbsp;</span><span style="color: #0000BB">$power</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$drink</span><span style="color: #DD0000">&nbsp;には&nbsp;</span><span style="color: #0000BB">$power</span><span style="color: #DD0000">&nbsp;が含まれています。\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;三番目のみの取得<br /></span><span style="color: #007700">list(&nbsp;,&nbsp;,&nbsp;</span><span style="color: #0000BB">$power</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$power</span><span style="color: #DD0000">&nbsp;欲しい!\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;list()&nbsp;は文字列では動作しません<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #DD0000">"abcde"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;NULL<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5667">
+    <p><strong>例2 <span class="function"><strong>list()</strong></span> の使用法の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;table&gt;<br />&nbsp;&lt;tr&gt;<br />&nbsp;&nbsp;&lt;th&gt;社員氏名&lt;/th&gt;<br />&nbsp;&nbsp;&lt;th&gt;給与&lt;/th&gt;<br />&nbsp;&lt;/tr&gt;<br /><br /><span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name,&nbsp;salary&nbsp;FROM&nbsp;employees"</span><span style="color: #007700">);<br />while&nbsp;(list(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$salary</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">FETCH_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&nbsp;&lt;tr&gt;\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&lt;td&gt;&lt;a&nbsp;href=\"info.php?id=</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">\"&gt;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">&lt;/a&gt;&lt;/td&gt;\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&nbsp;&lt;td&gt;</span><span style="color: #0000BB">$salary</span><span style="color: #DD0000">&lt;/td&gt;\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;&lt;/tr&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span><br />&lt;/table&gt;</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5668">
+    <p><strong>例3 ネストした <span class="function"><strong>list()</strong></span> の使用法</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;list(</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">))&nbsp;=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(1)
+int(2)
+int(3)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5669">
+    <p><strong>例4 配列の添字を使用した <span class="function"><strong>list()</strong></span> の例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$info&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'coffee'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brown'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'caffeine'</span><span style="color: #007700">);<br /><br />list(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">])&nbsp;=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     次のような出力になります(<span class="function"><strong>list()</strong></span> の文法に書かれた
+     順番と、要素の順番の違いに注意):
+    </p></div>
+    <div class="example-contents"><p>上の例の PHP 7 での出力は、このようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(3) {
+  [0]=&gt;
+  string(6) &quot;coffee&quot;
+  [1]=&gt;
+  string(5) &quot;brown&quot;
+  [2]=&gt;
+  string(8) &quot;caffeine&quot;
+}
+</pre></div>
+    </div>
+    <div class="example-contents"><p>上の例の PHP 5 での出力は、このようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(3) {
+  [2]=&gt;
+  string(8) &quot;caffeine&quot;
+  [1]=&gt;
+  string(5) &quot;brown&quot;
+  [0]=&gt;
+  string(6) &quot;coffee&quot;
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5670">
+    <p><strong>例5 <span class="function"><strong>list()</strong></span> と添字の定義順</strong></p>
+    <div class="example-contents"><p>
+     <span class="function"><strong>list()</strong></span> が配列の要素をどの順に処理するかは、配列の添字とは無関係です。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$foo</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">;<br />list(</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$z</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$z</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     結果は次のようになります (<span class="function"><strong>list()</strong></span> 内で要素をどの順で利用しているかに注目しましょう)。
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  [2]=&gt;
+  string(1) &quot;a&quot;
+  [&quot;foo&quot;]=&gt;
+  string(1) &quot;b&quot;
+  [0]=&gt;
+  string(1) &quot;c&quot;
+  [1]=&gt;
+  string(1) &quot;d&quot;
+}
+string(1) &quot;c&quot;
+string(1) &quot;d&quot;
+string(1) &quot;a&quot;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.list-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.each.html" class="function" rel="rdfs-seeAlso">each()</a> - 配列から現在のキーと値のペアを返して、カーソルを進める</span></li>
+    <li class="member"><span class="function"><a href="function.array.html" class="function" rel="rdfs-seeAlso">array()</a> - 配列を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.extract.html" class="function" rel="rdfs-seeAlso">extract()</a> - 配列からシンボルテーブルに変数をインポートする</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121586""></a>
+  <div class="note">
+   <strong class="user">blazej</strong>
+   <a href="#121586" class="date">31-Aug-2017 11:00</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+From PHP Version 7.1 you can specify keys in list(), or its new shorthand [] syntax. This enables destructuring of arrays with non-integer or non-sequential keys.<br />
+<br />
+<span class="default">&lt;?php<br />
+$data </span><span class="keyword">= [<br />
+&nbsp;&nbsp;&nbsp; [</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">1</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="string">'Tom'</span><span class="keyword">],<br />
+&nbsp;&nbsp;&nbsp; [</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="string">'Fred'</span><span class="keyword">],<br />
+];<br />
+<br />
+</span><span class="comment">// list() style<br />
+</span><span class="keyword">list(</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">$id1</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="default">$name1</span><span class="keyword">) = </span><span class="default">$data</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];<br />
+<br />
+</span><span class="comment">// [] style<br />
+</span><span class="keyword">[</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">$id1</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="default">$name1</span><span class="keyword">] = </span><span class="default">$data</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];<br />
+<br />
+</span><span class="comment">// list() style<br />
+</span><span class="keyword">foreach (</span><span class="default">$data </span><span class="keyword">as list(</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">$id</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="default">$name</span><span class="keyword">)) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">// logic here with $id and $name<br />
+</span><span class="keyword">}<br />
+<br />
+</span><span class="comment">// [] style<br />
+</span><span class="keyword">foreach (</span><span class="default">$data </span><span class="keyword">as [</span><span class="string">"id" </span><span class="keyword">=&gt; </span><span class="default">$id</span><span class="keyword">, </span><span class="string">"name" </span><span class="keyword">=&gt; </span><span class="default">$name</span><span class="keyword">]) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">// logic here with $id and $name<br />
+</span><span class="keyword">}</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121139""></a>
+  <div class="note">
+   <strong class="user">grzeniufication</strong>
+   <a href="#121139" class="date">28-May-2017 01:01</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+<span class="default">&lt;?php<br />
+</span><span class="comment">/**<br />
+&nbsp;* It seems you can skip listed values.<br />
+&nbsp;* Here's an example to show what I mean.<br />
+&nbsp;*<br />
+&nbsp;* FYI works just as well with PHP 7.1 shorthand list syntax.<br />
+&nbsp;* Tested against PHP 5.6.30, 7.1.5<br />
+&nbsp;*/<br />
+</span><span class="default">$a </span><span class="keyword">= [ </span><span class="default">1</span><span class="keyword">, </span><span class="default">2</span><span class="keyword">, </span><span class="default">3</span><span class="keyword">, </span><span class="default">4 </span><span class="keyword">];<br />
+<br />
+</span><span class="comment">// this is quite normal use case for list<br />
+</span><span class="keyword">echo </span><span class="string">"Unpack all values\n"</span><span class="keyword">;<br />
+list(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">) = </span><span class="default">$a</span><span class="keyword">;<br />
+echo </span><span class="string">"</span><span class="default">$v1</span><span class="string">, </span><span class="default">$v2</span><span class="string">, </span><span class="default">$v3</span><span class="string">, </span><span class="default">$v4</span><span class="string">\n"</span><span class="keyword">;<br />
+unset(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// this is what I mean:<br />
+</span><span class="keyword">echo </span><span class="string">"Skip middle\n"</span><span class="keyword">;<br />
+list(</span><span class="default">$v1</span><span class="keyword">, , , </span><span class="default">$v4</span><span class="keyword">) = </span><span class="default">$a</span><span class="keyword">;<br />
+echo </span><span class="string">"</span><span class="default">$v1</span><span class="string">, </span><span class="default">$v2</span><span class="string">, </span><span class="default">$v3</span><span class="string">, </span><span class="default">$v4</span><span class="string">\n"</span><span class="keyword">;<br />
+unset(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">);<br />
+<br />
+echo </span><span class="string">"Skip beginning\n"</span><span class="keyword">;<br />
+list( , , </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">) = </span><span class="default">$a</span><span class="keyword">;<br />
+echo </span><span class="string">"</span><span class="default">$v1</span><span class="string">, </span><span class="default">$v2</span><span class="string">, </span><span class="default">$v3</span><span class="string">, </span><span class="default">$v4</span><span class="string">\n"</span><span class="keyword">;<br />
+unset(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">);<br />
+<br />
+echo </span><span class="string">"Skip end\n"</span><span class="keyword">;<br />
+list(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, , ) = </span><span class="default">$a</span><span class="keyword">;<br />
+echo </span><span class="string">"</span><span class="default">$v1</span><span class="string">, </span><span class="default">$v2</span><span class="string">, </span><span class="default">$v3</span><span class="string">, </span><span class="default">$v4</span><span class="string">\n"</span><span class="keyword">;<br />
+unset(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">);<br />
+<br />
+echo </span><span class="string">"Leave middle\n"</span><span class="keyword">;<br />
+list( , </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, ) = </span><span class="default">$a</span><span class="keyword">;<br />
+echo </span><span class="string">"</span><span class="default">$v1</span><span class="string">, </span><span class="default">$v2</span><span class="string">, </span><span class="default">$v3</span><span class="string">, </span><span class="default">$v4</span><span class="string">\n"</span><span class="keyword">;<br />
+unset(</span><span class="default">$v1</span><span class="keyword">, </span><span class="default">$v2</span><span class="keyword">, </span><span class="default">$v3</span><span class="keyword">, </span><span class="default">$v4</span><span class="keyword">);</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121094""></a>
+  <div class="note">
+   <strong class="user">Rhamnia Mohamed</strong>
+   <a href="#121094" class="date">17-May-2017 08:37</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Since PHP 7.1, keys can be specified<br />
+<br />
+exemple : <br />
+<span class="default">&lt;?php <br />
+$array </span><span class="keyword">= [</span><span class="string">'locality' </span><span class="keyword">=&gt; </span><span class="string">'Tunis'</span><span class="keyword">, </span><span class="string">'postal_code' </span><span class="keyword">=&gt; </span><span class="string">'1110'</span><span class="keyword">];<br />
+<br />
+list(</span><span class="string">'postal_code' </span><span class="keyword">=&gt; </span><span class="default">$zipCode</span><span class="keyword">, </span><span class="string">'locality' </span><span class="keyword">=&gt; </span><span class="default">$locality</span><span class="keyword">) = </span><span class="default">$array</span><span class="keyword">;<br />
+<br />
+print </span><span class="default">$zipCode</span><span class="keyword">; </span><span class="comment">// will output 1110<br />
+</span><span class="keyword">print </span><span class="default">$locality</span><span class="keyword">; </span><span class="comment">// will output Tunis<br />
+&nbsp;</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120463""></a>
+  <div class="note">
+   <strong class="user">carlosv775 at gmail dot com</strong>
+   <a href="#120463" class="date">13-Jan-2017 05:30</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+In PHP 7.1 we can do the following:<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">[</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">, </span><span class="default">$c</span><span class="keyword">] = [</span><span class="string">'a'</span><span class="keyword">, </span><span class="string">'b'</span><span class="keyword">, </span><span class="string">'c'</span><span class="keyword">];<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+Before, we had to do:<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">list(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">, </span><span class="default">$c</span><span class="keyword">) = [</span><span class="string">'a'</span><span class="keyword">, </span><span class="string">'b'</span><span class="keyword">,&nbsp; </span><span class="string">'c'</span><span class="keyword">];<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120076""></a>
+  <div class="note">
+   <strong class="user">anthony dot ossent at live dot fr</strong>
+   <a href="#120076" class="date">23-Oct-2016 12:04</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+a simple example of use to swap two variables :<br />
+<br />
+$a = 'hello';<br />
+$b = 'world';<br />
+<br />
+list($a, $b) = [$b, $a];<br />
+<br />
+echo $a . ' ' . $b; //display "world hello"<br />
+<br />
+another example :<br />
+<br />
+function getPosition($x, $y, $z)<br />
+{<br />
+&nbsp;&nbsp; // ... some operations like $x++...<br />
+&nbsp;&nbsp; return [$x, $y, $z];<br />
+}<br />
+<br />
+list($x, $y, $z) = getPosition($x ,$y, $z);</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118786""></a>
+  <div class="note">
+   <strong class="user">pemapmodder1970 at gmail dot com</strong>
+   <a href="#118786" class="date">06-Feb-2016 01:08</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+list() can be used with foreach<br />
+<br />
+<span class="default">&lt;?php<br />
+$array </span><span class="keyword">= [[</span><span class="default">1</span><span class="keyword">, </span><span class="default">2</span><span class="keyword">], [</span><span class="default">3</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">], [</span><span class="default">5</span><span class="keyword">, </span><span class="default">6</span><span class="keyword">]];<br />
+<br />
+foreach(</span><span class="default">$array </span><span class="keyword">as list(</span><span class="default">$odd</span><span class="keyword">, </span><span class="default">$even</span><span class="keyword">)){<br />
+&nbsp;&nbsp;&nbsp; echo </span><span class="string">"</span><span class="default">$odd</span><span class="string"> is odd; </span><span class="default">$even</span><span class="string"> is even"</span><span class="keyword">, </span><span class="default">PHP_EOL</span><span class="keyword">;<br />
+}<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+The output:<br />
+===<br />
+1 is odd; 2 is even<br />
+3 is odd; 4 is even<br />
+5 is odd; 6 is even</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118463""></a>
+  <div class="note">
+   <strong class="user">Dean</strong>
+   <a href="#118463" class="date">11-Dec-2015 04:20</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+UNDOCUMENTED BEHAVIOR:<br />
+<br />
+&nbsp;&nbsp;&nbsp; list($a,$b,$c) = null;<br />
+<br />
+in fact works like:<br />
+<br />
+&nbsp;&nbsp;&nbsp; $a = null; $b = null; $c = null;<br />
+<br />
+...So correspondingly:<br />
+<br />
+&nbsp;&nbsp;&nbsp; list($rows[]) = null;<br />
+<br />
+Will increment count($rows), just as if you had executed $rows[] = null;<br />
+<br />
+Watch out for this (for example) when retrieving entire tables from a database, e.g.<br />
+<br />
+&nbsp;&nbsp;&nbsp; while (list($rows[]) = $mysqlresult-&gt;fetch_row());<br />
+<br />
+This will leave an extra 'null' entry as the last element of $rows.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117677""></a>
+  <div class="note">
+   <strong class="user">Colin Guthrie</strong>
+   <a href="#117677" class="date">20-Jul-2015 10:41</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you want use the undefined behaviour as you might expect it e.g. if you want: <br />
+<br />
+&nbsp; $b = ['a','b']; list($a, $b) = $b;<br />
+<br />
+to result in $a=='a' and $b=='b', then you can just cast $b to an array (even although it already is) to create a copy. e.g. <br />
+<br />
+&nbsp; $b = ['a','b']; list($a, $b) = (array)$b;<br />
+<br />
+and get the expected results.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117510""></a>
+  <div class="note">
+   <strong class="user">mogwai512</strong>
+   <a href="#117510" class="date">21-Jun-2015 02:54</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I see many people offer solutions about the flipped order of the list construct. All you have to do is this:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$info </span><span class="keyword">= array(</span><span class="string">'coffee'</span><span class="keyword">, </span><span class="string">'brown'</span><span class="keyword">, </span><span class="string">'caffeine'</span><span class="keyword">);<br />
+<br />
+</span><span class="default">$a </span><span class="keyword">= list(</span><span class="default">$a</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">], </span><span class="default">$a</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">], </span><span class="default">$a</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">]) = </span><span class="default">$info</span><span class="keyword">;<br />
+<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+. . . and your info will be in the correct order. You can also just assign a new var to the list and it will still work: <br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$info </span><span class="keyword">= array(</span><span class="string">'coffee'</span><span class="keyword">, </span><span class="string">'brown'</span><span class="keyword">, </span><span class="string">'caffeine'</span><span class="keyword">);<br />
+<br />
+</span><span class="default">$b </span><span class="keyword">= list(</span><span class="default">$a</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">], </span><span class="default">$a</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">], </span><span class="default">$a</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">]) = </span><span class="default">$info</span><span class="keyword">;<br />
+<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115975""></a>
+  <div class="note">
+   <strong class="user">grzeniufication</strong>
+   <a href="#115975" class="date">21-Oct-2014 07:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The example showing that:<br />
+<br />
+$info = array('kawa', 'br?zowa', 'kofeina');<br />
+list($a[0], $a[1], $a[2]) = $info;<br />
+var_dump($a);<br />
+<br />
+outputs:<br />
+array(3) {<br />
+[2]=&gt;<br />
+string(8) "kofeina"<br />
+[1]=&gt;<br />
+string(5) "br?zowa"<br />
+[0]=&gt;<br />
+string(6) "kawa"<br />
+}<br />
+<br />
+One thing to note here is that if you define the array earlier, e.g.:<br />
+$a = [0, 0, 0];<br />
+<br />
+the indexes will be kept in the correct order:<br />
+<br />
+array(3) {<br />
+&nbsp; [0]=&gt;<br />
+&nbsp; string(4) "kawa"<br />
+&nbsp; [1]=&gt;<br />
+&nbsp; string(8) "br?zowa"<br />
+&nbsp; [2]=&gt;<br />
+&nbsp; string(7) "kofeina"<br />
+}<br />
+<br />
+Thought that it was worth mentioning.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115650""></a>
+  <div class="note">
+   <strong class="user">vickyssj7 at gmail dot com</strong>
+   <a href="#115650" class="date">02-Sep-2014 02:21</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+if we assign array's each value individual key('numeric only'), and use the array indices in list(),, then it output the reverse order of array keys-- <br />
+BUT THE HIGHER KEY VALUE ("2" in this e.g below) WILL GET THE FIRST PLACE IN THE ARRAY IN RETURN, MEANS IT PUSHES THE VALUE WITH HIGHER KEY IN PLACE OF FIRST KEY VALUE, so it also gives higher key value the first priority while reversing the order of the keys and replacing the lower key value with the higher key value.<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; $value = array( 0 =&gt; 'low', 2 =&gt; 'medium', 1 =&gt; 'higher');<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; list($a[2], $a[1], $a[0]) = $value;<br />
+&nbsp;&nbsp;&nbsp; var_dump($a);<br />
+<br />
+//Outputs:---<br />
+array(3) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [0] =&gt; string(6) "medium" <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [1]&nbsp; =&gt; string(6) "higher" <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [2]&nbsp; =&gt; string(3) "low" <br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="113845""></a>
+  <div class="note">
+   <strong class="user">john at jbwalker dot com</strong>
+   <a href="#113845" class="date">08-Dec-2013 09:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The list construct seems to look for a sequential list of indexes rather taking elements in sequence. What that obscure statement means is that if you unset an element, list will not simply jump to the next element and assign that to the variable but will treat the missing element as a null or empty variable:<br />
+<br />
+&nbsp;&nbsp;&nbsp; $test = array("a","b","c","d");<br />
+&nbsp;&nbsp;&nbsp; unset($test[1]);<br />
+&nbsp;&nbsp;&nbsp; list($a,$b,$c)=$test;<br />
+&nbsp;&nbsp;&nbsp; print "\$a='$a' \$b='$b' \$c='$c'&lt;BR&gt;";<br />
+<br />
+results in:<br />
+$a='a' $b='' $c='c'<br />
+<br />
+not:<br />
+$a='a' $b='c' $c='d'</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="113189""></a>
+  <div class="note">
+   <strong class="user">megan at voices dot com</strong>
+   <a href="#113189" class="date">11-Sep-2013 12:45</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As noted, list() will give an error if the input array is too short. This can be avoided by array_merge()'ing in some default values. For example:<br />
+<br />
+<span class="default">&lt;?php<br />
+$parameter </span><span class="keyword">= </span><span class="string">'name'</span><span class="keyword">;<br />
+list( </span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b </span><span class="keyword">) = </span><span class="default">array_merge</span><span class="keyword">( </span><span class="default">explode</span><span class="keyword">( </span><span class="string">'='</span><span class="keyword">, </span><span class="default">$parameter </span><span class="keyword">), array( </span><span class="default">true </span><span class="keyword">) );<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+However, you will have to array_merge with an array long enough to ensure there are enough elements (if $parameter is empty, the code above would still error).<br />
+<br />
+An alternate approach would be to use array_pad on the array to ensure its length (if all the defaults you need to add are the same).<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; $parameter </span><span class="keyword">= </span><span class="string">'bob-12345'</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; list( </span><span class="default">$name</span><span class="keyword">, </span><span class="default">$id</span><span class="keyword">, </span><span class="default">$fav_color</span><span class="keyword">, </span><span class="default">$age </span><span class="keyword">) = </span><span class="default">array_pad</span><span class="keyword">( </span><span class="default">explode</span><span class="keyword">( </span><span class="string">'-'</span><span class="keyword">, </span><span class="default">$parameter </span><span class="keyword">), </span><span class="default">4</span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$id</span><span class="keyword">, </span><span class="default">$fav_color</span><span class="keyword">, </span><span class="default">$age</span><span class="keyword">);<br />
+</span><span class="comment">/* outputs<br />
+string(3) "bob"<br />
+string(5) "12345"<br />
+string(0) ""<br />
+string(0) ""<br />
+*/<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="112696""></a>
+  <div class="note">
+   <strong class="user">Achilles at thegreatwarrior dot com</strong>
+   <a href="#112696" class="date">14-Jul-2013 09:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Second, when you're using the list() function, you must acknowledge each array element. You could not do this<br />
+list($weekday, $month) = $date;<br />
+<br />
+But you can use empty values to ignore elements:<br />
+list ($weekday, , $month) = $date;</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="110921""></a>
+  <div class="note">
+   <strong class="user">svennd</strong>
+   <a href="#110921" class="date">24-Dec-2012 04:08</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The list() definition won't throw an error if your array is longer then defined list. <br />
+<span class="default">&lt;?php<br />
+<br />
+</span><span class="keyword">list(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">, </span><span class="default">$c</span><span class="keyword">) = array(</span><span class="string">"a"</span><span class="keyword">, </span><span class="string">"b"</span><span class="keyword">, </span><span class="string">"c"</span><span class="keyword">, </span><span class="string">"d"</span><span class="keyword">);<br />
+<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">); </span><span class="comment">// a<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">); </span><span class="comment">// b<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$c</span><span class="keyword">); </span><span class="comment">// c<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="110563""></a>
+  <div class="note">
+   <strong class="user">chris at chlab dot ch</strong>
+   <a href="#110563" class="date">08-Nov-2012 12:00</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The example states the following:<br />
+<span class="default">&lt;?php<br />
+</span><span class="comment">// list() doesn't work with strings<br />
+</span><span class="keyword">list(</span><span class="default">$bar</span><span class="keyword">) = </span><span class="string">"abcde"</span><span class="keyword">;<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$bar</span><span class="keyword">); <br />
+</span><span class="comment">// output: NULL<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+If the string is in a variable however, it seems using list() will treat the string as an array:<br />
+<span class="default">&lt;?php<br />
+$string </span><span class="keyword">= </span><span class="string">"abcde"</span><span class="keyword">;<br />
+list(</span><span class="default">$foo</span><span class="keyword">) = </span><span class="default">$string</span><span class="keyword">;<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$foo</span><span class="keyword">);<br />
+</span><span class="comment">// output: string(1) "a"<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.ksort.html">ksort</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.natcasesort.html">natcasesort</a></div>
+ <div class="up"><a href="ref.array.html">配列 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Closure クラス</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="serializable.unserialize.html">Serializable::unserialize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.construct.html">Closure::__construct</a></div>
+ <div class="up"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.closure" class="reference">
+
+ <h1 class="title">Closure クラス</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7)</p>
+
+
+  <div class="section" id="closure.intro">
+   <h2 class="title">はじめに</h2>
+   <p class="para">
+    <a href="functions.anonymous.html" class="link">無名関数</a> を表すために使うクラスです。
+   </p>
+
+   <p class="para">
+    無名関数は PHP 5.3 で実装された機能で、この型のオブジェクトを生成します。
+    かつてこれは、内部実装がたまたまそうなっているだけという扱いでした。
+    しかし今では、この事実を前提として考慮してもかまいません。
+    PHP 5.4 以降ではこのクラスにメソッドが用意され、
+    生成した無名関数をさらにコントロールできるようになります。
+   </p>
+
+   <p class="para">
+    ここであげたメソッド以外にも、このクラスには
+    <em>__invoke</em> メソッドが存在します。
+    これは、<a href="language.oop5.magic.html#language.oop5.magic.invoke" class="link">マジックコール</a>
+    を実装した他のクラスとの一貫性を保つためのものであり、
+    関数をコールするときにこのメソッドは使われません。
+   </p>
+
+  </div>
+
+
+  <div class="section" id="closure.synopsis">
+   <h2 class="title">クラス概要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">Closure</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">private</span> <span class="methodname"><a href="closure.construct.html" class="methodname">__construct</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">Closure</span> <span class="methodname"><a href="closure.bind.html" class="methodname">bind</a></span>
+    ( <span class="methodparam"><span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span> <code class="parameter">$closure</code></span>
+   , <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$newscope</code>
+   <span class="initializer"> = &quot;static&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Closure</span> <span class="methodname"><a href="closure.bindto.html" class="methodname">bindTo</a></span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$newscope</code>
+   <span class="initializer"> = &quot;static&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname"><a href="closure.call.html" class="methodname">call</a></span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$...</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">Closure</span> <span class="methodname"><a href="closure.fromcallable.html" class="methodname">fromCallable</a></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callable</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="closure.construct.html">Closure::__construct</a> &mdash; インスタンス作成を無効化したコンストラクタ</li><li><a href="closure.bind.html">Closure::bind</a> &mdash; バインドされたオブジェクトとクラスのスコープでクロージャを複製する</li><li><a href="closure.bindto.html">Closure::bindTo</a> &mdash; 新しくバインドしたオブジェクトとクラスのスコープで、クロージャを複製する</li><li><a href="closure.call.html">Closure::call</a> &mdash; クロージャを束縛して呼び出す</li><li><a href="closure.fromcallable.html">Closure::fromCallable</a> &mdash; callable をクロージャに変換します。</li></ul>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121207""></a>
+  <div class="note">
+   <strong class="user">centurianii at yahoo dot co dot uk</strong>
+   <a href="#121207" class="date">11-Jun-2017 08:05</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The problem: a function that calls another function which is passed in the arguments of the initial function. The callable might re-use the arguments of the initial function. Whatever the callable is we want a simple function for use in our code (here is where closure comes).<br />
+<br />
+Example: a generic Header class that sends files (cached, not cached, for download, inline etc.). Probably readfile() is all you need right?<br />
+But what when a captcha library has a function output() that you want to be used in the place of readfile()?<br />
+<br />
+No big deal you might say, pass a callable in the function's arguments, but let's unwind the possibilities of the callable argument:<br />
+1. it's another function in this scope,<br />
+2. it's a class method,<br />
+3. it's a static method of a class.<br />
+<br />
+Php uses different helpers to call this argument-function:<br />
+1. call_user_func_array(),<br />
+2, 3. call_user_func_array() or Reflection.<br />
+<br />
+A generic solution that exploits most of php's advanced features: closures, callables, Reflection.<br />
+/**<br />
+&nbsp;* @param string $file The path of a file<br />
+&nbsp;* @param ... more specific arguments here ...<br />
+&nbsp;* @param string[] $call A hashed array that contains the function we want to<br />
+&nbsp;* operate on our arguments and follows some rules as follows<br />
+&nbsp;* -key 'class': the class name the function belongs to or null,<br />
+&nbsp;* -key 'construct': the class's arguments on construction or null,<br />
+&nbsp;* -key 'args': an array of arguments explicit for the callable or null,<br />
+&nbsp;* -key 'callable': the name of the function (null not allowed).<br />
+&nbsp;*/<br />
+function generic($file = null, $call = array('callable' =&gt; '\readfile')) {<br />
+&nbsp;&nbsp; if (isset($call['class'])) {<br />
+&nbsp;&nbsp; &nbsp;&nbsp; // a closure...<br />
+&nbsp;&nbsp; &nbsp;&nbsp; $action = function() use ($call) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; $method = new \ReflectionMethod($call['class'], $call['callable']);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if ($method-&gt;isStatic()) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; // YOU decide what to do with the arguments in generic()<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if (isset($call['args'])) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $method-&gt;invokeArgs(null, $call['args']);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $method-&gt;invoke(null);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $obj = new \ReflectionClass($call['class']);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if (isset($call['construct'])) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $obj-&gt;newInstanceArgs($call['construct']);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $obj-&gt;newInstance();<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; // YOU decide what to do with the arguments in generic()<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if (isset($call['args'])) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $method-&gt;invokeArgs($obj, $call['args']);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $method-&gt;invoke($obj);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp;&nbsp; &nbsp;&nbsp; };<br />
+&nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp;&nbsp; // another closure...<br />
+&nbsp;&nbsp; &nbsp;&nbsp; $action = function() use ($call, $file) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; // YOU decide what to do with the arguments in generic()<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (isset($call['args'])) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; \call_user_func_array($call['callable'], $args);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; \call_user_func_array($call['callable'], array($file));<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp;&nbsp; &nbsp;&nbsp; };<br />
+&nbsp;&nbsp; }<br />
+&nbsp;&nbsp; // ...some commands here...<br />
+&nbsp;&nbsp; \header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");<br />
+&nbsp;&nbsp; \header("Cache-Control: no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");<br />
+&nbsp;&nbsp; \header("Content-Description: File Transfer");<br />
+&nbsp;&nbsp; \header("Content-Disposition: inline; filename=\"" . $file . "\"");<br />
+&nbsp;&nbsp; \header("Content-Type: image/jpeg");<br />
+&nbsp;&nbsp; // adjust the following...<br />
+&nbsp;&nbsp; \header('Content-Length: ' . \filesize($file));<br />
+&nbsp;&nbsp; // see how we use a closure<br />
+&nbsp;&nbsp; $action();<br />
+}<br />
+<br />
+// let's call the generic()<br />
+generic('client/assets/404.jpg');<br />
+<br />
+Just an example use of closures...</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121004""></a>
+  <div class="note">
+   <strong class="user">tomschrot at gmail dot com</strong>
+   <a href="#121004" class="date">22-Apr-2017 07:20</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Encapsulating a closure as a delegate allows really universal and comfortable event handling in your projects.<br />
+(ref. to Observer Pattern)<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; * Encapsulates a closure.<br />
+&nbsp;&nbsp; &nbsp; */<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">final class </span><span class="default">Delegate<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; private </span><span class="default">$_Closure</span><span class="keyword">;<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Standard ctor with a callable as argument.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param callable $closure<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">public function </span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$closure</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Closure </span><span class="keyword">= \</span><span class="default">Closure</span><span class="keyword">::</span><span class="default">fromCallable</span><span class="keyword">(</span><span class="default">$closure</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Allows to call the delegate object directly.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param list ...$args variable number of arguments.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @return mixed<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">public function </span><span class="default">__invoke</span><span class="keyword">(...</span><span class="default">$args</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Closure</span><span class="keyword">, </span><span class="default">$args</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; * Defines a type for event arguments.<br />
+&nbsp;&nbsp; &nbsp; */<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">class </span><span class="default">EventArgs<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; protected </span><span class="default">$_Sender</span><span class="keyword">;<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Standard ctor.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param mixed $sender [optional]<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">public function </span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$sender </span><span class="keyword">= </span><span class="default">NULL</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Sender </span><span class="keyword">= </span><span class="default">$sender</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @property-read<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @return object -should contain the event emitting object.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">final public function </span><span class="default">Sender</span><span class="keyword">() { return </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Sender</span><span class="keyword">; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; * A basic event type for the delegate.<br />
+&nbsp;&nbsp; &nbsp; */<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">class </span><span class="default">Event<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; private </span><span class="default">$_Receivers </span><span class="keyword">= array();<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Add a delegate to the event list.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param Delegate $delegate<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @return Event<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">final public function </span><span class="default">Add</span><span class="keyword">(</span><span class="default">Delegate $delegate</span><span class="keyword">):</span><span class="default">Event<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Receivers</span><span class="keyword">[] = </span><span class="default">$delegate</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">$this</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Fires the event.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param EventArgs $e<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">final public function </span><span class="default">Trigger</span><span class="keyword">(</span><span class="default">EventArgs $e</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; foreach(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">_Receivers </span><span class="keyword">as </span><span class="default">$delegate</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$delegate</span><span class="keyword">(</span><span class="default">$e</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">// declare anonymous function as delegate<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$myDelegate </span><span class="keyword">=<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; new </span><span class="default">Delegate<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; function (</span><span class="default">EventArgs $e</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; echo </span><span class="string">'anonymous function&lt;br&gt;'</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; );<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">// declare event, assign the delegate, trigger event<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$myEvent </span><span class="keyword">= new </span><span class="default">Event</span><span class="keyword">();<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$myEvent</span><span class="keyword">-&gt;</span><span class="default">Add</span><span class="keyword">(</span><span class="default">$myDelegate</span><span class="keyword">);<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; * Defines a simple type that can handle events<br />
+&nbsp;&nbsp; &nbsp; */<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">class </span><span class="default">demoEventHandler<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">/**<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Handles incomming events.<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * Note: needs declared as public!<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; * @param EventArgs $e<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; */<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">public function </span><span class="default">onEvent</span><span class="keyword">(</span><span class="default">EventArgs $e</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; echo </span><span class="string">'class event handler&lt;br&gt;'</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$controller </span><span class="keyword">= new </span><span class="default">demoEventHandler</span><span class="keyword">();<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$myEvent</span><span class="keyword">-&gt;</span><span class="default">Add</span><span class="keyword">(new </span><span class="default">Delegate</span><span class="keyword">([</span><span class="default">$controller</span><span class="keyword">, </span><span class="string">'onEvent'</span><span class="keyword">]));<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$myEvent</span><span class="keyword">-&gt;</span><span class="default">Trigger</span><span class="keyword">(new </span><span class="default">EventArgs</span><span class="keyword">(</span><span class="default">$myEvent</span><span class="keyword">));<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119135""></a>
+  <div class="note">
+   <strong class="user">joe dot scylla at gmail dot com</strong>
+   <a href="#119135" class="date">08-Apr-2016 05:46</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Small little trick. You can use a closures in itself via reference.<br />
+<br />
+Example to delete a directory with all subdirectories and files:<br />
+<br />
+<span class="default">&lt;?php<br />
+$deleteDirectory </span><span class="keyword">= </span><span class="default">null</span><span class="keyword">;<br />
+</span><span class="default">$deleteDirectory </span><span class="keyword">= function(</span><span class="default">$path</span><span class="keyword">) use (&amp;</span><span class="default">$deleteDirectory</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$resource </span><span class="keyword">= </span><span class="default">opendir</span><span class="keyword">(</span><span class="default">$path</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; while ((</span><span class="default">$item </span><span class="keyword">= </span><span class="default">readdir</span><span class="keyword">(</span><span class="default">$resource</span><span class="keyword">)) !== </span><span class="default">false</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; if (</span><span class="default">$item </span><span class="keyword">!== </span><span class="string">"." </span><span class="keyword">&amp;&amp; </span><span class="default">$item </span><span class="keyword">!== </span><span class="string">".."</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; if (</span><span class="default">is_dir</span><span class="keyword">(</span><span class="default">$path </span><span class="keyword">. </span><span class="string">"/" </span><span class="keyword">. </span><span class="default">$item</span><span class="keyword">)) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$deleteDirectory</span><span class="keyword">(</span><span class="default">$path </span><span class="keyword">. </span><span class="string">"/" </span><span class="keyword">. </span><span class="default">$item</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">unlink</span><span class="keyword">(</span><span class="default">$path </span><span class="keyword">. </span><span class="string">"/" </span><span class="keyword">. </span><span class="default">$item</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">closedir</span><span class="keyword">(</span><span class="default">$resource</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">rmdir</span><span class="keyword">(</span><span class="default">$path</span><span class="keyword">);<br />
+};<br />
+</span><span class="default">$deleteDirectory</span><span class="keyword">(</span><span class="string">"path/to/directoy"</span><span class="keyword">);<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117469""></a>
+  <div class="note">
+   <strong class="user">luk4z_7 at hotmail dot com</strong>
+   <a href="#117469" class="date">15-Jun-2015 02:42</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Scope<br />
+A closure encapsulates its scope, meaning that it has no access to the scope in which it is defined or executed. It is, however, possible to inherit variables from the parent scope (where the closure is defined) into the closure with the use keyword:<br />
+<br />
+function createGreeter($who) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return function() use ($who) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; echo "Hello $who";<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; };<br />
+}<br />
+<br />
+$greeter = createGreeter("World");<br />
+$greeter(); // Hello World<br />
+<br />
+This inherits the variables by-value, that is, a copy is made available inside the closure using its original name.<br />
+font: Zend Certification Study Guide.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117427""></a>
+  <div class="note">
+   <strong class="user">chuck at bajax dot us</strong>
+   <a href="#117427" class="date">10-Jun-2015 01:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This caused me some confusion a while back when I was still learning what closures were and how to use them, but what is referred to as a closure in PHP isn't the same thing as what they call closures in other languages (E.G. JavaScript).<br />
+<br />
+In JavaScript, a closure can be thought of as a scope, when you define a function, it silently inherits the scope it's defined in, which is called its closure, and it retains that no matter where it's used.&nbsp; It's possible for multiple functions to share the same closure, and they can have access to multiple closures as long as they are within their accessible scope.<br />
+<br />
+In PHP,&nbsp; a closure is a callable class, to which you've bound your parameters manually.<br />
+<br />
+It's a slight distinction but one I feel bears mentioning.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="serializable.unserialize.html">Serializable::unserialize</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="closure.construct.html">Closure::__construct</a></div>
+ <div class="up"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

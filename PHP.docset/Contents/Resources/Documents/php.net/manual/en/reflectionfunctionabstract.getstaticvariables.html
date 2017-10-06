@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>静的変数を取得する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reflectionfunctionabstract.getstartline.html">ReflectionFunctionAbstract::getStartLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reflectionfunctionabstract.hasreturntype.html">ReflectionFunctionAbstract::hasReturnType</a></div>
+ <div class="up"><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="reflectionfunctionabstract.getstaticvariables" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionFunctionAbstract::getStaticVariables</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7)</p><p class="refpurpose"><span class="refname">ReflectionFunctionAbstract::getStaticVariables</span> &mdash; <span class="dc-title">静的変数を取得する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionfunctionabstract.getstaticvariables-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>ReflectionFunctionAbstract::getStaticVariables</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   静的変数を取得します。
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
+現在のところ詳細な情報はありません。引数のリストのみが
+記述されています。</p></div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionfunctionabstract.getstaticvariables-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionfunctionabstract.getstaticvariables-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   静的変数の配列を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectionfunctionabstract.getstaticvariables-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="reflectionfunctionabstract.getparameters.html" class="methodname" rel="rdfs-seeAlso">ReflectionFunctionAbstract::getParameters()</a> - パラメータを取得する</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="115897""></a>
+  <div class="note">
+   <strong class="user">Martiros Aghajanyan</strong>
+   <a href="#115897" class="date">11-Oct-2014 10:27</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+<span class="default">&lt;?php<br />
+<br />
+</span><span class="keyword">function </span><span class="default">test</span><span class="keyword">()<br />
+{<br />
+&nbsp;&nbsp;&nbsp; static </span><span class="default">$a </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">, </span><span class="default">$b </span><span class="keyword">= </span><span class="default">15</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$a</span><span class="keyword">++;<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$b</span><span class="keyword">++;<br />
+&nbsp;&nbsp;&nbsp; return </span><span class="default">$a</span><span class="keyword">;<br />
+}<br />
+<br />
+</span><span class="default">$rf </span><span class="keyword">= new </span><span class="default">ReflectionFunction</span><span class="keyword">(</span><span class="string">'test'</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// result - Array ( [a] =&gt; 0 [b] =&gt; 15 ) <br />
+</span><span class="default">print_r</span><span class="keyword">( </span><span class="default">$rf</span><span class="keyword">-&gt;</span><span class="default">getStaticVariables</span><span class="keyword">() );<br />
+<br />
+</span><span class="comment">//call test function and print again static variables<br />
+</span><span class="default">test</span><span class="keyword">();<br />
+<br />
+</span><span class="comment">// result - Array ( [a] =&gt; 1 [b] =&gt; 16 ) <br />
+</span><span class="default">print_r</span><span class="keyword">( </span><span class="default">$rf</span><span class="keyword">-&gt;</span><span class="default">getStaticVariables</span><span class="keyword">() );<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reflectionfunctionabstract.getstartline.html">ReflectionFunctionAbstract::getStartLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reflectionfunctionabstract.hasreturntype.html">ReflectionFunctionAbstract::hasReturnType</a></div>
+ <div class="up"><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

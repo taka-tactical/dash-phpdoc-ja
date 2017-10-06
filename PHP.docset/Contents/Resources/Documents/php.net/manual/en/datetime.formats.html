@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>サポートする日付と時刻の書式</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.timezone-version-get.html">timezone_version_get</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.formats.time.html">時刻の書式</a></div>
+ <div class="up"><a href="book.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="datetime.formats" class="chapter">
+ <h1>サポートする日付と時刻の書式</h1>
+<h2>目次</h2><ul class="chunklist chunklist_chapter"><li><a href="datetime.formats.time.html">時刻の書式</a></li><li><a href="datetime.formats.date.html">日付の書式</a></li><li><a href="datetime.formats.compound.html">複合的な書式</a></li><li><a href="datetime.formats.relative.html">相対的な書式</a></li></ul>
+
+
+ <p class="para">
+  この節では
+  <span class="function"><a href="function.strtotime.html" class="function">strtotime()</a></span>, <a href="class.datetime.html" class="classname">DateTime</a>
+  および <span class="function"><a href="function.date-create.html" class="function">date_create()</a></span> が解釈可能な全ての書式について説明します。
+  これらの書式はセクションごとにグループ分けされています。
+  たいていの場合、一つの日付・時刻文字列の中で異なるセクションの書式を併用することができます。
+  それぞれの書式について、説明と一緒に1個以上の例を示してあります。
+  シングルクォートで囲まれたフォーマットは大文字小文字を同一視します
+  (<em>&#039;t&#039;</em> は <em>t</em> とも
+  <em>T</em> とも書けます)。
+  ダブルクォートで囲まれたフォーマットは大文字小文字を同一視しません
+  (<em>&quot;T&quot;</em> は <em>T</em> としか書けません)。
+ </p>
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120063""></a>
+  <div class="note">
+   <strong class="user">Ray.Paseur sometimes uses Gmail</strong>
+   <a href="#120063" class="date">20-Oct-2016 12:59</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+When you've got external inputs that do not strictly follow the formatting and disambiguation rules, you may still be able to use the static method ::createFromFormat() to create a usable DateTime object<br />
+<br />
+<span class="default">&lt;?php <br />
+</span><span class="comment">/**<br />
+&nbsp;* Date values separated by slash are assumed to be in American order: m/d/y<br />
+&nbsp;* Date values separated by dash are assumed to be in European order: d-m-y<br />
+&nbsp;* Exact formats for date/time strings can be injected with ::createFromFormat()<br />
+&nbsp;*/<br />
+</span><span class="default">error_reporting</span><span class="keyword">(</span><span class="default">E_ALL</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// THIS IS INVALID, WOULD IMPLY MONTH == 19<br />
+</span><span class="default">$external </span><span class="keyword">= </span><span class="string">"19/10/2016 14:48:21"</span><span class="keyword">;<br />
+<br />
+</span><span class="comment">// HOWEVER WE CAN INJECT THE FORMATTING WHEN WE DECODE THE DATE<br />
+</span><span class="default">$format </span><span class="keyword">= </span><span class="string">"d/m/Y H:i:s"</span><span class="keyword">;<br />
+</span><span class="default">$dateobj </span><span class="keyword">= </span><span class="default">DateTime</span><span class="keyword">::</span><span class="default">createFromFormat</span><span class="keyword">(</span><span class="default">$format</span><span class="keyword">, </span><span class="default">$external</span><span class="keyword">);<br />
+<br />
+</span><span class="default">$iso_datetime </span><span class="keyword">= </span><span class="default">$dateobj</span><span class="keyword">-&gt;</span><span class="default">format</span><span class="keyword">(</span><span class="default">Datetime</span><span class="keyword">::</span><span class="default">ATOM</span><span class="keyword">);<br />
+echo </span><span class="string">"SUCCESS: </span><span class="default">$external</span><span class="string"> EQUALS ISO-8601 </span><span class="default">$iso_datetime</span><span class="string">"</span><span class="keyword">;<br />
+<br />
+</span><span class="comment">// MAN PAGE: <a href="http://php.net/manual/en/datetime.createfromformat.php" rel="nofollow" target="_blank">http://php.net/manual/en/datetime.createfromformat.php</a></span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.timezone-version-get.html">timezone_version_get</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="datetime.formats.time.html">時刻の書式</a></div>
+ <div class="up"><a href="book.datetime.html">Date/Time</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

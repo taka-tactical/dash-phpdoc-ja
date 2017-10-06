@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Error</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="errorexception.getseverity.html">ErrorException::getSeverity</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="error.construct.html">Error::__construct</a></div>
+ <div class="up"><a href="reserved.exceptions.html">定義済みの例外</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.error" class="reference">
+ <h1 class="title">Error</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 7)</p>
+ 
+
+  <div class="section" id="error.intro">
+   <h2 class="title">はじめに</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">Error</strong></span>
+    は、PHP のすべての内部エラーの基底クラスです。
+   </p>
+  </div>
+
+ 
+  <div class="section" id="error.synopsis">
+   <h2 class="title">クラス概要</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">Error</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">implements</span>
+      <a href="class.throwable.html" class="classname">Throwable</a>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* プロパティ */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.error.html#error.props.message">$<var class="varname">message</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.error.html#error.props.code">$<var class="varname">code</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+      <var class="varname"><a href="class.error.html#error.props.file">$<var class="varname">file</var></a></var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+      <var class="varname"><a href="class.error.html#error.props.line">$<var class="varname">line</var></a></var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* メソッド */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="error.construct.html" class="methodname">__construct</a></span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code><span class="initializer"> = &quot;&quot;</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$code</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span> <code class="parameter">$previous</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="error.getmessage.html" class="methodname">getMessage</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname"><a href="error.getprevious.html" class="methodname">getPrevious</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname"><a href="error.getcode.html" class="methodname">getCode</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="error.getfile.html" class="methodname">getFile</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname"><a href="error.getline.html" class="methodname">getLine</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><a href="error.gettrace.html" class="methodname">getTrace</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname"><a href="error.gettraceasstring.html" class="methodname">getTraceAsString</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname"><a href="error.tostring.html" class="methodname">__toString</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname"><a href="error.clone.html" class="methodname">__clone</a></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+  
+    <div class="section" id="error.props">
+     <h2 class="title">プロパティ</h2>
+     <dl>
+
+      
+       <dt id="error.props.message"><var class="varname"><var class="varname">message</var></var></dt>
+
+       <dd>
+
+        <p class="para">エラーメッセージ</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.code"><var class="varname"><var class="varname">code</var></var></dt>
+
+       <dd>
+
+        <p class="para">エラーコード</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.file"><var class="varname"><var class="varname">file</var></var></dt>
+
+       <dd>
+
+        <p class="para">エラーが発生したファイル名</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.line"><var class="varname"><var class="varname">line</var></var></dt>
+
+       <dd>
+
+        <p class="para">エラーが発生した行番号</p>
+       </dd>
+
+      
+     </dl>
+
+    </div>
+  
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+<h2>目次</h2><ul class="chunklist chunklist_reference"><li><a href="error.construct.html">Error::__construct</a> &mdash; Construct the error object</li><li><a href="error.getmessage.html">Error::getMessage</a> &mdash; Gets the error message</li><li><a href="error.getprevious.html">Error::getPrevious</a> &mdash; Returns previous Throwable</li><li><a href="error.getcode.html">Error::getCode</a> &mdash; Gets the error code</li><li><a href="error.getfile.html">Error::getFile</a> &mdash; Gets the file in which the error occurred</li><li><a href="error.getline.html">Error::getLine</a> &mdash; Gets the line in which the error occurred</li><li><a href="error.gettrace.html">Error::getTrace</a> &mdash; Gets the stack trace</li><li><a href="error.gettraceasstring.html">Error::getTraceAsString</a> &mdash; Gets the stack trace as a string</li><li><a href="error.tostring.html">Error::__toString</a> &mdash; String representation of the error</li><li><a href="error.clone.html">Error::__clone</a> &mdash; Clone the error</li></ul>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121541""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#121541" class="date">19-Aug-2017 08:53</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+And a static class called "error" when is trigged is renamed "Error" since PHP 7</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118453""></a>
+  <div class="note">
+   <strong class="user">JustinasMalkas</strong>
+   <a href="#118453" class="date">09-Dec-2015 05:13</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If after PHP upgrade you're getting error "PHP Fatal error:&nbsp; Cannot declare class error, because the name is already in use ...", you will have to rename your "error" class.<br />
+Since PHP 7 classname "Error" is predefined and used internally.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="errorexception.getseverity.html">ErrorException::getSeverity</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="error.construct.html">Error::__construct</a></div>
+ <div class="up"><a href="reserved.exceptions.html">定義済みの例外</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

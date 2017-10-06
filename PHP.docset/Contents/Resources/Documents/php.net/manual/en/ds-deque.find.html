@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Attempts to find a value's index.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ds-deque.filter.html">Ds\Deque::filter</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ds-deque.first.html">Ds\Deque::first</a></div>
+ <div class="up"><a href="class.ds-deque.html">Deque</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ds-deque.find" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ds\Deque::find</h1>
+  <p class="verinfo">(PECL ds &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Ds\Deque::find</span> &mdash; <span class="dc-title">
+    Attempts to find a value&#039;s index.
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ds-deque.find-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>Ds\Deque::find</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+    Returns the index of the <code class="parameter">value</code>, or <strong><code>FALSE</code></strong> if not found.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ds-deque.find-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">value</code></dt>
+
+    <dd>
+
+     <p class="para">
+        The value to find.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ds-deque.find-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+    The index of the value, or <strong><code>FALSE</code></strong> if not found.
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+        <p class="para">
+            Values will be compared by value and by type.
+        </p>
+    </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ds-deque.find-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-5823">
+   <p><strong>例1 <span class="function"><strong>Ds\Deque::find()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$deque&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Deque</span><span style="color: #007700">([</span><span style="color: #DD0000">"a"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(</span><span style="color: #DD0000">"b"</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;false<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(</span><span style="color: #DD0000">"1"</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;false<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(0)
+bool(false)
+bool(false)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ds-deque.filter.html">Ds\Deque::filter</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ds-deque.first.html">Ds\Deque::first</a></div>
+ <div class="up"><a href="class.ds-deque.html">Deque</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

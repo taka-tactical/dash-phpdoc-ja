@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Set a watcher function.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="refs.search.html">検索エンジン用の拡張モジュール</a></div>
+ <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="zookeeper.setwatcher" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Zookeeper::setWatcher</h1>
+  <p class="verinfo">(PECL zookeeper &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Zookeeper::setWatcher</span> &mdash; <span class="dc-title">Set a watcher function.</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zookeeper.setwatcher-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span> <span class="methodname"><strong>Zookeeper::setWatcher</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$watcher_cb</code></span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zookeeper.setwatcher-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">watcher_cb</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A watch will be set at the server to notify the client if the node changes.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zookeeper.setwatcher-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-zookeeper.setwatcher-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   This method emits PHP error/warning when parameters count or types are wrong or fail to set watcher.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-zookeeper.setwatcher-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="methodname"><a href="zookeeper.exists.html" class="methodname" rel="rdfs-seeAlso">Zookeeper::exists()</a> - Checks the existence of a node in zookeeper synchronously.</span></li>
+   <li class="member"><span class="methodname"><a href="zookeeper.get.html" class="methodname" rel="rdfs-seeAlso">Zookeeper::get()</a> - Gets the data associated with a node synchronously.</span></li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="refs.search.html">検索エンジン用の拡張モジュール</a></div>
+ <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

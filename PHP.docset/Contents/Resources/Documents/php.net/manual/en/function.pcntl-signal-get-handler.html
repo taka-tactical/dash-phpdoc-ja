@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Get the current handler for specified signal</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pcntl-signal-dispatch.html">pcntl_signal_dispatch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pcntl-signal.html">pcntl_signal</a></div>
+ <div class="up"><a href="ref.pcntl.html">PCNTL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pcntl-signal-get-handler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pcntl_signal_get_handler</h1>
+  <p class="verinfo">(PHP 7.1)</p><p class="refpurpose"><span class="refname">pcntl_signal_get_handler</span> &mdash; <span class="dc-title">Get the current handler for specified signal</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pcntl-signal-get-handler-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><span class="type int|string">int|string</span></span> <span class="methodname"><strong>pcntl_signal_get_handler</strong></span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$signo</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function"><strong>pcntl_signal_get_handler()</strong></span> function will get the current handler for the specified <code class="parameter">signo</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pcntl-signal-get-handler-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">signo</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The signal number.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pcntl-signal-get-handler-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   This function may return an integer value that refers to <strong><code>SIG_DFL</code></strong> or <strong><code>SIG_IGN</code></strong>.  If you set a custom handler a string value containing the function name is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.pcntl-signal-get-handler-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Enter the version of change here</td>
+      <td>
+       Describe the change
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pcntl-signal-get-handler-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-4211">
+    <p><strong>例1 <span class="function"><strong>pcntl_signal_get_handler()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">pcntl_signal_get_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;int(0)<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">pcntl_test</span><span style="color: #007700">(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)&nbsp;{}<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pcntl_test'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">pcntl_signal_get_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;string(10)&nbsp;"pcntl_test"<br /><br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SIG_DFL</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">pcntl_signal_get_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;int(0)<br /><br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SIG_IGN</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">pcntl_signal_get_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;int(1)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pcntl-signal-get-handler-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.pcntl-signal.html" class="function" rel="rdfs-seeAlso">pcntl_signal()</a> - シグナルハンドラを設定する</span></li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pcntl-signal-dispatch.html">pcntl_signal_dispatch</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pcntl-signal.html">pcntl_signal</a></div>
+ <div class="up"><a href="ref.pcntl.html">PCNTL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

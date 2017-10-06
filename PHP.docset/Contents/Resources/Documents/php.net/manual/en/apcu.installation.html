@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール手順</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="apcu.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="apcu.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="apcu.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="apcu.installation" class="section">
+  <h2 class="title">インストール手順</h2>
+  <p class="para">
+   If backward compatibility with the applicable parts of APC is required,
+   APCu must be configured with the option --enable-apcu-bc.
+  </p>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    PHP 7 has a separate module (<a href="http://pecl.php.net/apcu_bc" class="link external" title="Link : http://pecl.php.net/apcu_bc">&raquo;&nbsp;apc.so</a>) for backwards compatibility with APC.
+   </p>
+  </div>
+  <p class="para">
+   In backward compatibility mode, APCu registers the applicable APC functions
+   with backward compatible prototypes.
+  </p>
+  <p class="para">
+   Where an APC function accepted <code class="parameter">cache_type</code>, it is simply
+   ignored by the backward compatible version, and omitted from the prototype for
+   the APCu version.
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    On Windows, APCu needs a temp path to exist, and be
+    writable by the web server.  It checks the TMP, TEMP 
+    and USERPROFILE environment variables in that order
+    and finally tries the WINDOWS directory if none of
+    those are set.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    For more in-depth, highly technical implementation details, see the
+    <a href="http://git.php.net/?p=pecl/caching/apc.git;a=blob;f=TECHNOTES.txt" class="link external" title="Link : http://git.php.net/?p=pecl/caching/apc.git;a=blob;f=TECHNOTES.txt">&raquo;&nbsp;
+     developer-supplied TECHNOTES file
+    </a>.
+   </span>
+  </p></blockquote>
+  <p class="para">
+   APCu sources can be found <a href="https://github.com/krakjoe/apcu" class="link external" title="Link : https://github.com/krakjoe/apcu">&raquo;&nbsp;here</a>.
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121495""></a>
+  <div class="note">
+   <strong class="user">joel at depiltech dot com</strong>
+   <a href="#121495" class="date">08-Aug-2017 07:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+A complete installation guide : https://guides.wp-bullet.com/install-apcu-object-cache-for-php7-for-wordpress-ubuntu-16-04/</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="apcu.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="apcu.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="apcu.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

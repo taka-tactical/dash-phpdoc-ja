@@ -1,0 +1,568 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>演算子の優先順位</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.html">演算子</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.arithmetic.html">代数演算子</a></div>
+ <div class="up"><a href="language.operators.html">演算子</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="language.operators.precedence" class="sect1">
+   <h2 class="title">演算子の優先順位</h2>
+   <p class="para">
+    演算子の優先順位は、二つの式が&quot;緊密に&quot;結合している度合いを指定します。
+    例えば、式 <em>1 + 5 * 3</em> の答えは
+    <em>16</em> になり、<em>18</em> とはなりません。
+    これは乗算演算子(&quot;*&quot;)は、加算演算子(&quot;+&quot;)より高い優先順位を有するか
+    らです。必要に応じて強制的に優先順位を設定するために括弧を使用する
+    ことが可能です。例えば、<em>18</em>と評価するためには、
+    <em>(1 + 5) * 3</em> とします。
+   </p>
+   <p class="para">
+    演算子の優先順位が等しい場合は、その結合性によって評価順
+    (右から評価するのか、あるいは左から評価するのか) が決まります。
+    たとえば &quot;-&quot; は左結合なので、
+    <em>1 - 2 - 3</em> は <em>(1 - 2) - 3</em> とグループ分けされて、
+    評価結果は <em>-4</em> になります。
+    一方、&quot;=&quot; は右結合です。つまり <em>$a = $b = $c</em> のグループ分けは
+    <em>$a = ($b = $c)</em> となります。
+   </p>
+   <p class="para">
+    優先順位が同じで結合しない演算子を並べることはできません。つまり、たとえば
+    <em>1 &lt; 2 &gt; 1</em> は PHP では無効になります。
+    一方 <em>1 &lt;= 1 == 1</em> は問題ありません。
+    <em>==</em> 演算子の優先順位が
+    <em>&lt;=</em> 演算子より低いからです。
+   </p>
+   <p class="para">
+    厳密には不要な場所であっても、括弧をつけておけばコードの可読性があがります。
+    明示的にグループ分けをしておくことで、演算子の優先順位や結合性による暗黙のグループ分けに頼らずに済むからです。
+   </p>
+   <p class="para">
+    次の表では、優先順位が高い順に演算子を挙げています。
+    同じ行にある演算子は優先順位が等しくなります。そのような場合は、
+    結合時の評価にしたがってグループ分けが決まります。
+    <table class="doctable table">
+     <caption><strong>演算子の優先順位</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>結合時の評価</th>
+        <th>演算子</th>
+        <th>追加情報</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>結合しない</td>
+        <td>
+         <em>clone</em>
+         <em>new</em>
+        </td>
+        <td><a href="language.oop5.cloning.html" class="link">clone</a> および <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a></td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>[</em></td>
+        <td><span class="function"><a href="function.array.html" class="function">array()</a></span></td>
+       </tr>
+
+       <tr>
+        <td>right</td>
+        <td><em>**</em></td>
+        <td><a href="language.operators.arithmetic.html" class="link">代数演算子</a></td>
+       </tr>
+
+       <tr>
+        <td>right</td>
+        <td>
+         <em>++</em> 
+         <em>--</em> 
+         <em>~</em> 
+         <em>(int)</em> 
+         <em>(float)</em> 
+         <em>(string)</em> 
+         <em>(array)</em>
+         <em>(object)</em> 
+         <em>(bool)</em> 
+         <em>@</em>
+        </td>
+        <td>
+         <a href="language.types.html" class="link">型</a> および <a href="language.operators.increment.html" class="link">加算子/減算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>結合しない</td>
+        <td><em>instanceof</em></td>
+        <td>
+         <a href="language.types.html" class="link">型</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>right</td>
+        <td><em>!</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td>
+         <em>*</em>
+         <em>/</em>
+         <em>%</em>
+        </td>
+        <td>
+         <a href="language.operators.arithmetic.html" class="link">代数演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td>
+         <em>+</em> 
+         <em>-</em> 
+         <em>.</em>
+        </td>
+        <td>
+         <a href="language.operators.arithmetic.html" class="link">代数演算子</a> そして 
+         <a href="language.operators.string.html" class="link">文字列演算子</a></td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td>
+         <em>&lt;&lt;</em> 
+         <em>&gt;&gt;</em>
+        </td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">ビット演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>結合しない</td>
+        <td>
+         <em>&lt;</em> 
+         <em>&lt;=</em> 
+         <em>&gt;</em> 
+         <em>&gt;=</em>
+        </td>
+        <td>
+         <a href="language.operators.comparison.html" class="link">比較演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>結合しない</td>
+        <td>
+         <em>==</em>
+         <em>!=</em> 
+         <em>===</em> 
+         <em>!==</em> 
+         <em>&lt;&gt;</em>
+         <em>&lt;=&gt;</em>
+        </td>
+        <td>
+         <a href="language.operators.comparison.html" class="link">比較演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>&amp;</em></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">ビット演算子</a> そして 
+         <a href="language.references.html" class="link">リファレンス</a></td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>^</em></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">ビット演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>|</em></td>
+        <td>
+         <a href="language.operators.bitwise.html" class="link">ビット演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>&amp;&amp;</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>||</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>right</td>
+        <td><em>??</em></td>
+        <td>
+         <a href="language.operators.comparison.html" class="link">比較演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>? :</em></td>
+        <td>
+         <a href="language.operators.comparison.html#language.operators.comparison.ternary" class="link">三項演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>right</td>
+        <td>
+         <em>=</em> 
+         <em>+=</em> 
+         <em>-=</em> 
+         <em>*=</em> 
+         <em>**=</em> 
+         <em>/=</em> 
+         <em>.=</em> 
+         <em>%=</em> 
+         <em>&amp;=</em> 
+         <em>|=</em> 
+         <em>^=</em> 
+         <em>&lt;&lt;=</em> 
+         <em>&gt;&gt;=</em>
+        </td>
+        <td>
+         <a href="language.operators.assignment.html" class="link">代入演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>and</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>xor</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+       <tr>
+        <td>left</td>
+        <td><em>or</em></td>
+        <td>
+         <a href="language.operators.logical.html" class="link">論理演算子</a>
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+   <p class="para">
+    <div class="example" id="example-94">
+     <p><strong>例1 結合時の評価</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">%&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(3&nbsp;*&nbsp;3)&nbsp;%&nbsp;5&nbsp;=&nbsp;4<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(true&nbsp;?&nbsp;0&nbsp;:&nbsp;true)&nbsp;?&nbsp;1&nbsp;:&nbsp;2&nbsp;=&nbsp;2<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;=&nbsp;($b&nbsp;+=&nbsp;3)&nbsp;-&gt;&nbsp;$a&nbsp;=&nbsp;5,&nbsp;$b&nbsp;=&nbsp;5<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    演算子の優先順位や結合性は、あくまでも式のグループ分けだけを決めるものであり、評価順を決めるものではありません。
+    PHP では一般に、式をどの順番で評価するかは決めていません。
+    そのため、特定の順序で式が評価されることを前提としたコードを書いてはいけません。
+    PHP のバージョンが変わったり前後のコードが変わったりしたときに、評価順が変わる可能性があるからです。
+    <div class="example" id="example-95">
+     <p><strong>例2 評価順序は未定義</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">++;&nbsp;</span><span style="color: #FF8000">//&nbsp;2&nbsp;になるかもしれないし、3&nbsp;になるかもしれません<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;&nbsp;</span><span style="color: #FF8000">//&nbsp;インデックス&nbsp;1&nbsp;をセットするかもしれないし、インデックス&nbsp;2&nbsp;をセットするかもしれません<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <div class="example" id="example-96">
+     <p><strong>例3 <em>+</em>、<em>-</em>、<em>.</em> の優先順位は同じ</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;次の行は、予期せぬ結果になることでしょう<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;なぜなら、これは次のように評価されるからです<br /></span><span style="color: #007700">echo&nbsp;((</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;期待どおりの結果を得るには、括弧を使って優先順位を指定します<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"x&nbsp;minus&nbsp;one&nbsp;equals&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$x</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">",&nbsp;or&nbsp;so&nbsp;I&nbsp;hope\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+-1, or so I hope
+-1, or so I hope
+x minus one equals 3, or so I hope
+</pre></div>
+     </div>
+    </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     <em>=</em> は他のほとんどの演算子よりも優先順位が低いはずなのにもかかわらず、
+     PHP は依然として <em>if (!$a = foo())</em>
+     のような式も許します。この場合は <em>foo()</em> の返り値が
+     <var class="varname"><var class="varname">$a</var></var> に代入されます。
+    </p>
+   </p></blockquote>
+  </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121533""></a>
+  <div class="note">
+   <strong class="user">ohcc at 163 dot com</strong>
+   <a href="#121533" class="date">17-Aug-2017 11:55</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Syntax (new Person())-&gt;talk(); is supported as of PHP 5.5<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">class </span><span class="default">A </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; public </span><span class="default">$b </span><span class="keyword">= </span><span class="string">'B'</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; public function </span><span class="default">b</span><span class="keyword">(){<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="string">'Bee'</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$a </span><span class="keyword">= new </span><span class="default">A</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; new </span><span class="default">$a</span><span class="keyword">-&gt;</span><span class="default">b</span><span class="keyword">();</span><span class="comment">// This means new B() rather than new Bee()<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121509""></a>
+  <div class="note">
+   <strong class="user">aaronw at catalyst dot net dot nz</strong>
+   <a href="#121509" class="date">11-Aug-2017 10:18</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you've come here looking for a full list of PHP operators, take note that the table here is *not* complete. There are some additional operators (or operator-ish punctuation tokens) that are not included here, such as "-&gt;", "::", and "...".<br />
+<br />
+For a really comprehensive list, take a look at the "List of Parser Tokens" page: <a href="http://php.net/manual/en/tokens.php" rel="nofollow" target="_blank">http://php.net/manual/en/tokens.php</a></span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121011""></a>
+  <div class="note">
+   <strong class="user">ivan at dilber dot info</strong>
+   <a href="#121011" class="date">25-Apr-2017 12:55</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+<span class="default">&lt;?php <br />
+</span><span class="comment">// Another tricky thing here is using &amp;&amp; or || with ternary ?:<br />
+</span><span class="default">$x </span><span class="keyword">&amp;&amp; </span><span class="default">$y </span><span class="keyword">? </span><span class="default">$a </span><span class="keyword">: </span><span class="default">$b</span><span class="keyword">;&nbsp; </span><span class="comment">// ($x &amp;&amp; $y) ? $a : $b;<br />
+<br />
+// while:<br />
+</span><span class="default">$x </span><span class="keyword">and </span><span class="default">$y </span><span class="keyword">? </span><span class="default">$a </span><span class="keyword">: </span><span class="default">$b</span><span class="keyword">;&nbsp; </span><span class="comment">// $x and ($y ? $a : $b);<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120192""></a>
+  <div class="note">
+   <strong class="user">kitchin</strong>
+   <a href="#120192" class="date">21-Nov-2016 09:18</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The precedence of '-&gt;' is less than '[' in this situation: object contains array, name of array is stored in string variable.<br />
+<span class="default">&lt;?php<br />
+$farm </span><span class="keyword">= new </span><span class="default">StdClass</span><span class="keyword">;<br />
+</span><span class="default">$farm</span><span class="keyword">-&gt;</span><span class="default">emu </span><span class="keyword">= array( </span><span class="string">'name' </span><span class="keyword">=&gt; </span><span class="string">'Henry'</span><span class="keyword">, </span><span class="string">'age' </span><span class="keyword">=&gt; </span><span class="default">9 </span><span class="keyword">);<br />
+</span><span class="default">$farm</span><span class="keyword">-&gt;</span><span class="default">rabbit </span><span class="keyword">= array( </span><span class="string">'name' </span><span class="keyword">=&gt; </span><span class="string">'George'</span><span class="keyword">, </span><span class="string">'age' </span><span class="keyword">=&gt; </span><span class="default">4 </span><span class="keyword">);<br />
+<br />
+</span><span class="default">$animal </span><span class="keyword">= </span><span class="string">'rabbit'</span><span class="keyword">;<br />
+</span><span class="default">print_r</span><span class="keyword">( </span><span class="default">$farm</span><span class="keyword">-&gt;</span><span class="default">$animal </span><span class="keyword">); </span><span class="comment">// ok<br />
+// print( $farm-&gt;$animal[ 'name' ] );&nbsp; // wrong, [ has precedence.<br />
+</span><span class="keyword">print( </span><span class="default">$farm</span><span class="keyword">-&gt;{</span><span class="default">$animal</span><span class="keyword">}[ </span><span class="string">'name' </span><span class="keyword">] ); </span><span class="comment">// correct, prints George.<br />
+<br />
+</span><span class="default">$farm</span><span class="keyword">-&gt;</span><span class="default">wash </span><span class="keyword">= </span><span class="string">'Suds'</span><span class="keyword">;<br />
+</span><span class="default">$jobs </span><span class="keyword">= array( </span><span class="string">'morning' </span><span class="keyword">=&gt; </span><span class="string">'feed'</span><span class="keyword">, </span><span class="string">'evening' </span><span class="keyword">=&gt; </span><span class="string">'wash' </span><span class="keyword">);<br />
+print( </span><span class="default">$farm</span><span class="keyword">-&gt;</span><span class="default">$jobs</span><span class="keyword">[ </span><span class="string">'evening' </span><span class="keyword">] ); </span><span class="comment">// correct, prints Suds.<br />
+</span><span class="keyword">print( </span><span class="default">$farm</span><span class="keyword">-&gt;{</span><span class="default">$jobs</span><span class="keyword">[ </span><span class="string">'evening' </span><span class="keyword">]} ); </span><span class="comment">// correct, prints Suds.<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118296""></a>
+  <div class="note">
+   <strong class="user">karlisd at gmail dot com</strong>
+   <a href="#118296" class="date">11-Nov-2015 02:39</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Sometimes it's easier to understand things in your own examples.<br />
+If you want to play around operator precedence and look which tests will be made, you can play around with this:<br />
+<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">function </span><span class="default">F</span><span class="keyword">(</span><span class="default">$v</span><span class="keyword">) {echo </span><span class="default">$v</span><span class="keyword">.</span><span class="string">" "</span><span class="keyword">; return </span><span class="default">false</span><span class="keyword">;}<br />
+function </span><span class="default">T</span><span class="keyword">(</span><span class="default">$v</span><span class="keyword">) {echo </span><span class="default">$v</span><span class="keyword">.</span><span class="string">" "</span><span class="keyword">; return </span><span class="default">true</span><span class="keyword">;}<br />
+<br />
+IF (</span><span class="default">F</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">) || </span><span class="default">T</span><span class="keyword">(</span><span class="default">1</span><span class="keyword">) &amp;&amp; </span><span class="default">F</span><span class="keyword">(</span><span class="default">2</span><span class="keyword">)&nbsp; || </span><span class="default">F</span><span class="keyword">(</span><span class="default">3</span><span class="keyword">)&nbsp; &amp;&amp; ! </span><span class="default">F</span><span class="keyword">(</span><span class="default">4</span><span class="keyword">) ) {<br />
+&nbsp; echo </span><span class="string">"true"</span><span class="keyword">;<br />
+} else echo </span><span class="string">" false"</span><span class="keyword">;<br />
+</span><span class="default">?&gt;<br />
+</span>Now put in IF arguments f for false and t for true, put in them some ID's. Play out by changing "F" to "T" and vice versa, by keeping your ID the same. See output and you will know which arguments&nbsp; actualy were checked.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117390""></a>
+  <div class="note">
+   <strong class="user">fabmlk</strong>
+   <a href="#117390" class="date">03-Jun-2015 02:41</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Watch out for the difference of priority between 'and vs &amp;&amp;' or '|| vs or':<br />
+<span class="default">&lt;?php<br />
+$bool </span><span class="keyword">= </span><span class="default">true </span><span class="keyword">&amp;&amp; </span><span class="default">false</span><span class="keyword">;<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$bool</span><span class="keyword">); </span><span class="comment">// false, that's expected<br />
+<br />
+</span><span class="default">$bool </span><span class="keyword">= </span><span class="default">true </span><span class="keyword">and </span><span class="default">false</span><span class="keyword">;<br />
+</span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$bool</span><span class="keyword">); </span><span class="comment">// true, ouch!<br />
+</span><span class="default">?&gt;<br />
+</span>Because 'and/or' have lower priority than '=' but '||/&amp;&amp;' have higher.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117252""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#117252" class="date">10-May-2015 08:33</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The following example will output false <br />
+$a = 1;<br />
+$b = 1;<br />
+<br />
+$c = $a + $a++;<br />
+$d = 1 + $b++;<br />
+<br />
+if($c == $d){<br />
+&nbsp;&nbsp;&nbsp; echo 'true';<br />
+}else{<br />
+&nbsp;&nbsp;&nbsp; echo 'false';<br />
+}</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="112401""></a>
+  <div class="note">
+   <strong class="user">leipie at gmail dot com</strong>
+   <a href="#112401" class="date">12-Jun-2013 06:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The precedence of the arrow operator (-&gt;) on objects seems to the highest of all, even higher then clone. <br />
+<br />
+But you can't wrap (clone $foo)-&gt;bar() like this!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="109325""></a>
+  <div class="note">
+   <strong class="user">Carsten Milkau</strong>
+   <a href="#109325" class="date">06-Jul-2012 09:06</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Beware the unusual order of bit-wise operators and comparison operators, this has often lead to bugs in my experience. For instance:<br />
+<br />
+<span class="default">&lt;?php </span><span class="keyword">if ( </span><span class="default">$flags </span><span class="keyword">&amp; </span><span class="default">MASK&nbsp; </span><span class="keyword">== </span><span class="default">1</span><span class="keyword">) </span><span class="default">do_something</span><span class="keyword">(); </span><span class="default">?&gt;<br />
+</span><br />
+will not do what you might expect from other languages. Use<br />
+<br />
+<span class="default">&lt;?php </span><span class="keyword">if ((</span><span class="default">$flags </span><span class="keyword">&amp; </span><span class="default">MASK</span><span class="keyword">) == </span><span class="default">1</span><span class="keyword">) </span><span class="default">do_something</span><span class="keyword">(); </span><span class="default">?&gt;<br />
+</span><br />
+in PHP instead.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="91377""></a>
+  <div class="note">
+   <strong class="user">headden at karelia dot ru</strong>
+   <a href="#91377" class="date">09-Jun-2009 01:02</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Although example above already shows it, I'd like to explicitly state that ?: associativity DIFFERS from that of C++. I.e. convenient switch/case-like expressions of the form<br />
+<br />
+$i==1 ? "one" :<br />
+$i==2 ? "two" :<br />
+$i==3 ? "three" :<br />
+"error";<br />
+<br />
+will not work in PHP as expected</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.operators.html">演算子</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="language.operators.arithmetic.html">代数演算子</a></div>
+ <div class="up"><a href="language.operators.html">演算子</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

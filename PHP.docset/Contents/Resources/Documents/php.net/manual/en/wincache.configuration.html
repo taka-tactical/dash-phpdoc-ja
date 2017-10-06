@@ -1,0 +1,652 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>実行時設定</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wincache.installation.html">インストール手順</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wincache.stats.html">WinCache 統計スクリプト</a></div>
+ <div class="up"><a href="wincache.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="wincache.configuration" class="section">
+ <h2 class="title">実行時設定</h2>
+ <p class="simpara">
+<var class="filename">php.ini</var> の設定により動作が変化します。
+</p>
+ <p class="para">
+  この表は、WinCache 拡張モジュールが提供する設定項目をまとめたものです。
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>WinCache の設定オプション</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>名前</th>
+      <th>デフォルト</th>
+      <th>最小</th>
+      <th>最大</th>
+      <th>変更可能</th>
+      <th>変更履歴</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.fcenabled" class="link">wincache.fcenabled</a></td>
+      <td>&quot;1&quot;</td>
+      <td>&quot;0&quot;</td>
+      <td>&quot;1&quot;</td>      
+      <td>PHP_INI_ALL</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.fcenabledfilter" class="link">wincache.fcenabledfilter</a></td>
+      <td>&quot;NULL&quot;</td>
+      <td>&quot;NULL&quot;</td>
+      <td>&quot;NULL&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.fcachesize" class="link">wincache.fcachesize</a></td>
+      <td>&quot;24&quot;</td>
+      <td>&quot;5&quot;</td>
+      <td>&quot;255&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.fcndetect" class="link">wincache.fcndetect</a></td>
+      <td>&quot;1&quot;</td>
+      <td>&quot;0&quot;</td>
+      <td>&quot;1&quot;</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.1.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.maxfilesize" class="link">wincache.maxfilesize</a></td>
+      <td>&quot;256&quot;</td>
+      <td>&quot;10&quot;</td>
+      <td>&quot;2048&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ocenabled" class="link">wincache.ocenabled</a></td>
+      <td>&quot;1&quot;</td>
+      <td>&quot;0&quot;</td>
+      <td>&quot;1&quot;</td>      
+      <td>PHP_INI_ALL</td>
+      <td>WinCache 1.0.0 以降で使用可能、2.0.0.0 で削除</td>
+     </tr>
+ 
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ocenabledfilter" class="link">wincache.ocenabledfilter</a></td>
+      <td>&quot;NULL&quot;</td>
+      <td>&quot;NULL&quot;</td>
+      <td>&quot;NULL&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能、2.0.0.0 で削除</td>
+     </tr>
+     
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ocachesize" class="link">wincache.ocachesize</a></td>
+      <td>&quot;96&quot;</td>
+      <td>&quot;15&quot;</td>
+      <td>&quot;255&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能、2.0.0.0 で削除</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.filecount" class="link">wincache.filecount</a></td>
+      <td>&quot;4096&quot;</td>
+      <td>&quot;1024&quot;</td>
+      <td>&quot;16384&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.chkinterval" class="link">wincache.chkinterval</a></td>
+      <td>&quot;30&quot;</td>
+      <td>&quot;0&quot;</td>
+      <td>&quot;300&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ttlmax" class="link">wincache.ttlmax</a></td>
+      <td>&quot;1200&quot;</td>
+      <td>&quot;0&quot;</td>
+      <td>&quot;7200&quot;</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.enablecli" class="link">wincache.enablecli</a></td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ignorelist" class="link">wincache.ignorelist</a></td>
+      <td>NULL</td>
+      <td>NULL</td>
+      <td>NULL</td>      
+      <td>PHP_INI_ALL</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.namesalt" class="link">wincache.namesalt</a></td>
+      <td>NULL</td>
+      <td>NULL</td>
+      <td>NULL</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.0.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ucenabled" class="link">wincache.ucenabled</a></td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.1.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.ucachesize" class="link">wincache.ucachesize</a></td>
+      <td>8</td>
+      <td>5</td>
+      <td>85</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.1.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.scachesize" class="link">wincache.scachesize</a></td>
+      <td>8</td>
+      <td>5</td>
+      <td>85</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.1.0 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.rerouteini" class="link">wincache.rerouteini</a></td>
+      <td>NULL</td>
+      <td>NULL</td>
+      <td>NULL</td>
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.2.0 以降で使用可能。1.3.7 で削除。</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.reroute_enabled" class="link">wincache.reroute_enabled</a></td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>      
+      <td>PHP_INI_SYSTEM | PHP_INI_PERDIR</td>
+      <td>WinCache 1.3.7 以降で使用可能</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.srwlocks" class="link">wincache.srwlocks</a></td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.3.6.3 以降で使用可能、2.0.0.0 で削除</td>
+     </tr>
+
+     <tr>
+      <td><a href="wincache.configuration.html#ini.wincache.filemapdir" class="link">wincache.filemapdir</a></td>
+      <td>NULL</td>
+      <td>NULL</td>
+      <td>NULL</td>      
+      <td>PHP_INI_SYSTEM</td>
+      <td>WinCache 1.3.7.4 以降で使用可能</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  PHP_INI_* モードの詳細および定義については
+<a href="configuration.changes.modes.html" class="xref">どこで設定を行うのか</a> を参照してください。
+ </p>
+ 
+ <p class="para">以下に設定ディレクティブに関する
+簡単な説明を示します。</p>
+ 
+ <p class="para">
+  <dl>
+
+   
+    <dt id="ini.wincache.fcenabled">
+     <code class="parameter">wincache.fcenabled</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">ファイルキャッシュ機能を有効あるいは無効にします。</span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.fcenabledfilter">
+     <code class="parameter">wincache.fcenabledfilter</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ファイルキャッシュ有効あるいは無効にする IIS ウェブサイト識別子の一覧を、
+      カンマ区切りで指定します。この設定は <em>wincache.fcenabled</em>
+      との組み合わせで機能します。
+      <em>wincache.fcenabled</em> が 1 の場合は、
+      <em>wincache.fcenabledfilter</em> のファイルキャッシュが無効になります。
+      <em>wincache.fcenabled</em> が 0 の場合は
+      <em>wincache.fcenabledfilter</em> のファイルキャッシュが有効になります。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.fcachesize">
+     <code class="parameter">wincache.fcachesize</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ファイルキャッシュに割り当てる最大メモリ容量 (メガバイト単位) を指定します。
+      キャッシュされたファイルの総容量がこの設定値を超えると、
+      いちばん古いファイルから順にファイルキャッシュから取り除かれます。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.fcndetect">
+     <code class="parameter">wincache.fcndetect</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ファイルの変更通知検出機能を有効あるいは無効にします。
+      ファイル変更通知がサポートされているときは、対応するファイルがファイスシステム上で変更されるとすぐに
+      opcode キャッシュおよびファイルキャッシュも更新します。
+      ファイル変更通知をサポートしていないとき (ネットワークファイル共有を使っている場合など) は、
+      <em>wincache.chkinterval</em> で指定した間隔ごとに wincache がファイル更新を確認します。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.maxfilesize">
+     <code class="parameter">wincache.maxfilesize</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      キャッシュする個々のファイルの最大サイズ (キロバイト単位) を指定します。
+      この大きさを超えるサイズのファイルはキャッシュされません。
+      この設定は、ファイルにのみ適用されます。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ocenabled">
+     <code class="parameter">wincache.ocenabled</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <div class="warning"><strong class="warning">警告</strong><p class="simpara">このオプションは 2.0.0.0 で<em class="emphasis">削除</em>されました。</p></div>
+     <span class="simpara">opcode キャッシュ機能を有効あるいは無効にします。</span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ocenabledfilter">
+     <code class="parameter">wincache.ocenabledfilter</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      opcode キャッシュ有効あるいは無効にする IIS ウェブサイト識別子の一覧を、
+      カンマ区切りで指定します。この設定は <em>wincache.ocenabled</em>
+      との組み合わせで機能します。
+      <em>wincache.ocenabled</em> が 1 の場合は、
+      <em>wincache.ocenabledfilter</em> に指定したサイトの opcode キャッシュを無効にします。
+      <em>wincache.ocenabled</em> が 0 の場合は、
+      <em>wincache.ocenabledfilter</em> に指定したサイトの opcode キャッシュを有効にします。
+     </span>
+     <span class="simpara">このオプションは 2.0.0.0 で削除されました。</span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ocachesize">
+     <code class="parameter">wincache.ocachesize</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <div class="warning"><strong class="warning">警告</strong><p class="simpara">このオプションは 2.0.0.0 で<em class="emphasis">削除</em>されました。</p></div>
+     <span class="simpara">
+      opcode キャッシュに割り当てる最大メモリ容量 (メガバイト単位) を指定します。
+      キャッシュされた opcode の総容量がこの設定値を超えると、
+      いちばん古い opcode から順に opcode キャッシュから取り除かれます。
+      opcode キャッシュのサイズは、少なくともファイルキャッシュの三倍以上でなければならないことに注意しましょう。
+      そうなっていなければ、opcode キャッシュのサイズが自動的に拡張されます。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.filecount">
+     <code class="parameter">wincache.filecount</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      この拡張モジュールがどれくらいの数のファイルをキャッシュすることを想定しているのかを指定し、
+      起動時に適切なサイズのメモリを確保できるようにします。ファイルの数がこの設定値を超えると、
+      WinCache は必要に応じてさらにメモリを確保します。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.chkinterval">
+     <code class="parameter">wincache.chkinterval</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ファイルの変更チェックとそれに伴うキャッシュの更新を何秒間隔で行うかを指定します。
+      0 にすると、キャッシュの更新機能が無効になります。
+      その場合は、キャッシュエントリが scavenger で削除されたり
+      IIS アプリケーションプールがリサイクルされたり
+      wincache_refresh_if_changed 関数がコールされたりしない限り
+      ファイルの変更がキャッシュに反映されなくなります。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ttlmax">
+     <code class="parameter">wincache.ttlmax</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      未使用状態のキャッシュエントリの最大生存期間 (秒単位) を定義します。
+      これを 0 にすると、キャッシュの scavenger を無効にします。
+      そのため、IIS ワーカープロセスが生き続ける限りキャッシュエントリは削除されなくなります。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.enablecli">
+     <code class="parameter">wincache.enablecli</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      PHP がコマンドライン (CLI) モードで動いているときのキャッシュを有効にするかどうかを設定します。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ignorelist">
+     <code class="parameter">wincache.ignorelist</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      この拡張モジュールでキャッシュをしないファイルの一覧を定義します。
+      ファイルリストにはファイル名のみを指定し、パイプ記号
+      &quot;|&quot; で区切ります。
+      <div class="example" id="example-627">
+       <p><strong>例1 <em>wincache.ignorelist</em> の例</strong></p>
+       <div class="example-contents">
+<div class="inicode"><pre class="inicode">wincache.ignorelist = &quot;index.php|misc.php|admin.php&quot;</pre>
+</div>
+       </div>
+
+      </div>
+     </p>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.namesalt">
+     <code class="parameter">wincache.namesalt</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      この拡張モジュールが使うオブジェクトを共有メモリに格納する際に、
+      そのオブジェクトの名前に使う文字列を定義します。
+      IIS ワーカープロセス内の別のアプリケーションとの間で名前の衝突を起こさないようにするために、
+      これを使います。namesalt 文字列の長さは最大 8 文字までです。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ucenabled">
+     <code class="parameter">wincache.ucenabled</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ユーザーキャッシュ機能を有効あるいは無効にします。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.ucachesize">
+     <code class="parameter">wincache.ucachesize</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ユーザーキャッシュに割り当てる最大メモリ容量 (メガバイト単位) を指定します。
+      ユーザーキャッシュに格納された変数のサイズがこの設定値を超えると、
+      いちばん古い変数から順にキャッシュから取り除かれます。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.scachesize">
+     <code class="parameter">wincache.scachesize</code>
+     <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      セッションキャッシュに割り当てる最大メモリ容量 (メガバイト単位) を指定します。
+      セッションキャッシュに格納されたデータのサイズがこの設定値を超えると、
+      いちばん古いデータから順にキャッシュから取り除かれます。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.rerouteini">
+     <code class="parameter">wincache.rerouteini</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <div class="warning"><strong class="warning">警告</strong><p class="simpara">
+      このオプションは 1.3.7 で<em class="emphasis">削除</em>されました。1.3.7 以降で同様の機能を使うには、<em>wincache.reroute_enabled</em> を参照ください。
+      </p></div>
+     <span class="simpara">
+      reroute.ini ファイルへの絶対パスあるいは相対パスを指定します。
+      このファイルには、同等の WinCache 関数で実装を置き換える PHP 関数の一覧を記述します。
+      相対パスで指定した場合は、php-cgi.exe の場所を基準としたパスとみなします。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.reroute_enabled">
+     <code class="parameter">wincache.reroute_enabled</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      ファイルキャッシュを用いたファイル入出力関数群のリルートを有効あるいは無効にします。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.srwlocks">
+     <code class="parameter">wincache.srwlocks</code>
+     <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+    </dt>
+
+    <dd>
+
+     <div class="warning"><strong class="warning">警告</strong><p class="simpara">このオプションは 2.0.0.0 で<em class="emphasis">削除</em>されました。</p></div>
+     <span class="simpara">
+      共有のリーダーロック／ライターロックを有効あるいは無効にします。WinCache におけるデッドロックのトラブルシューティングの際には、無効にしておくと便利です。
+     </span>
+    </dd>
+
+   
+   
+    <dt id="ini.wincache.filemapdir">
+     <code class="parameter">wincache.filemapdir</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+
+    <dd>
+
+     <span class="simpara">
+      WinCache が共有メモリセグメント用の一時ファイルを格納するために使うディレクトリへの絶対パスを指定します。
+     </span>
+     <span class="simpara">
+      このディレクトリはローカルマシン上のものでなければいけません。ネットワークファイルシステム上のディレクトリは使えません。
+     </span>
+     <span class="simpara">
+      ディレクトリを指定しなかった場合は、WinCache は Windows System Page File をすべての共有メモリセグメント用に使います。
+     </span>
+    </dd>
+
+   
+  </dl>
+
+ </p>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="116641""></a>
+  <div class="note">
+   <strong class="user">ericsten at php dot net</strong>
+   <a href="#116641" class="date">03-Feb-2015 08:33</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+[Editor's note: fixed typo]
+<br />
+
+<br />
+Just a quick note about something I've discovered through debugging a recent WinCache issue:
+<br />
+
+<br />
+If you change the wincache.scachesize value, you MUST shutdown all php-cgi.exe instances and manually delete the wincache_session_*.tmp file. 
+<br />
+
+<br />
+The wincache_session_*.tmp file will in the directory specified by session.save_path in the php.ini file.
+<br />
+
+<br />
+An example session file name would look like: wincache_session_1_565779.tmp
+<br />
+
+<br />
+If you don't delete this file, you will run into corruption in cross-process shared memory segments for the WinCache session handler.&nbsp; These will show up as 500 errors from your IIS server.
+<br />
+
+<br />
+Thx!
+<br />
+
+<br />
+&nbsp;&nbsp;&nbsp; --E.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="wincache.installation.html">インストール手順</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="wincache.stats.html">WinCache 統計スクリプト</a></div>
+ <div class="up"><a href="wincache.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>PHP 7.0.x で推奨されなくなる機能</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration70.new-features.html">新機能</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.changed-functions.html">変更された関数</a></div>
+ <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration70.deprecated" class="sect1">
+ <h2 class="title">PHP 7.0.x で推奨されなくなる機能</h2>
+
+
+ 
+
+ <div class="sect2" id="migration70.deprecated.php4-constructors">
+  <h3 class="title">PHP 4 形式のコンストラクタ</h3>
+
+  <p class="para">
+   PHP 4 形式のコンストラクタ (クラス名と同じ名前のメソッドを定義するもの) が非推奨となりました。将来的に削除される見込みです。
+   PHP 7 では、クラス内でこの形式のコンストラクタしか定義されていない場合に <strong><code>E_DEPRECATED</code></strong> が発生します。
+   <span class="function"><strong>__construct()</strong></span> メソッドを実装していれば、この警告は発生しません。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;the&nbsp;constructor'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">上の例の出力は以下となります。</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Methods with the same name as their class will not be constructors in a future version of PHP; foo has a deprecated constructor in example.php on line 3
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.static-calls">
+  <h3 class="title">非 static メソッドに対する static 呼び出し</h3>
+
+  <p class="para">
+   <strong class="command">static</strong> 宣言されていないメソッドに対する
+   <a href="language.oop5.static.html" class="link">static</a> 呼び出しが非推奨となりました。
+   将来的には削除される見込みです。
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;not&nbsp;static!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">上の例の出力は以下となります。</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Non-static method foo::bar() should not be called statically in - on line 8
+I am not static!
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.pwshash-salt-option">
+  <h3 class="title"><span class="function"><a href="function.password-hash.html" class="function">password_hash()</a></span> の salt オプション</h3>
+
+  <p class="para">
+   <span class="function"><a href="function.password-hash.html" class="function">password_hash()</a></span> 関数の salt オプションが非推奨となりました。
+   これは、開発者が自前で (たいていはセキュアでない) salt を作ってしまうことを避けるためです。
+   開発者が salt を指定しない場合は、この関数自身が暗号論的にセキュアな salt を生成します。
+   したがって、もはや自前で salt を作る必要はありません。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.capture-session-meta">
+  <h3 class="title"><em>capture_session_meta</em> SSL コンテキストオプション</h3>
+
+  <p class="para">
+   SSL コンテキストオプション <em>capture_session_meta</em> が非推奨となりました。
+   SSL メタデータは
+   <span class="function"><a href="function.stream-get-meta-data.html" class="function">stream_get_meta_data()</a></span> 関数で利用できるようになります。
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.ldap">
+  <h3 class="title"><a href="book.ldap.html" class="link">LDAP</a></h3>
+   <p class="simpara">
+    以下の関数が非推奨になりました。
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ldap-sort.html" class="function">ldap_sort()</a></span>
+     </span>
+    </li>
+   </ul>
+ </div>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration70.new-features.html">新機能</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.changed-functions.html">変更された関数</a></div>
+ <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

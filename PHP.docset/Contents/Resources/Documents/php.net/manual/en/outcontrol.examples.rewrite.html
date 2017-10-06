@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>出力リライトの使用法</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.examples.basic.html">基本的な使用法</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.outcontrol.html">出力制御 関数</a></div>
+ <div class="up"><a href="outcontrol.examples.html">例</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="outcontrol.examples.rewrite" class="section">
+  <h2 class="title">出力リライトの使用法</h2>
+  <p class="para">
+   PHP 7.1.0 以降は、<span class="function"><a href="function.output-add-rewrite-var.html" class="function">output_add_rewrite_var()</a></span> と <span class="function"><a href="function.output-reset-rewrite-vars.html" class="function">output_reset_rewrite_vars()</a></span>
+   は専用の出力バッファを用いるようになります。<a href="session.configuration.html#ini.session.use-trans-sid" class="link">透過的セッションID</a> の出力バッファは用いません。
+  </p>
+  <p class="para">
+   <div class="example" id="example-506">
+    <p><strong>例1 出力リライトの例</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;このコードは&nbsp;PHP&nbsp;7.1.0,&nbsp;7.0.10,&nbsp;5.6.25&nbsp;以降で動作します<br /><br />//&nbsp;HTTP_HOST&nbsp;はデフォルトのターゲットホストです。適切に書き換えてください<br /></span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'HTTP_HOST'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'php.net'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;出力リライトはフォームだけを書き換えます。a=href&nbsp;を追加します。<br />//&nbsp;タグは&nbsp;tag_name=url_attr&nbsp;形式で指定します。たとえば&nbsp;img=src,iframe=src&nbsp;のようになります。<br />//&nbsp;各設定の間にスペースを含めることはできません。<br />//&nbsp;form&nbsp;タグは特別なタグで、hidden&nbsp;を追加します。<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'url_rewriter.tags'</span><span style="color: #007700">,</span><span style="color: #DD0000">'a=href,form='</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'url_rewriter.tags'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;これが&nbsp;URL&nbsp;と&nbsp;form&nbsp;に追加されます<br /></span><span style="color: #0000BB">output_add_rewrite_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'value'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;a&nbsp;href="//php.net/index.php?bug=1234"&gt;bug1234&lt;/a&gt;<br />&lt;form&nbsp;action="https://php.net/?bug=1234&amp;edit=1"&nbsp;action="post"&gt;<br />&nbsp;&lt;input&nbsp;type="text"&nbsp;name="title"&nbsp;/&gt;<br />&lt;/form&gt;</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;a href=&quot;//php.net/?bug=1234&amp;test=value&quot;&gt;bug1234&lt;/a&gt;
+&lt;form action=&quot;https://php.net/?bug=1234&amp;edit=1&quot; method=&quot;post&quot;&gt;&lt;input type=&quot;hidden&quot; name=&quot;test&quot; value=&quot;value&quot; /&gt;
+ &lt;input type=&quot;text&quot; name=&quot;title&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   PHP 7.1.0 以降、出力リライトにはそれ専用の INI 項目が用意されるようになりました。
+   <a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a> と <a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a> です。
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.examples.basic.html">基本的な使用法</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ref.outcontrol.html">出力制御 関数</a></div>
+ <div class="up"><a href="outcontrol.examples.html">例</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

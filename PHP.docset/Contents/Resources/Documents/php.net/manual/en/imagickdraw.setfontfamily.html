@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>テキストによる注記を行う際に使用するフォントファミリーを設定する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagickdraw.setfont.html">ImagickDraw::setFont</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagickdraw.setfontsize.html">ImagickDraw::setFontSize</a></div>
+ <div class="up"><a href="class.imagickdraw.html">ImagickDraw</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="imagickdraw.setfontfamily" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ImagickDraw::setFontFamily</h1>
+  <p class="verinfo">(PECL imagick 2.0.0)</p><p class="refpurpose"><span class="refname">ImagickDraw::setFontFamily</span> &mdash; <span class="dc-title">テキストによる注記を行う際に使用するフォントファミリーを設定する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagickdraw.setfontfamily-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>ImagickDraw::setFontFamily</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$font_family</code></span>
+   )</div>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
+現在のところ詳細な情報はありません。引数のリストのみが
+記述されています。</p></div>
+  <p class="para">
+   テキストによる注記を行う際に使用するフォントファミリーを設定します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagickdraw.setfontfamily-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">font_family</code></dt>
+
+     <dd>
+
+      <p class="para">
+       フォントファミリー。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagickdraw.setfontfamily-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を返します。
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-imagickdraw.setfontfamily-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+    <div class="example" id="example-3867">
+      <p><strong>例1  <span class="function"><strong>ImagickDraw::setFontFamily()</strong></span></strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">setFontFamily</span><span style="color: #007700">(</span><span style="color: #0000BB">$fillColor</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$strokeColor</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$backgroundColor</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">ImagickDraw</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$strokeColor&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">ImagickPixel</span><span style="color: #007700">(</span><span style="color: #0000BB">$strokeColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fillColor&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">ImagickPixel</span><span style="color: #007700">(</span><span style="color: #0000BB">$fillColor</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStrokeColor</span><span style="color: #007700">(</span><span style="color: #0000BB">$strokeColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFillColor</span><span style="color: #007700">(</span><span style="color: #0000BB">$fillColor</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStrokeWidth</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFontSize</span><span style="color: #007700">(</span><span style="color: #0000BB">48</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFontFamily</span><span style="color: #007700">(</span><span style="color: #DD0000">"Times"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">annotation</span><span style="color: #007700">(</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Lorem&nbsp;Ipsum!"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFontFamily</span><span style="color: #007700">(</span><span style="color: #DD0000">"AvantGarde"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">annotation</span><span style="color: #007700">(</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Lorem&nbsp;Ipsum!"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFontFamily</span><span style="color: #007700">(</span><span style="color: #DD0000">"NewCenturySchlbk"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">annotation</span><span style="color: #007700">(</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Lorem&nbsp;Ipsum!"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFontFamily</span><span style="color: #007700">(</span><span style="color: #DD0000">"Palatino"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">annotation</span><span style="color: #007700">(</span><span style="color: #0000BB">50</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">200</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Lorem&nbsp;Ipsum!"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newImage</span><span style="color: #007700">(</span><span style="color: #0000BB">450</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">250</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$backgroundColor</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setImageFormat</span><span style="color: #007700">(</span><span style="color: #DD0000">"png"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">drawImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$draw</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;image/png"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagickdraw.setfont.html">ImagickDraw::setFont</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagickdraw.setfontsize.html">ImagickDraw::setFontSize</a></div>
+ <div class="up"><a href="class.imagickdraw.html">ImagickDraw</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

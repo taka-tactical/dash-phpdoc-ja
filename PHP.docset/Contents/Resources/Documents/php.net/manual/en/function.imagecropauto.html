@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>利用可能なモードを指定して、画像を自動的にクロップする</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.imagecrop.html">imagecrop</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.imagedashedline.html">imagedashedline</a></div>
+ <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.imagecropauto" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecropauto</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p><p class="refpurpose"><span class="refname">imagecropauto</span> &mdash; <span class="dc-title">利用可能なモードを指定して、画像を自動的にクロップする</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.imagecropauto-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname"><strong>imagecropauto</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$threshold</code><span class="initializer"> = .5</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code><span class="initializer"> = -1</span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   指定した <code class="parameter">mode</code> にしたがって、画像を自動的にクロップします。
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
+現在のところ詳細な情報はありません。引数のリストのみが
+記述されています。</p></div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.imagecropauto-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   <dt>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para"><span class="function"><a href="function.imagecreatetruecolor.html" class="function">imagecreatetruecolor()</a></span>
+のような画像作成関数が返す画像リソース。</p></dd>
+
+   
+    <dt>
+<code class="parameter">mode</code></dt>
+
+    <dd>
+
+     <p class="para">
+      以下の定数のいずれか。
+     </p>
+     <dl>
+
+      
+       <dt>
+<strong><code>IMG_CROP_DEFAULT</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+         <strong><code>IMG_CROP_TRANSPARENT</code></strong> を使うことを試みます。
+         失敗した場合は <strong><code>IMG_CROP_SIDES</code></strong> を使います。
+        </span>
+       </dd>
+
+      
+      
+       <dt>
+<strong><code>IMG_CROP_TRANSPARENT</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+         透過色の背景をクロップします。
+        </span>
+       </dd>
+
+      
+      
+       <dt>
+<strong><code>IMG_CROP_BLACK</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+         黒の背景をクロップします。
+        </span>
+       </dd>
+
+      
+      
+       <dt>
+<strong><code>IMG_CROP_WHITE</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+          白の背景をクロップします。
+        </span>
+       </dd>
+
+      
+      
+       <dt>
+<strong><code>IMG_CROP_SIDES</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+         画像の四隅から、クロップする背景色を検出します。
+        </span>
+       </dd>
+
+      
+      
+       <dt>
+<strong><code>IMG_CROP_THRESHOLD</code></strong></dt>
+
+       <dd>
+
+        <span class="simpara">
+         <code class="parameter">threshold</code> と
+         <code class="parameter">color</code> を用いてクロップします。
+        </span>
+       </dd>
+
+      
+     </dl>
+
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">threshold</code></dt>
+
+    <dd>
+
+     <p class="para">
+      画像の色とクロップする色を比較する際に用いる許容誤差を、パーセントで指定します。
+      色の違いを判断する際には、RGBキューブ内での距離を用います。
+     </p>
+     <p class="para">
+      <strong><code>IMG_CROP_THRESHOLD</code></strong> モードのときにだけ利用します。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">color</code></dt>
+
+    <dd>
+
+     <p class="para">
+      RGB値あるいはパレットインデックスを指定します。
+     </p>
+     <p class="para">
+      <strong><code>IMG_CROP_THRESHOLD</code></strong> モードのときにだけ利用します。
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagecropauto-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合にクロップ後の画像リソースを返します。失敗した場合に <strong><code>FALSE</code></strong> を返します。
+   クロップする箇所がなかった場合やすべてクロップされてしまった場合は、処理が失敗したものとみなされます。
+   この場合は、<span class="function"><a href="function.imagecrop.html" class="function">imagecrop()</a></span> は <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.imagecropauto-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-3563">
+    <p><strong>例1 自動クロップの適切な処理</strong></p>
+    <div class="example-contents"><p>
+     返り値のところで説明したとおり、何もクロップしなかった場合や全部クロップしてしまったときに
+     <span class="function"><strong>imagecropauto()</strong></span> が返す値は <strong><code>FALSE</code></strong> となります。
+     この例では、クロップする部分がある場合にだけ画像リソース
+     <em>$im</em> を自動クロップします。
+     それ以外の場合は、元の画像をそのまま使います。
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$cropped&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecropauto</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_CROP_DEFAULT</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$cropped&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;新しい画像リソースが戻された場合にだけ<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;元の画像を破棄して<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cropped</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;クロップ後の画像を&nbsp;$im&nbsp;に代入します<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.imagecropauto-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.imagecrop.html" class="function" rel="rdfs-seeAlso">imagecrop()</a> - 指定した矩形に画像をクロップする</span></li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120518""></a>
+  <div class="note">
+   <strong class="user">Ray.Paseur sometimes uses Gmail</strong>
+   <a href="#120518" class="date">25-Jan-2017 01:07</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Please see the note on ImageCrop() that describes an extraneous black line at the bottom of the cropped image.<br />
+<a href="http://php.net/manual/en/function.imagecrop.php#119537" rel="nofollow" target="_blank">http://php.net/manual/en/function.imagecrop.php#119537</a><br />
+<br />
+Bug 67447 applies to ImageCropAuto(), too.<br />
+https://bugs.php.net/bug.php?id=67447</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119620""></a>
+  <div class="note">
+   <strong class="user">raphael.deiana</strong>
+   <a href="#119620" class="date">19-Jul-2016 08:49</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+In some cases the use of the IMG_CROP_WHITE or IMG_CROP_BLACK does not work. The function returns FALSE. It is best to use the IMG_CROP_THRESHOLD mode and specify the color in fourth argument as in the example below :<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$original_img </span><span class="keyword">= </span><span class="default">imagecreatefromjpeg</span><span class="keyword">(</span><span class="default">$image_path</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// Use this :<br />
+</span><span class="default">$cropped_img_white </span><span class="keyword">= </span><span class="default">imagecropauto</span><span class="keyword">(</span><span class="default">$original_img </span><span class="keyword">, </span><span class="default">IMG_CROP_THRESHOLD</span><span class="keyword">, </span><span class="default">null</span><span class="keyword">, </span><span class="default">16777215</span><span class="keyword">);<br />
+</span><span class="comment">// Rather than :<br />
+</span><span class="default">$cropped_img_white </span><span class="keyword">= </span><span class="default">imagecropauto</span><span class="keyword">(</span><span class="default">$original_img </span><span class="keyword">, </span><span class="default">IMG_CROP_WHITE</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">// AND<br />
+<br />
+// Use this :<br />
+</span><span class="default">$cropped_img_black </span><span class="keyword">= </span><span class="default">imagecropauto</span><span class="keyword">(</span><span class="default">$original_img </span><span class="keyword">, </span><span class="default">IMG_CROP_THRESHOLD</span><span class="keyword">, </span><span class="default">null</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">);<br />
+</span><span class="comment">// Rather than :<br />
+</span><span class="default">$cropped_img_black </span><span class="keyword">= </span><span class="default">imagecropauto</span><span class="keyword">(</span><span class="default">$original_img </span><span class="keyword">, </span><span class="default">IMG_CROP_BLACK</span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.imagecrop.html">imagecrop</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.imagedashedline.html">imagedashedline</a></div>
+ <div class="up"><a href="ref.image.html">GD および Image 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

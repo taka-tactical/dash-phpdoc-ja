@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Enable/disable quorum endpoint order randomization.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.setdebuglevel.html">Zookeeper::setDebugLevel</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></div>
+ <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="zookeeper.setdeterministicconnorder" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Zookeeper::setDeterministicConnOrder</h1>
+  <p class="verinfo">(PECL zookeeper &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Zookeeper::setDeterministicConnOrder</span> &mdash; <span class="dc-title">Enable/disable quorum endpoint order randomization.</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zookeeper.setdeterministicconnorder-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">bool</span> <span class="methodname"><strong>Zookeeper::setDeterministicConnOrder</strong></span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$yesOrNo</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   If passed a non-zero value, will make the client connect to quorum peers in the order as specified in the zookeeper_init() call. A zero value causes zookeeper_init() to permute the peer endpoints which is good for more even client connection distribution among the quorum peers.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zookeeper.setdeterministicconnorder-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">yesOrNo</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Enable/disable quorum endpoint order randomization.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zookeeper.setdeterministicconnorder-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-zookeeper.setdeterministicconnorder-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   This method emits PHP error/warning when parameters count or types are wrong or operation fails.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-zookeeper.setdeterministicconnorder-notes">
+  <h3 class="title">注意</h3>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    Note: typically this method should NOT be used outside of testing.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">これは、関数ではなく
+言語構造のため、<a href="functions.variable-functions.html" class="link">可変関数</a> を用いて
+コールすることはできません。</span></p></blockquote>
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は
+(まだ)バイナリデータ対応ではありません!</p></div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <strong>register_globals:
+重要な注意</strong><br /><p class="para">PHP 4.2.0 以降、PHP ディレクティブ
+<a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+のデフォルト値は <em class="emphasis">off</em> となっています。
+PHP コミュニティは、ユーザーがこのディレクティブの設定に依存せず、
+<a href="language.variables.predefined.html" class="link">superglobals</a> のような他の手段を使用することを推奨します。
+</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-zookeeper.setdeterministicconnorder-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="methodname"><a href="zookeeper.construct.html" class="methodname" rel="rdfs-seeAlso">Zookeeper::__construct()</a> - Create a handle to used communicate with zookeeper.</span></li>
+   <li class="member"><span class="methodname"><a href="zookeeper.connect.html" class="methodname" rel="rdfs-seeAlso">Zookeeper::connect()</a> - Create a handle to used communicate with zookeeper.</span></li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.setdebuglevel.html">Zookeeper::setDebugLevel</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></div>
+ <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

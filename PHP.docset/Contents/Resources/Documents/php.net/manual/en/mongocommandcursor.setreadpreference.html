@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Set the read preference for this command</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocommandcursor.rewind.html">MongoCommandCursor::rewind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocommandcursor.timeout.html">MongoCommandCursor::timeout</a></div>
+ <div class="up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mongocommandcursor.setreadpreference" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCommandCursor::setReadPreference</h1>
+  <p class="verinfo">(PECL mongo &gt;=1.6.0)</p><p class="refpurpose"><span class="refname">MongoCommandCursor::setReadPreference</span> &mdash; <span class="dc-title">Set the read preference for this command</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocommandcursor.setreadpreference-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.mongocommandcursor.html" class="type MongoCommandCursor">MongoCommandCursor</a></span> <span class="methodname"><strong>MongoCommandCursor::setReadPreference</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$read_preference</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$tags</code></span>
+  ] )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocommandcursor.setreadpreference-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+<dt>
+<code class="parameter">read_preference</code></dt>
+<dd>
+<p class="para">読み込みの優先モード。<strong><code>MongoClient::RP_PRIMARY</code></strong>、<strong><code>MongoClient::RP_PRIMARY_PREFERRED</code></strong>、<strong><code>MongoClient::RP_SECONDARY</code></strong>、<strong><code>MongoClient::RP_SECONDARY_PREFERRED</code></strong> あるいは <strong><code>MongoClient::RP_NEAREST</code></strong> のいずれか。</p></dd>
+<dt>
+<code class="parameter">tags</code></dt>
+<dd>
+<p class="para">ゼロ個以上のタグセットの配列。各タグセット自体も配列で、レプリカセットのメンバーのタグにマッチさせる条件として使います。</p></dd>
+</dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocommandcursor.setreadpreference-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   Returns this cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocommandcursor.setreadpreference-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">パラメータが無効な場合、あるいは優先読み込みモードが <strong><code>MongoClient::RP_PRIMARY</code></strong> のときにタグセットを指定した場合に <strong><code>E_WARNING</code></strong> が発生します。</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocommandcursor.setreadpreference-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-1617">
+   <p><strong>例1 <span class="methodname"><strong>MongoCommandCursor::setReadPreference()</strong></span> tag set array syntax example
+   </strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://rs1.example.com:27017'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'replicaSet'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'myReplSetName'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">selectCollection</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'people'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">aggregateCursor</span><span style="color: #007700">(&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$group'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'$name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'points'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$sum'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'$points'&nbsp;</span><span style="color: #007700">]&nbsp;]&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$sort'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'points'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">]&nbsp;],<br />]&nbsp;);<br /><br /></span><span style="color: #FF8000">//&nbsp;Prefer&nbsp;the&nbsp;nearest&nbsp;server&nbsp;in&nbsp;the&nbsp;"east"&nbsp;data&nbsp;center&nbsp;also&nbsp;used&nbsp;for&nbsp;reporting,<br />//&nbsp;but&nbsp;fall&nbsp;back&nbsp;to&nbsp;a&nbsp;server&nbsp;in&nbsp;the&nbsp;"west"&nbsp;data&nbsp;center<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_NEAREST</span><span style="color: #007700">,&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'dc'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'east'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'use'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'reporting'&nbsp;</span><span style="color: #007700">],<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'dc'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'west'&nbsp;</span><span style="color: #007700">],<br />]&nbsp;);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$person</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;If&nbsp;the&nbsp;read&nbsp;preference&nbsp;is&nbsp;changed,&nbsp;it&nbsp;will&nbsp;be&nbsp;used&nbsp;the&nbsp;next&nbsp;time&nbsp;the&nbsp;cursor<br />//&nbsp;is&nbsp;rewound&nbsp;and&nbsp;the&nbsp;command&nbsp;is&nbsp;re-executed.<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_PRIMARY</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$person</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocommandcursor.setreadpreference-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member">The <a href="mongo.readpreferences.html" class="link">read preferences</a> documentation.</li>
+   <li class="member"><span class="function"><a href="mongocommandcursor.getreadpreference.html" class="function" rel="rdfs-seeAlso">MongoCommandCursor::getReadPreference()</a> - Get the read preference for this command</span></li>
+   <li class="member"><span class="function"><a href="mongocursorinterface.setreadpreference.html" class="function" rel="rdfs-seeAlso">MongoCursorInterface::setReadPreference()</a> - Set the read preference for this query</span></li>
+  </ul>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocommandcursor.rewind.html">MongoCommandCursor::rewind</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocommandcursor.timeout.html">MongoCommandCursor::timeout</a></div>
+ <div class="up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール/設定</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="inotify.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="inotify.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="inotify.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="inotify.install" class="section">
+  <h2 class="title">インストール/設定</h2>
+  <p class="para">
+   この <a href="http://pecl.php.net/" class="link external" title="Link : http://pecl.php.net/">&raquo;&nbsp;PECL</a> 拡張
+モジュールは PHP にバンドルされていません。
+  </p>
+  <p class="para">
+   この PECL 拡張モジュールをインストールする方法は、
+マニュアルの <a href="install.pecl.html" class="link">
+PECL 拡張モジュールのインストール</a> という章にあります。
+新規リリース・ダウンロード・ソースファイル・管理者情報・CHANGELOG
+といった関連する情報については、次の場所にあります。
+   <a href="http://pecl.php.net/package/inotify" class="link external" title="Link : http://pecl.php.net/package/inotify">&raquo;&nbsp;http://pecl.php.net/package/inotify</a>.
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120677""></a>
+  <div class="note">
+   <strong class="user">Sam Wilson</strong>
+   <a href="#120677" class="date">21-Feb-2017 09:50</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On Ubuntu with PHP7, Pecl installs Inotify to /usr/lib/php/20151012/inotify.so and this isn't loaded by default. So it needs to be added, by creating /etc/php/7.0/mods-available/inotify.ini with the following contents: extension=inotify.so and then running sudo phpenmod inotify</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="inotify.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="inotify.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="inotify.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

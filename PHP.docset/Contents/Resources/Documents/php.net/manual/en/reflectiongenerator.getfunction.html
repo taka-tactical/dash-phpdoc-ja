@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Gets the function name of the generator</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reflectiongenerator.getexecutingline.html">ReflectionGenerator::getExecutingLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reflectiongenerator.getthis.html">ReflectionGenerator::getThis</a></div>
+ <div class="up"><a href="class.reflectiongenerator.html">ReflectionGenerator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="reflectiongenerator.getfunction" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionGenerator::getFunction</h1>
+  <p class="verinfo">(PHP 7)</p><p class="refpurpose"><span class="refname">ReflectionGenerator::getFunction</span> &mdash; <span class="dc-title">Gets the function name of the generator</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectiongenerator.getfunction-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type"><a href="class.reflectionfunctionabstract.html" class="type ReflectionFunctionAbstract">ReflectionFunctionAbstract</a></span> <span class="methodname"><strong>ReflectionGenerator::getFunction</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Enables the function name of the generator to be obtained by returning a
+   class derived from <a href="class.reflectionfunctionabstract.html" class="classname">ReflectionFunctionAbstract</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectiongenerator.getfunction-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectiongenerator.getfunction-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   Returns a <a href="class.reflectionfunctionabstract.html" class="classname">ReflectionFunctionAbstract</a> class. This will
+   be <a href="class.reflectionfunction.html" class="classname">ReflectionFunction</a> for functions, or
+   <a href="class.reflectionmethod.html" class="classname">ReflectionMethod</a> for methods.
+  </p>
+ </div>
+
+
+  <div class="refsect1 examples" id="refsect1-reflectiongenerator.getfunction-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-6142">
+    <p><strong>例1 <span class="methodname"><strong>ReflectionGenerator::getFunction()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$reflectionGen&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionGenerator</span><span style="color: #007700">(</span><span style="color: #0000BB">$gen</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$reflectionGen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFunction</span><span style="color: #007700">());</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(ReflectionFunction)#3 (1) {
+  [&quot;name&quot;]=&gt;
+  string(3) &quot;gen&quot;
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectiongenerator.getfunction-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="reflectiongenerator.getthis.html" class="methodname" rel="rdfs-seeAlso">ReflectionGenerator::getThis()</a> - Gets the $this value of the generator</span></li>
+    <li class="member"><span class="methodname"><a href="reflectiongenerator.gettrace.html" class="methodname" rel="rdfs-seeAlso">ReflectionGenerator::getTrace()</a> - Gets the trace of the executing generator</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reflectiongenerator.getexecutingline.html">ReflectionGenerator::getExecutingLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="reflectiongenerator.getthis.html">ReflectionGenerator::getThis</a></div>
+ <div class="up"><a href="class.reflectiongenerator.html">ReflectionGenerator</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

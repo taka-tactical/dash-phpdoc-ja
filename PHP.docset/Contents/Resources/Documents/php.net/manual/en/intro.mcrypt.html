@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>はじめに</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.mcrypt.html">Mcrypt</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mcrypt.setup.html">インストール/設定</a></div>
+ <div class="up"><a href="book.mcrypt.html">Mcrypt</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="intro.mcrypt" class="preface">
+  <h1 class="title">はじめに</h1>
+  <div class="warning"><strong class="warning">警告</strong>
+   <p class="simpara">
+    この拡張は、PHP 7.1.0 で非推奨となり、PHP 7.2.0 以降は PECL に移行されます。
+   </p>
+  </div>
+  <p class="para">
+   この関数は、CBC, OFB, CFB, ECB 暗号モードの DES, TripleDES, Blowfish
+   (デフォルト), 3-WAY, SAFER-SK64, SAFER-SK128, TWOFISH, TEA, RC2
+   , GOST のような広範なブロックアルゴリズムをサポートする mcrypt
+   ライブラリへのインターフェイスです。加えて、&quot;フリーではない&quot; とされている
+   RC6 および IDEA もサポートします。
+   CFB 及び OFB は既定では 8bit です。
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121504""></a>
+  <div class="note">
+   <strong class="user">enclaved</strong>
+   <a href="#121504" class="date">10-Aug-2017 11:36</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Avoiding mcrypt is only half of the advice. The other half: NEVER do crypto in PHP in the first place! It is a very sloppy and most likely insecure enterprise. If you think you need PHP-based crypto to do something, then be advised that this fact is an alarming signal that something about your application design is very wrong. PHP is neither the right tool nor the right environment for cryptography. Just remember this single rule of thumb: cryptographic secrets must never cross subsystem/layer boundaries:<br />
+<br />
+&nbsp;&nbsp;&nbsp; Database &lt;-- ! --&gt; CGI program &lt;-- ! --&gt; HTTP server<br />
+<br />
+Cryptographic tasks are performed either by the HTTP server (e.g. authentication of users with client SSL certificates) or the RDBMS (e.g. password-based access to data), and these tasks must be ENCAPSULATED inside the facility, self-contained. For example, if you store KDF-derived digests of passwords in an SQL database, you must NOT compare digests in PHP, but only in SQL queries or stored procedures. Once produced and put into the database, a password digest (or any other sensitive data) must not exit it in any way as-is, be it a SELECT query or some other way, that is considered a leak in the cryptosystem. Use ONLY database-provided means to perform any crypto operations.<br />
+<br />
+As PostgreSQL is the usual database of choice for technically advanced and sound WWW or intranet sites, my advice is to use its pgcrypto extension, it is mature, well-tested, and has all the right tools. Here's a textbook password handling example to illustrate how secrets can be confined within the database layer without extracting them into the PHP layer. Password digest derivation and storing:<br />
+<br />
+&nbsp;&nbsp;&nbsp; INSERT INTO account (digest) VALUES (crypt('password', gen_salt('bf'));<br />
+<br />
+Verification:<br />
+<br />
+&nbsp;&nbsp;&nbsp; SELECT digest = crypt('password', gen_salt(digest)) FROM account;<br />
+<br />
+Exceptionally simple, elegant, clean, and secure (Blowfish is more than enough for user-set passwords), isn't it? And the best part about it: no PHP involved in crypto!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121049""></a>
+  <div class="note">
+   <strong class="user">info at neutrosolutions dot com</strong>
+   <a href="#121049" class="date">05-May-2017 04:07</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On AWS Amazon Linux if you are using php 7.0.X version<br />
+then please use this command to install mcrypt library.<br />
+<br />
+[ec2-user@12.123.123.123 ~] sudo yum install php70-mcrypt</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117606""></a>
+  <div class="note">
+   <strong class="user">remi at php dot net</strong>
+   <a href="#117606" class="date">07-Jul-2015 04:18</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This extension rely in libmcrypt which is dead, unmaintained since 2007.<br />
+<br />
+Please don't rely on it, consider switching to well maintained alternatives (openssl, crypt, password hashing functions, phpseclib, password_compat...)</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117340""></a>
+  <div class="note">
+   <strong class="user">c dot light93 at gmail dot com</strong>
+   <a href="#117340" class="date">25-May-2015 05:04</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+if you get a "The mcrypt extension is missing" alert somewhere, use<br />
+"sudo php5enmod mcrypt" and restart your server to enable it.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="book.mcrypt.html">Mcrypt</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mcrypt.setup.html">インストール/設定</a></div>
+ <div class="up"><a href="book.mcrypt.html">Mcrypt</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

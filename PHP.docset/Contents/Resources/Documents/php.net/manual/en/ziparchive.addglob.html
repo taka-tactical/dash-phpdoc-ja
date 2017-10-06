@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>ディレクトリから、glob パターンを使ってファイルを追加する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ziparchive.addfromstring.html">ZipArchive::addFromString</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ziparchive.addpattern.html">ZipArchive::addPattern</a></div>
+ <div class="up"><a href="class.ziparchive.html">ZipArchive</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ziparchive.addglob" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZipArchive::addGlob</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PECL zip &gt;= 1.9.0)</p><p class="refpurpose"><span class="refname">ZipArchive::addGlob</span> &mdash; <span class="dc-title">ディレクトリから、glob パターンを使ってファイルを追加する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ziparchive.addglob-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>ZipArchive::addGlob</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = array()</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   ディレクトリから、glob <code class="parameter">pattern</code> にマッチするファイルを追加します。
+  </p>
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">ポータビリティを考慮して、ZIP ファイル名のディレクトリ区切り文字には常にスラッシュ (<em>/</em>) を使うことを推奨します。</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ziparchive.addglob-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">pattern</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <span class="function"><a href="function.glob.html" class="function">glob()</a></span> パターン。どのファイルを対象にするのかを指定します。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">flags</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <em>glob()</em> のフラグのビットマスク。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">options</code></dt>
+
+    <dd>
+
+     <p class="para">
+      オプションの連想配列。次のオプションが使えます。
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="para">
+         <em>&quot;add_path&quot;</em>
+        </p>
+        <p class="para">
+         アーカイブ内のファイルのローカルパスに変換するときにつけるプレフィックス。
+         これが適用されるのは、
+         <em>&quot;remove_path&quot;</em> や <em>&quot;remove_all_path&quot;</em>
+         で定義された削除処理がすべて終わった後です。
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <em>&quot;remove_path&quot;</em>
+        </p>
+        <p class="para">
+         マッチしたファイルをアーカイブに追加する前に削除するプレフィックス。
+        </p>
+       </li>
+       <li class="listitem">
+        <p class="para">
+         <em>&quot;remove_all_path&quot;</em>
+        </p>
+        <p class="para">
+         <strong><code>TRUE</code></strong> にすると、ファイル名だけを使ってアーカイブのルートに追加します。
+        </p>
+       </li>
+      </ul>
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ziparchive.addglob-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ziparchive.addglob-examples">
+  <h3 class="title">例</h3>
+  <div class="example" id="example-857">
+   <p><strong>例1 <span class="methodname"><strong>ZipArchive::addGlob()</strong></span> の例</strong></p>
+   <div class="example-contents"><p>
+     現在の作業ディレクトリにある、すべての PHP スクリプトとテキストファイルを追加します。
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$zip&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'application.zip'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ZipArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">OVERWRITE</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">'Failed&nbsp;with&nbsp;code&nbsp;%d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'add_path'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sources/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'remove_all_path'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addGlob</span><span style="color: #007700">(</span><span style="color: #DD0000">'*.{php,txt}'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">GLOB_BRACE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$zip</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-ziparchive.addglob-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="ziparchive.addfile.html" class="methodname" rel="rdfs-seeAlso">ZipArchive::addFile()</a> - 指定したパスからファイルを ZIP アーカイブに追加する</span></li>
+    <li class="member"><span class="methodname"><a href="ziparchive.addpattern.html" class="methodname" rel="rdfs-seeAlso">ZipArchive::addPattern()</a> - ディレクトリから、PCRE パターンを使ってファイルを追加する</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120538""></a>
+  <div class="note">
+   <strong class="user">Francesc Pineda Segarra</strong>
+   <a href="#120538" class="date">26-Jan-2017 10:50</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For me the better way seems to be:<br />
+<br />
+$options = array('add_path' =&gt; DIRECTORY_SEPARATOR, 'remove_all_path' =&gt; TRUE);<br />
+<br />
+On Windows uses \, on others /</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120318""></a>
+  <div class="note">
+   <strong class="user">sunbinzzzzz at gmail dot com</strong>
+   <a href="#120318" class="date">13-Dec-2016 04:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Yes!! neither 'remove_all_path' or 'remove_path'&nbsp; be working，if you want the right result，you should like this， $option = array( 'add_path' =&gt; '/', 'remove_all_path' =&gt; 'your path' );&nbsp;&nbsp; 'add_path' just give a '/'， then you will (; 。</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117045""></a>
+  <div class="note">
+   <strong class="user">sumariva at gmail dot com</strong>
+   <a href="#117045" class="date">07-Apr-2015 10:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As others suggested, to remove all paths, use the space as basepath.<br />
+Zip opened with builtin utility on a Windows XP and WinRAR.<br />
+<br />
+$options = array('add_path' =&gt; ' ','remove_all_path' =&gt; TRUE);<br />
+<br />
+Thanks for all contributers.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116717""></a>
+  <div class="note">
+   <strong class="user">johnsmith at na dot com</strong>
+   <a href="#116717" class="date">19-Feb-2015 12:36</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Neither 'remove_all_path' or 'remove_path' options seem to be workng</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116705""></a>
+  <div class="note">
+   <strong class="user">zckernel at gmail dot com</strong>
+   <a href="#116705" class="date">13-Feb-2015 09:52</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Doesn't work with the following options:<br />
+$options = array('remove_all_path' =&gt; TRUE);<br />
+$zipArchive-&gt;addGlob($path."/*", GLOB_BRACE, $options);<br />
+<br />
+The full path to file is adding to the archive.<br />
+<br />
+Works well if:<br />
+$options = array('add_path' =&gt; './','remove_all_path' =&gt; TRUE);</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ziparchive.addfromstring.html">ZipArchive::addFromString</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ziparchive.addpattern.html">ZipArchive::addPattern</a></div>
+ <div class="up"><a href="class.ziparchive.html">ZipArchive</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール手順</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ftp.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ftp.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="ftp.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ftp.installation" class="section">
+ <h2 class="title">インストール手順</h2>
+ <p class="para">
+  PHP で FTP 関数を使用するには、PHP をインストールする際に
+  <strong class="option configure">--enable-ftp</strong>
+
+  オプションを追加する必要があります。
+ </p>
+ <p class="para">
+  Windows 版の PHP 5 には、この拡張モジュールが標準で組み込まれています。
+  追加のモジュールを読み込まなくても、これらの関数を使えます。
+ </p>
+ <p class="para">
+  Windows 版の PHP 7.0.0 以降は、この拡張モジュールが共有モジュールとしてビルドされるようになりました。
+  これらの関数を使うには、<var class="filename">php.ini</var> でモジュールを有効にする必要があります。
+ </p>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121658""></a>
+  <div class="note">
+   <strong class="user">i_djon at hotmail dot com</strong>
+   <a href="#121658" class="date">20-Sep-2017 07:57</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For some reason folks downvoted the previous entry for this, BUT... indeed, as of PHP 7, to enable this on Windows you have to add the line:<br />
+<br />
+extension=php_ftp.dll<br />
+<br />
+to your php.ini to resolve PHP errors that tell you PHP FTP functions are not defined; the line isn't in there (where, many things are and are just commented out).</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121150""></a>
+  <div class="note">
+   <strong class="user">jacob at power9 dot pw</strong>
+   <a href="#121150" class="date">29-May-2017 01:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On linux, one would enable ftp on their php7 server by uncommenting or adding the line "extension=ftp.so" in their php.ini file (likely at /etc/php/php.ini, unless the user moved it).</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119024""></a>
+  <div class="note">
+   <strong class="user">julian_de_vries at gmx dot de</strong>
+   <a href="#119024" class="date">18-Mar-2016 06:20</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you are using PHP 7 under Windows you have to enable ftp in php.ini with extension=php_ftp.dll.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ftp.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ftp.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="ftp.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

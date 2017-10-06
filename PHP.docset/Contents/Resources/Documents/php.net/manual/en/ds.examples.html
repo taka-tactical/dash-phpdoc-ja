@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>例</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ds.constants.html">定義済み定数</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.ds-collection.html">Collection</a></div>
+ <div class="up"><a href="book.ds.html">Data Structures</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ds.examples" class="chapter">
+ <h1>例</h1>
+
+ <div class="example" id="example-5732">
+  <p><strong>例1 Vector</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$vector&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Vector</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$vector</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$vector</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$vector</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$vector</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+Ds\Vector Object
+(
+    [0] =&gt; a
+    [1] =&gt; b
+    [2] =&gt; c
+    [3] =&gt; d
+)
+</pre></div>
+  </div>
+ </div>
+ <div class="example" id="example-5733">
+  <p><strong>例2 Map</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$map&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Map</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$map</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$map</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #DD0000">'c'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$map</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+Ds\Map Object
+(
+    [0] =&gt; Ds\Pair Object
+        (
+            [key] =&gt; a
+            [value] =&gt; 1
+        )
+
+    [1] =&gt; Ds\Pair Object
+        (
+            [key] =&gt; b
+            [value] =&gt; 2
+        )
+
+    [2] =&gt; Ds\Pair Object
+        (
+            [key] =&gt; c
+            [value] =&gt; 3
+        )
+
+)
+</pre></div>
+  </div>
+ </div>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ds.constants.html">定義済み定数</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.ds-collection.html">Collection</a></div>
+ <div class="up"><a href="book.ds.html">Data Structures</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

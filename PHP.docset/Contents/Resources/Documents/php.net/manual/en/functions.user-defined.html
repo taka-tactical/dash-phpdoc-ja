@@ -1,0 +1,583 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>ユーザー定義関数</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.functions.html">関数</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="functions.arguments.html">関数の引数</a></div>
+ <div class="up"><a href="language.functions.html">関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="functions.user-defined" class="sect1">
+   <h2 class="title">ユーザー定義関数</h2>
+ 
+   <p class="para">
+    関数は次のような構文で定義されます。
+   </p>
+   <p class="para">
+    <div class="example" id="example-132">
+     <p><strong>例1 関数の使用法を説明するための擬似コード</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg_1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg_2</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">/*&nbsp;...,&nbsp;*/&nbsp;</span><span style="color: #0000BB">$arg_n</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"関数の例\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$retval</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+     
+   <p class="simpara">
+    関数の中では、他の関数や <a href="language.oop5.basic.html#language.oop5.basic.class" class="link">クラス</a>
+    定義を含む PHP のあらゆる有効なコードを使用することができます。
+   </p>
+   <p class="para">
+    関数名は、PHP の他のラベルと同じ規則に従います。関数名として有効な
+    形式は、まず文字かアンダースコアで始まり、その後に任意の数の文字・
+    数字・あるいはアンダースコアが続くものです。正規表現で表すと、
+    <em>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*</em>
+    となります。
+   </p>
+   <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">
+<a href="userlandnaming.html" class="xref">ユーザーレベルでの命名の手引き</a> も参照ください。</p></div>
+   <p class="simpara">
+    PHP では、関数は参照される前に定義されている必要はありません。
+    ただし以下の二つの例のように、条件付きで関数が
+    定義されるような場合を<em class="emphasis">除きます</em>。
+   </p>
+   <p class="para">
+    次の二つの例のように、ある条件下でのみ関数が定義される場合には、
+    その関数定義は関数がコールされる<em class="emphasis">前に</em>
+    行われていなければなりません。
+   </p>
+   <p class="para">
+    <div class="example" id="example-133">
+     <p><strong>例2 条件つきの関数</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$makefoo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;ここでは関数foo()はまだ定義されていないので<br />&nbsp;&nbsp;&nbsp;コールすることはできません。<br />&nbsp;&nbsp;&nbsp;しかし関数&nbsp;bar()はコールできます。&nbsp;*/<br /><br /></span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$makefoo</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"I&nbsp;don't&nbsp;exist&nbsp;until&nbsp;program&nbsp;execution&nbsp;reaches&nbsp;me.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;ここでは&nbsp;$makefooがtrueと評価されているため&nbsp;<br />&nbsp;&nbsp;&nbsp;安全にfoo()をコールすることができます。&nbsp;*/<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$makefoo</span><span style="color: #007700">)&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br />function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()&nbsp;<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"I&nbsp;exist&nbsp;immediately&nbsp;upon&nbsp;program&nbsp;start.\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    <div class="example" id="example-134">
+     <p><strong>例3 関数の中の関数</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;<br />{<br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()&nbsp;<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"I&nbsp;don't&nbsp;exist&nbsp;until&nbsp;foo()&nbsp;is&nbsp;called.\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;ここでは関数bar()はまだ定義されていないので<br />&nbsp;&nbsp;&nbsp;コールすることはできません。&nbsp;*/<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;foo()の実行によって&nbsp;bar()が<br />&nbsp;&nbsp;&nbsp;定義されるためここではbar()を<br />&nbsp;&nbsp;&nbsp;コールすることができます。*/<br /><br /></span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    PHP では、関数やクラスはすべてグローバルスコープにあります -
+    関数の内部で定義したものであっても関数の外部からコールできますし、
+    その逆も可能です。
+   </p>
+   <p class="simpara">
+    PHP は関数のオーバーロードをサポートしていません。
+    また、宣言された関数の定義を取り消したり再定義することも
+    できません。
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     関数名は大文字小文字を区別しませんが、通常は
+     関数宣言時と同じ名前で関数をコールする方が好ましいです。
+    </span>
+   </p></blockquote>   
+   <p class="simpara">
+    <a href="functions.arguments.html#functions.variable-arg-list" class="link">可変引数</a>
+    および <a href="functions.arguments.html#functions.arguments.default" class="link">デフォルト引数</a>
+    の機能をサポートしています。
+    <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span>,
+    <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, 
+    <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> に関する関数リファレンスを
+    参照ください。
+   </p>
+   
+   <p class="para">
+    PHP では、関数を再帰的にコールすることが可能です。
+    <div class="example" id="example-135">
+     <p><strong>例4 再帰的な関数</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">recursion</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">recursion</span><span style="color: #007700">(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <span class="simpara">
+     100 から 200 を超えるようなレベルの再帰呼び出しは避けてください。そんなことをすると、
+     スタックが破壊され、スクリプトが異常終了してしまいます。
+     無限に続くような再帰処理は、プログラミングの間違いでしょう。
+    </span>
+   </p></blockquote>
+   </p>
+
+  </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="119094""></a>
+  <div class="note">
+   <strong class="user">ayyappan dot ashok at gmail dot com</strong>
+   <a href="#119094" class="date">31-Mar-2016 10:00</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Type Checking in PHP 7 <br />
+<br />
+case A: //Using return<br />
+-------------------------<br />
+function welcome($name):string <br />
+{<br />
+&nbsp;&nbsp; return $name;<br />
+}<br />
+echo welcome(100); <br />
+<br />
+Results :&nbsp; 100<br />
+<br />
+case B: //Using echo<br />
+-------------------------<br />
+function welcome($name):string <br />
+{<br />
+&nbsp;&nbsp;&nbsp; echo $name;<br />
+}<br />
+welcome("100");<br />
+<br />
+Results : Fatal error&lt;/b&gt;:&nbsp; Uncaught TypeError<br />
+<br />
+function welcome(string $name) <br />
+{<br />
+&nbsp;&nbsp;&nbsp; echo $name;<br />
+}<br />
+welcome(100);<br />
+<br />
+Results :&nbsp; 100<br />
+<br />
+case C: // Using strict_types<br />
+--------------------------------<br />
+declare(strict_types=1);<br />
+<br />
+function welcome($name):string <br />
+{<br />
+&nbsp;&nbsp;&nbsp; return $name;<br />
+}<br />
+echo welcome(90.99);<br />
+<br />
+Results : Fatal error&lt;/b&gt;:&nbsp; Uncaught TypeError<br />
+<br />
+case D: // Using strict_types<br />
+--------------------------------<br />
+//declare(strict_types=1);&nbsp;&nbsp; On comment to strict_types<br />
+<br />
+function welcome($name):string <br />
+{<br />
+&nbsp;&nbsp;&nbsp; return $name;<br />
+}<br />
+echo welcome(90.99);<br />
+<br />
+Results :&nbsp; 90.99<br />
+<br />
+Note: <br />
+Behaviour of echo and return on welcome function show in different reflection. Representation of function type checking can be in either type as follows<br />
+<br />
+function welcome(string $name){ }<br />
+or<br />
+function welcome($name):string{ }<br />
+<br />
+Executed on PHP Version : 7.0.3</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119090""></a>
+  <div class="note">
+   <strong class="user">ayyappan dot ashok at gmail dot com</strong>
+   <a href="#119090" class="date">31-Mar-2016 03:45</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+//Calling function with in a function or inner function<br />
+<br />
+function add($a,$b){<br />
+&nbsp;&nbsp;&nbsp; return $a+$b;<br />
+}<br />
+<br />
+function sub($a,$b){<br />
+&nbsp;&nbsp;&nbsp; return $a-$b;<br />
+}<br />
+<br />
+function math($first, $second) {<br />
+&nbsp;&nbsp;&nbsp; $res =&nbsp; add($first, $second)/sub($first, $second);<br />
+&nbsp;&nbsp;&nbsp; return (int)$res;<br />
+}<br />
+echo math(200,100);&nbsp; //Results&nbsp; 3</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119089""></a>
+  <div class="note">
+   <strong class="user">ayyappan dot ashok at gmail dot com</strong>
+   <a href="#119089" class="date">31-Mar-2016 03:22</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For a good note, we can pass function as argument to function.<br />
+<br />
+Take a look at the code. Passing function as argument can be achieved by Closure class ( A class to represent anonymous function).<br />
+<br />
+function math(Closure $type, $first, $second) {<br />
+&nbsp;&nbsp;&nbsp; // Execute the closure with parameters<br />
+&nbsp;&nbsp;&nbsp; return $type($first, $second);<br />
+}<br />
+<br />
+// Create an addition closure.<br />
+$addition = function ($first, $second) {<br />
+&nbsp;&nbsp;&nbsp; // Add the values.<br />
+&nbsp;&nbsp;&nbsp; return $first + $second;<br />
+};<br />
+<br />
+// Create an subtraction closure.<br />
+$subtraction = function ($first, $second) {<br />
+&nbsp;&nbsp;&nbsp; // Subtract the values.<br />
+&nbsp;&nbsp;&nbsp; return $first - $second;<br />
+};<br />
+<br />
+// Execute math function.<br />
+Note :anonymous&nbsp; function is passed as an argument to function math.<br />
+echo math($addition, 2, 2); <br />
+echo PHP_EOL; // New line!<br />
+echo math($subtraction, 5, 3);<br />
+<br />
+Courtesy : PHP Panda. Inspired from PHP panda.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119088""></a>
+  <div class="note">
+   <strong class="user">ayyappan dot ashok at gmail dot com</strong>
+   <a href="#119088" class="date">31-Mar-2016 02:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As posted by ohcc at 163 dot com<br />
+<br />
+&nbsp;&nbsp;&nbsp; function wxc ($var) : string <br />
+&nbsp;&nbsp;&nbsp; {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; return $var;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;<br />
+&nbsp; this function must return a string, if it return something else when&nbsp; <br />
+&nbsp; called, a "Fatal error: Uncaught TypeError" error will be triggered.<br />
+<br />
+&nbsp; But when executed by passing various datatypes, it doesn't throw error&nbsp;&nbsp; <br />
+&nbsp; other than array and object.<br />
+<br />
+&nbsp; Please look over the code<br />
+<br />
+&nbsp; function abc($var) :string { return $var;}<br />
+&nbsp; echo abc(true);&nbsp; &nbsp; // Results 1<br />
+&nbsp; <br />
+&nbsp; function abc($var) :string { return $var;}<br />
+&nbsp; echo abc(88.99);&nbsp; // Results 88.99 <br />
+<br />
+&nbsp; function abc($var) :string { return $var;}<br />
+&nbsp; echo abc(array());<br />
+&nbsp; <br />
+&nbsp; //Results <br />
+&nbsp; Fatal error : Uncaught TypeError: Return value of abc() must be of the&nbsp;&nbsp; <br />
+&nbsp; type string<br />
+<br />
+&nbsp; Note :<br />
+&nbsp; Even though function is forced to return only string, it still considers the&nbsp;&nbsp; <br />
+&nbsp; other datatype arguments as string.<br />
+&nbsp; <br />
+&nbsp; echo gettype(abc(99.88));&nbsp; // Returns string.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118566""></a>
+  <div class="note">
+   <strong class="user">info at namasteui dot com</strong>
+   <a href="#118566" class="date">30-Dec-2015 03:23</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Functions that are written by the user are User defined functions.<br />
+<br />
+function function name [(argument1, argument 2, ...argument n)] <br />
+{any PHP code }<br />
+<br />
+For example,<br />
+<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">function </span><span class="default">hello</span><span class="keyword">()<br />
+{<br />
+print(</span><span class="string">"Hello!"</span><span class="keyword">);<br />
+}<br />
+</span><span class="default">hello</span><span class="keyword">();<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+Using the function hello() anywhere in the PHP code will display the word "Hello".</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118365""></a>
+  <div class="note">
+   <strong class="user">Muneeb Aslam</strong>
+   <a href="#118365" class="date">24-Nov-2015 12:09</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+following is a function that can be used to convert numeric date to alphabetic date, e-g from 2015-11-16 to 16 Nov, 2015.<br />
+<br />
+1. Function takes 3 parameters, numeric date, locale and length of month<br />
+2. Function currently supports EN and ES month names.<br />
+3. Function can be calles as <span class="default">&lt;?php convertDate</span><span class="keyword">(</span><span class="string">"2015-11-16"</span><span class="keyword">,</span><span class="string">"en"</span><span class="keyword">,</span><span class="string">"full"</span><span class="keyword">); </span><span class="default">?&gt;<br />
+</span><br />
+<span class="default">&lt;?php<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">function </span><span class="default">convertDate</span><span class="keyword">(</span><span class="default">$date</span><span class="keyword">,</span><span class="default">$locale</span><span class="keyword">,</span><span class="default">$length</span><span class="keyword">){<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$monthNames </span><span class="keyword">= array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"en" </span><span class="keyword">=&gt; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"full" </span><span class="keyword">=&gt; array(</span><span class="default">1</span><span class="keyword">=&gt;</span><span class="string">'January'</span><span class="keyword">,</span><span class="string">'February'</span><span class="keyword">,</span><span class="string">'March'</span><span class="keyword">,</span><span class="string">'April'</span><span class="keyword">,</span><span class="string">'May'</span><span class="keyword">,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'June'</span><span class="keyword">,</span><span class="string">'July'</span><span class="keyword">,</span><span class="string">'August'</span><span class="keyword">,</span><span class="string">'September'</span><span class="keyword">,</span><span class="string">'October'</span><span class="keyword">,</span><span class="string">'November'</span><span class="keyword">,</span><span class="string">'December'</span><span class="keyword">),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"short" </span><span class="keyword">=&gt; array(</span><span class="default">1</span><span class="keyword">=&gt;</span><span class="string">'Jan'</span><span class="keyword">,</span><span class="string">'Feb'</span><span class="keyword">,</span><span class="string">'Mar'</span><span class="keyword">,</span><span class="string">'Apr'</span><span class="keyword">,</span><span class="string">'May'</span><span class="keyword">,</span><span class="string">'Jun'</span><span class="keyword">,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'Jul'</span><span class="keyword">,</span><span class="string">'Aug'</span><span class="keyword">,</span><span class="string">'Sep'</span><span class="keyword">,</span><span class="string">'Oct'</span><span class="keyword">,</span><span class="string">'Nov'</span><span class="keyword">,</span><span class="string">'Dec'</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; ),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"es" </span><span class="keyword">=&gt; array(<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"full" </span><span class="keyword">=&gt; array(</span><span class="default">1</span><span class="keyword">=&gt;</span><span class="string">'Enero'</span><span class="keyword">,</span><span class="string">'Febrero'</span><span class="keyword">,</span><span class="string">'Marzo'</span><span class="keyword">,</span><span class="string">'Abril'</span><span class="keyword">,</span><span class="string">'Mayo'</span><span class="keyword">,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'Junio'</span><span class="keyword">,</span><span class="string">'Julio'</span><span class="keyword">,</span><span class="string">'Agosto'</span><span class="keyword">,</span><span class="string">'Septiembre'</span><span class="keyword">,</span><span class="string">'Octubre'</span><span class="keyword">,</span><span class="string">'Noviembre'</span><span class="keyword">,</span><span class="string">'Deciembre'</span><span class="keyword">),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">"short" </span><span class="keyword">=&gt; array(</span><span class="default">1</span><span class="keyword">=&gt;</span><span class="string">'Ene'</span><span class="keyword">,</span><span class="string">'Feb'</span><span class="keyword">,</span><span class="string">'Mar'</span><span class="keyword">,</span><span class="string">'Abr'</span><span class="keyword">,</span><span class="string">'May'</span><span class="keyword">,</span><span class="string">'Jun'</span><span class="keyword">,<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="string">'Jul'</span><span class="keyword">,</span><span class="string">'Ago'</span><span class="keyword">,</span><span class="string">'Sep'</span><span class="keyword">,</span><span class="string">'Oct'</span><span class="keyword">,</span><span class="string">'Nov'</span><span class="keyword">,</span><span class="string">'Dec'</span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; ),<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; );<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$exploded </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">"-"</span><span class="keyword">,</span><span class="default">$date</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$year </span><span class="keyword">= </span><span class="default">$exploded</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$month </span><span class="keyword">= </span><span class="default">$exploded</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$day </span><span class="keyword">= </span><span class="default">$exploded</span><span class="keyword">[</span><span class="default">2</span><span class="keyword">];<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$month </span><span class="keyword">= </span><span class="default">$monthNames</span><span class="keyword">[</span><span class="default">$locale</span><span class="keyword">][</span><span class="default">$length</span><span class="keyword">][</span><span class="default">$month</span><span class="keyword">];<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$date </span><span class="keyword">= </span><span class="default">$day </span><span class="keyword">. </span><span class="string">" " </span><span class="keyword">. </span><span class="default">$month </span><span class="keyword">. </span><span class="string">", " </span><span class="keyword">. </span><span class="default">$year</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">$date</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118279""></a>
+  <div class="note">
+   <strong class="user">ohcc at 163 dot com</strong>
+   <a href="#118279" class="date">08-Nov-2015 12:52</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+As of PHP 7.0, you can restrain type of return value of user defined functions.<br />
+<br />
+Syntax is : function FunctionName ($arg1, $arg2, ...)&nbsp; : TYPE { ... }<br />
+<br />
+TYPE is a string representing the type of return value, TYPE can be a class name or a php variable type, such as array/string/bool/int/float. <br />
+<br />
+When TYPE is one of the following value, it also stands for a classname<br />
+<br />
+str/boolean/integer/real/double/resource/object/scalar<br />
+<br />
+However,in my opion, boolean/bool, integer/int ... should have the same meaning, but at least in PHP7, they stand for different meanings respectively. This may be fixed in later versions of PHP.<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">function </span><span class="default">wxc </span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">) : </span><span class="default">string </span><span class="keyword">{<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; return </span><span class="default">$var</span><span class="keyword">;<br />
+&nbsp;&nbsp;&nbsp; }<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+this function must return a string, if it return something else when called, a "Fatal error: Uncaught TypeError" error will be triggered.<br />
+<br />
+code above is supported only in PHP 7+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116892""></a>
+  <div class="note">
+   <strong class="user">N Atanackovic</strong>
+   <a href="#116892" class="date">17-Mar-2015 02:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+You can also call function from itself.&nbsp; For example, I want to reach the deepest value in multidimensional array and I call function from inside the very same function. In this example function behave as some meta-loop.<br />
+&nbsp;&nbsp;&nbsp; <br />
+<span class="default">&lt;?php <br />
+<br />
+$arr1</span><span class="keyword">=array(</span><span class="string">'a'</span><span class="keyword">=&gt;array(</span><span class="string">'e'</span><span class="keyword">=&gt;array(</span><span class="string">'f'</span><span class="keyword">=&gt;array(</span><span class="string">'g'</span><span class="keyword">=&gt;</span><span class="string">'h'</span><span class="keyword">, </span><span class="string">'n' </span><span class="keyword">)),</span><span class="string">'b'</span><span class="keyword">,</span><span class="string">'c'</span><span class="keyword">));<br />
+</span><span class="default">$arr2</span><span class="keyword">=array(</span><span class="string">'a'</span><span class="keyword">=&gt;array(</span><span class="string">'e'</span><span class="keyword">=&gt;array(</span><span class="string">'f'</span><span class="keyword">=&gt;array(</span><span class="string">'g'</span><span class="keyword">=&gt;array(</span><span class="string">'l'</span><span class="keyword">=&gt;array(</span><span class="string">'m'</span><span class="keyword">=&gt;</span><span class="string">'w'</span><span class="keyword">,</span><span class="string">'q'</span><span class="keyword">)), </span><span class="string">'n' </span><span class="keyword">)),</span><span class="string">'b'</span><span class="keyword">,</span><span class="string">'c'</span><span class="keyword">));<br />
+<br />
+function </span><span class="default">Deep</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">){<br />
+&nbsp;&nbsp;&nbsp; foreach(</span><span class="default">$array </span><span class="keyword">as </span><span class="default">$key</span><span class="keyword">){<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; if(</span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">)){<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">Deep</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">);</span><span class="comment">//calling the function inside the function<br />
+</span><span class="keyword">}else {<br />
+echo </span><span class="default">$key</span><span class="keyword">;<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}<br />
+<br />
+echo </span><span class="default">Deep</span><span class="keyword">(</span><span class="default">$arr1</span><span class="keyword">); </span><span class="comment">//outputs: hn<br />
+</span><span class="keyword">echo </span><span class="default">Deep</span><span class="keyword">(</span><span class="default">$arr2</span><span class="keyword">); </span><span class="comment">//outputs: wq<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115737""></a>
+  <div class="note">
+   <strong class="user">php at xenhideout dot nl</strong>
+   <a href="#115737" class="date">16-Sep-2014 02:59</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Please be advised that the code block defining the function, within the function_exists() call, has to be executed for the function to get defined, whereas this is not the case for regular, unenclosed functions.<br />
+<br />
+Meaning, if you write code like this:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+do_function</span><span class="keyword">();<br />
+<br />
+if (!</span><span class="default">function_exists</span><span class="keyword">(</span><span class="string">'my_undefined'</span><span class="keyword">)) {<br />
+&nbsp;&nbsp;&nbsp; function </span><span class="default">my_undefined</span><span class="keyword">() {<br />
+&nbsp;&nbsp;&nbsp; }<br />
+}<br />
+<br />
+function </span><span class="default">do_function</span><span class="keyword">() {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">my_undefined</span><span class="keyword">();<br />
+}<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+..Then my_undefined will not be defined before the code in do_function calls it. Some people put their function sections below the regular executing code of the script. Making any of it 'pluggable' can then cause problems.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="114906""></a>
+  <div class="note">
+   <strong class="user">aydinantmen [at] hotmail [dot] com</strong>
+   <a href="#114906" class="date">24-Apr-2014 02:17</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I want to use multidimentional arrays in a callback function what accepts second parameter.<br />
+<br />
+Solution:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$arr1 </span><span class="keyword">= array(</span><span class="string">"a" </span><span class="keyword">=&gt; </span><span class="string">"b"</span><span class="keyword">, </span><span class="string">"c"</span><span class="keyword">, </span><span class="string">"d's"</span><span class="keyword">, </span><span class="string">"e" </span><span class="keyword">=&gt; array(</span><span class="string">"f's"</span><span class="keyword">, </span><span class="string">"g" </span><span class="keyword">=&gt; array(</span><span class="string">"h's"</span><span class="keyword">, </span><span class="string">"i" </span><span class="keyword">=&gt; </span><span class="string">"j's"</span><span class="keyword">)));<br />
+</span><span class="default">$arr2 </span><span class="keyword">= </span><span class="default">mdarr_parameter</span><span class="keyword">(</span><span class="default">$arr1</span><span class="keyword">);<br />
+</span><span class="default">$arr3 </span><span class="keyword">= </span><span class="default">mdarr_parameter</span><span class="keyword">(</span><span class="default">$arr2</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">);<br />
+<br />
+function </span><span class="default">mdarr_parameter</span><span class="keyword">(</span><span class="default">$needle</span><span class="keyword">, </span><span class="default">$job</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; if (</span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$needle</span><span class="keyword">)) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; foreach(</span><span class="default">$needle </span><span class="keyword">as </span><span class="default">$name </span><span class="keyword">=&gt; </span><span class="default">$value</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$needle</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">] = </span><span class="default">mdarr_parameter</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">, </span><span class="default">$job</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// Now you do anything you want...<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="keyword">if (</span><span class="default">$job </span><span class="keyword">=== </span><span class="default">true</span><span class="keyword">) {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$needle </span><span class="keyword">= </span><span class="default">stripslashes</span><span class="keyword">(</span><span class="default">$needle</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; } else {<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$needle </span><span class="keyword">= </span><span class="default">addslashes</span><span class="keyword">(</span><span class="default">$needle</span><span class="keyword">);<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; return </span><span class="default">$needle</span><span class="keyword">;<br />
+}<br />
+<br />
+</span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$arr2</span><span class="keyword">);<br />
+</span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$arr3</span><span class="keyword">);<br />
+<br />
+</span><span class="comment">/**<br />
+&nbsp;Outputs:<br />
+<br />
+Array<br />
+(<br />
+&nbsp;&nbsp;&nbsp; [a] =&gt; b<br />
+&nbsp;&nbsp;&nbsp; [0] =&gt; c<br />
+&nbsp;&nbsp;&nbsp; [1] =&gt; d\'s<br />
+&nbsp;&nbsp;&nbsp; [e] =&gt; Array<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [0] =&gt; f\'s<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [g] =&gt; Array<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [0] =&gt; h\'s<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [i] =&gt; j\'s<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; )<br />
+<br />
+)<br />
+Array<br />
+(<br />
+&nbsp;&nbsp;&nbsp; [a] =&gt; b<br />
+&nbsp;&nbsp;&nbsp; [0] =&gt; c<br />
+&nbsp;&nbsp;&nbsp; [1] =&gt; d's<br />
+&nbsp;&nbsp;&nbsp; [e] =&gt; Array<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [0] =&gt; f's<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [g] =&gt; Array<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; (<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [0] =&gt; h's<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [i] =&gt; j's<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; )<br />
+<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; )<br />
+<br />
+)<br />
+**/<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="language.functions.html">関数</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="functions.arguments.html">関数の引数</a></div>
+ <div class="up"><a href="language.functions.html">関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

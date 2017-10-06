@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>cURL マルチハンドル用のオプションを設定する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.curl-multi-select.html">curl_multi_select</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.curl-multi-strerror.html">curl_multi_strerror</a></div>
+ <div class="up"><a href="ref.curl.html">cURL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.curl-multi-setopt" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_multi_setopt</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.5.0, PHP 7)</p><p class="refpurpose"><span class="refname">curl_multi_setopt</span> &mdash; <span class="dc-title">cURL マルチハンドル用のオプションを設定する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-multi-setopt-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>curl_multi_setopt</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$mh</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   , <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+
+  </p>
+
+  <div class="warning"><strong class="warning">警告</strong><p class="simpara">この関数は、
+現在のところ詳細な情報はありません。引数のリストのみが
+記述されています。</p></div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-multi-setopt-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">mh</code></dt>
+
+    <dd>
+
+     <p class="para">
+      
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">option</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <strong><code>CURLMOPT_*</code></strong> 定数のいずれか。
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">value</code></dt>
+
+    <dd>
+
+      <p class="para">
+       <code class="parameter">option</code> に設定する値。
+      </p>
+      <p class="para">
+       <code class="parameter">value</code> には <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> 型の値を指定しなければいけません。
+       <code class="parameter">option</code> パラメータの値によって、それぞれ次のようになります。
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>オプション</th>
+           <th><code class="parameter">value</code> の設定値</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_PIPELINING</code></strong></td>
+           <td style="vertical-align: top;">
+            1 を渡せば有効に、そして 0 を渡せば無効になります。
+            マルチハンドルでのパイプライン化を有効にすると、このハンドルによる転送で、
+            可能な限り HTTP パイプライン化を試みます。
+            つまり、二番目のリクエストを追加したときに既存の接続が使える場合は、
+            既存の接続に「パイプ」でつなぎます。
+            cURL 7.43.0 以降では、2 を渡すと、既存の HTTP/2 接続上での新しい転送で、
+            可能な限り多重化を試みます。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_MAXCONNECTS</code></strong></td>
+           <td style="vertical-align: top;">
+            同時に開く接続の最大数を指定します。これを libcurl がキャッシュします。
+            デフォルトのサイズは、
+            <span class="function"><a href="function.curl-multi-add-handle.html" class="function">curl_multi_add_handle()</a></span> で追加したハンドル数の四倍に収まるように拡大されます。
+            キャッシュがいっぱいになると、キャッシュ内で一番古い接続を閉じ、
+            開いている接続の数が増えないようにします。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE</code></strong></td>
+           <td style="vertical-align: top;">
+            パイプライン化のチャンク長の閾値をバイト単位で指定します。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE</code></strong></td>
+           <td style="vertical-align: top;">
+            パイプライン化のペナルティの閾値をバイト単位で指定します。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_MAX_HOST_CONNECTIONS</code></strong></td>
+           <td style="vertical-align: top;">
+            単一のホストへの最大接続数を指定します。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_MAX_PIPELINE_LENGTH</code></strong></td>
+           <td style="vertical-align: top;">
+            単一のパイプライン内での最大リクエスト数を指定します。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_MAX_TOTAL_CONNECTIONS</code></strong></td>
+           <td style="vertical-align: top;">
+            同時にオープンする接続の最大数を指定します。
+           </td>
+          </tr>
+
+          <tr>
+           <td style="vertical-align: top;"><strong><code>CURLMOPT_PUSHFUNCTION</code></strong></td>
+           <td style="vertical-align: top;">
+            Pass a <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> that will be registered to handle server
+            pushes and should have the following signature:
+            <div class="methodsynopsis dc-description">
+             <span class="type">int</span> <span class="methodname"><span class="replaceable">pushfunction</span></span>
+              ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$parent_ch</code></span>
+             , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$pushed_ch</code></span>
+             , <span class="methodparam"><span class="type">array</span> <code class="parameter">$headers</code></span>
+             )</div>
+
+            <dl>
+
+             
+              <dt>
+<code class="parameter">parent_ch</code></dt>
+
+              <dd>
+
+               <p class="para">
+                The parent cURL handle (the request the client made).
+               </p>
+              </dd>
+
+             
+             
+              <dt>
+<code class="parameter">pushed_ch</code></dt>
+
+              <dd>
+
+               <p class="para">
+                A new cURL handle for the pushed request.
+               </p>
+              </dd>
+
+             
+             
+              <dt>
+<code class="parameter">headers</code></dt>
+
+              <dd>
+
+               <p class="para">
+                The push promise headers.
+               </p>
+              </dd>
+
+             
+            </dl>
+
+            The push function is supposed to return either
+            <strong><code>CURL_PUSH_OK</code></strong> if it can handle the push, or
+            <strong><code>CURL_PUSH_DENY</code></strong> to reject it.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-multi-setopt-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を、失敗した場合に <strong><code>FALSE</code></strong> を返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.curl-multi-setopt-changelog">
+  <h3 class="title">変更履歴</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>バージョン</th>
+       <th>説明</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        <strong><code>CURLMOPT_PUSHFUNCTION</code></strong> が追加されました。
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.0.7</td>
+       <td>
+        <strong><code>CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE</code></strong>、
+        <strong><code>CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE</code></strong>、
+        <strong><code>CURLMOPT_MAX_HOST_CONNECTIONS</code></strong>、
+        <strong><code>CURLMOPT_MAX_PIPELINE_LENGTH</code></strong>、
+        <strong><code>CURLMOPT_MAX_TOTAL_CONNECTIONS</code></strong>
+        が追加されました。
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="118931""></a>
+  <div class="note">
+   <strong class="user">ryosuke_i_628 at yahoo dot co dot jp</strong>
+   <a href="#118931" class="date">01-Mar-2016 07:30</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you want to enable both HTTP/1.1 pipelining and HTTP/2 multiplexing...<br />
+<br />
+<span class="default">&lt;?php<br />
+curl_multi_setopt</span><span class="keyword">(</span><span class="default">$mh</span><span class="keyword">, </span><span class="default">CURLMOPT_PIPELINING</span><span class="keyword">, </span><span class="default">3</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+or<br />
+<br />
+<span class="default">&lt;?php<br />
+curl_multi_setopt</span><span class="keyword">(</span><span class="default">$mh</span><span class="keyword">, </span><span class="default">CURLMOPT_PIPELINING</span><span class="keyword">, </span><span class="default">CURLPIPE_HTTP1 </span><span class="keyword">| </span><span class="default">CURLPIPE_MULTIPLEX</span><span class="keyword">);<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.curl-multi-select.html">curl_multi_select</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.curl-multi-strerror.html">curl_multi_strerror</a></div>
+ <div class="up"><a href="ref.curl.html">cURL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

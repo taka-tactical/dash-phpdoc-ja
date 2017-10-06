@@ -1,0 +1,526 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>文字列を PHP コードとして評価する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.die.html">die</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.exit.html">exit</a></div>
+ <div class="up"><a href="ref.misc.html">その他の関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.eval" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">eval</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">eval</span> &mdash; <span class="dc-title">文字列を PHP コードとして評価する</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.eval-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <span class="methodname"><strong>eval</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$code</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   指定した <code class="parameter">code</code>
+   を PHP コードとして評価します。
+  </p>
+  <div class="caution"><strong class="caution">警告</strong>
+   <p class="para">
+    <span class="function"><strong>eval()</strong></span> は<em class="emphasis">非常に危険な</em>言語構造です。
+    というのも、任意の PHP コードを実行できてしまうからです。
+    <em class="emphasis">これを使うことはおすすめしません。</em>
+    いろいろ検討した結果どうしても使わざるを得なくなった場合は、細心の注意を払って使いましょう。
+    <em class="emphasis">ユーザーから受け取ったデータをそのまま渡してはいけません。</em>
+    渡す前に、適切な検証が必要です。
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.eval-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">code</code></dt>
+
+     <dd>
+
+      <p class="para">
+       有効な PHP コード。これを評価します。
+      </p>
+      <p class="para">
+       <a href="language.basic-syntax.phpmode.html" class="link">PHP
+       開始タグ</a>を含めてはいけません。つまり、
+       <em>&#039;&lt;?php echo &quot;Hi!&quot;; ?&gt;&#039;</em> ではなく
+       <em>&#039;echo &quot;Hi!&quot;;&#039;</em> を渡さなければならないということです。
+       適切に PHP タグを使えば、PHP モードからいったん抜けてもう一度 PHP モードに戻るということも可能です。
+       たとえば、このようになります。
+       <em>&#039;echo &quot;PHP モード!&quot;; ?&gt;HTML モード!&lt;?php echo &quot;ふたたび PHP モード!&quot;;&#039;</em>
+      </p>
+      <p class="para">
+       それはさておき、渡すコードは PHP として有効な形式でなければなりません。
+       つまり、すべての文はセミコロンで終了する必要があるということです。
+       たとえば <em>&#039;echo &quot;やあ!&quot;&#039;</em> はパースエラーになりますが、
+       <em>&#039;echo &quot;やあ!&quot;;&#039;</em> は動作します。
+      </p>
+      <p class="para">
+       <em>return</em> 文は、コードの評価をただちに終了します。
+      </p>
+      <p class="para">
+       コードの実行は、<span class="function"><strong>eval()</strong></span> を呼び出したスコープ内で行われます。
+       したがって、<span class="function"><strong>eval()</strong></span> の中で定義したり変更したりした変数は
+       <span class="function"><strong>eval()</strong></span> を抜けた後でも参照可能です。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.eval-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   評価されるコードの中で <em>return</em> が
+   コールされない限り、<span class="function"><strong>eval()</strong></span> は <strong><code>NULL</code></strong> を返します。
+   <em>return</em> がコールされた場合は、その値を返します。
+   PHP 7 以降、評価されるコードの中でパースエラーが発生した場合は、
+   <span class="function"><strong>eval()</strong></span> は ParseError 例外をスローします。
+   PHP 7 より前のバージョンでは、この場合に
+   <span class="function"><strong>eval()</strong></span> は <strong><code>FALSE</code></strong> を返していました。
+   それ以降のコードは通常通り実行されます。
+   <span class="function"><strong>eval()</strong></span> の中でのパースエラーを
+   <span class="function"><a href="function.set-error-handler.html" class="function">set_error_handler()</a></span>
+   で捕捉することはできません。
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.eval-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-4380">
+    <p><strong>例1 <span class="function"><strong>eval()</strong></span> の例 - 簡単なテキストのマージ</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'cup'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'coffee'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;$string&nbsp;with&nbsp;my&nbsp;$name&nbsp;in&nbsp;it.'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />eval(</span><span style="color: #DD0000">"\$str&nbsp;=&nbsp;\"</span><span style="color: #0000BB">$str</span><span style="color: #DD0000">\";"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は以下となります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+This is a $string with my $name in it.
+This is a cup with my coffee in it.
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.eval-notes">
+  <h3 class="title">注意</h3>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: <span class="simpara">これは、関数ではなく
+言語構造のため、<a href="functions.variable-functions.html" class="link">可変関数</a> を用いて
+コールすることはできません。</span></p></blockquote>
+
+  <div class="tip"><strong class="tip">ヒント</strong><p class="simpara">ブラウザに直接結果を出力する
+すべてのものと同様に、<a href="book.outcontrol.html" class="link">出力制御関数</a>
+を使用してこの関数の出力をキャプチャーし、(例えば)文字列
+(<span class="type"><a href="language.types.string.html" class="type string">string</a></span>)に保存することが可能です。</p></div>
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <p class="para">
+    評価されるコードの中で致命的なエラーが発生した場合は、
+    スクリプト全体が終了します。
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.eval-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.call-user-func.html" class="function" rel="rdfs-seeAlso">call_user_func()</a> - 最初の引数で指定したコールバック関数をコールする</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121284""></a>
+  <div class="note">
+   <strong class="user">Jeremie LEGRAND</strong>
+   <a href="#121284" class="date">29-Jun-2017 12:25</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+At least in PHP 7.1+, eval() terminates the script if the evaluated code generate a fatal error. For example:<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">@eval(</span><span class="string">'$content = (100 - );'</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+(Even if it is in the man, I'm note sure it acted like this in 5.6, but whatever)<br />
+To catch it, I had to do:<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">try {<br />
+&nbsp;&nbsp;&nbsp; eval(</span><span class="string">'$content = (100 - );'</span><span class="keyword">);<br />
+} catch (</span><span class="default">Throwable $t</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$content </span><span class="keyword">= </span><span class="default">null</span><span class="keyword">;<br />
+}<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+This is the only way I found to catch the error and hide the fact there was one.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121190""></a>
+  <div class="note">
+   <strong class="user">divinity76 at gmail dot com</strong>
+   <a href="#121190" class="date">06-Jun-2017 06:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+imo, this is a better eval replacement: <br />
+<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">function </span><span class="default">betterEval</span><span class="keyword">(</span><span class="default">$code</span><span class="keyword">) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$tmp </span><span class="keyword">= </span><span class="default">tmpfile </span><span class="keyword">();<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$tmpf </span><span class="keyword">= </span><span class="default">stream_get_meta_data </span><span class="keyword">( </span><span class="default">$tmp </span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$tmpf </span><span class="keyword">= </span><span class="default">$tmpf </span><span class="keyword">[</span><span class="string">'uri'</span><span class="keyword">];<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">fwrite </span><span class="keyword">( </span><span class="default">$tmp</span><span class="keyword">, </span><span class="default">$code </span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$ret </span><span class="keyword">= include (</span><span class="default">$tmpf</span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">fclose </span><span class="keyword">( </span><span class="default">$tmp </span><span class="keyword">);<br />
+&nbsp;&nbsp;&nbsp; return </span><span class="default">$ret</span><span class="keyword">;<br />
+}<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+- why? betterEval follows normal php opening and closing tag conventions, there's no need to strip `&lt;?php?&gt;` from the source.&nbsp; and it always throws a ParseError if there was a parse error, instead of returning false (note: this was fixed for normal eval() in php 7.0). - and there's also something about exception backtraces</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118768""></a>
+  <div class="note">
+   <strong class="user">Uther</strong>
+   <a href="#118768" class="date">03-Feb-2016 02:33</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+eval'd code within namespaces which contain class and/or function definitions will be defined in the global namespace... not incredibly obvious :/</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117744""></a>
+  <div class="note">
+   <strong class="user">lord dot dracon at gmail dot com</strong>
+   <a href="#117744" class="date">31-Jul-2015 10:46</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Inception with eval()<br />
+<br />
+&lt;pre&gt;<br />
+Inception Start:<br />
+<span class="default">&lt;?php<br />
+</span><span class="keyword">eval(</span><span class="string">"echo 'Inception lvl 1...\n'; eval('echo \"Inception lvl 2...\n\"; eval(\"echo \'Inception lvl 3...\n\'; eval(\'echo \\\"Limbo!\\\";\');\");');"</span><span class="keyword">);<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116642""></a>
+  <div class="note">
+   <strong class="user">Karel</strong>
+   <a href="#116642" class="date">04-Feb-2015 01:23</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For them who are facing syntax error when try execute code in eval,
+<br />
+
+<br />
+
+<br />
+<span class="default">&lt;?php
+<br />
+
+<br />
+$str </span><span class="keyword">=&nbsp; </span><span class="string">'&lt;?php echo "test"; ?&gt;'</span><span class="keyword">;
+<br />
+
+<br />
+eval(</span><span class="string">'?&gt;'</span><span class="keyword">.</span><span class="default">$str</span><span class="keyword">.</span><span class="string">'&lt;?php;'</span><span class="keyword">); </span><span class="comment">// outputs test
+<br />
+</span><span class="keyword">eval(</span><span class="string">'?&gt;'</span><span class="keyword">.</span><span class="default">$str</span><span class="keyword">.</span><span class="string">'&lt;?'</span><span class="keyword">); </span><span class="comment">// outputs test
+<br />
+</span><span class="keyword">eval(</span><span class="string">'?&gt;'</span><span class="keyword">.</span><span class="default">$str</span><span class="keyword">.</span><span class="string">'&lt;?php'</span><span class="keyword">);</span><span class="comment">// throws syntax error - unexpected $end
+<br />
+
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="107377""></a>
+  <div class="note">
+   <strong class="user">bohwaz</strong>
+   <a href="#107377" class="date">05-Feb-2012 07:51</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you want to allow math input and make sure that the input is proper mathematics and not some hacking code, you can try this:<br />
+<br />
+<span class="default">&lt;?php<br />
+<br />
+$test </span><span class="keyword">= </span><span class="string">'2+3*pi'</span><span class="keyword">;<br />
+<br />
+</span><span class="comment">// Remove whitespaces<br />
+</span><span class="default">$test </span><span class="keyword">= </span><span class="default">preg_replace</span><span class="keyword">(</span><span class="string">'/\s+/'</span><span class="keyword">, </span><span class="string">''</span><span class="keyword">, </span><span class="default">$test</span><span class="keyword">);<br />
+<br />
+</span><span class="default">$number </span><span class="keyword">= </span><span class="string">'(?:\d+(?:[,.]\d+)?|pi|π)'</span><span class="keyword">; </span><span class="comment">// What is a number<br />
+</span><span class="default">$functions </span><span class="keyword">= </span><span class="string">'(?:sinh?|cosh?|tanh?|abs|acosh?|asinh?|atanh?|exp|log10|deg2rad|rad2deg|sqrt|ceil|floor|round)'</span><span class="keyword">; </span><span class="comment">// Allowed PHP functions<br />
+</span><span class="default">$operators </span><span class="keyword">= </span><span class="string">'[+\/*\^%-]'</span><span class="keyword">; </span><span class="comment">// Allowed math operators<br />
+</span><span class="default">$regexp </span><span class="keyword">= </span><span class="string">'/^(('</span><span class="keyword">.</span><span class="default">$number</span><span class="keyword">.</span><span class="string">'|'</span><span class="keyword">.</span><span class="default">$functions</span><span class="keyword">.</span><span class="string">'\s*\((?1)+\)|\((?1)+\))(?:'</span><span class="keyword">.</span><span class="default">$operators</span><span class="keyword">.</span><span class="string">'(?2))?)+$/'</span><span class="keyword">; </span><span class="comment">// Final regexp, heavily using recursive patterns<br />
+<br />
+</span><span class="keyword">if (</span><span class="default">preg_match</span><span class="keyword">(</span><span class="default">$regexp</span><span class="keyword">, </span><span class="default">$q</span><span class="keyword">))<br />
+{<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$test </span><span class="keyword">= </span><span class="default">preg_replace</span><span class="keyword">(</span><span class="string">'!pi|π!'</span><span class="keyword">, </span><span class="string">'pi()'</span><span class="keyword">, </span><span class="default">$test</span><span class="keyword">); </span><span class="comment">// Replace pi with pi function<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">eval(</span><span class="string">'$result = '</span><span class="keyword">.</span><span class="default">$test</span><span class="keyword">.</span><span class="string">';'</span><span class="keyword">);<br />
+}<br />
+else<br />
+{<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">$result </span><span class="keyword">= </span><span class="default">false</span><span class="keyword">;<br />
+}<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+I can't guarantee you absolutely that this will block every possible malicious code nor that it will block malformed code, but that's better than the matheval function below which will allow malformed code like '2+2+' which will throw an error.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="99891""></a>
+  <div class="note">
+   <strong class="user">php at rijkvanwel dot nl</strong>
+   <a href="#99891" class="date">13-Sep-2010 04:41</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+To catch a parse error in eval()'ed code with a custom error handler, use error_get_last() (PHP &gt;= 5.2.0).<br />
+<br />
+<span class="default">&lt;?php<br />
+$return </span><span class="keyword">= eval( </span><span class="string">'parse error' </span><span class="keyword">);<br />
+<br />
+if ( </span><span class="default">$return </span><span class="keyword">=== </span><span class="default">false </span><span class="keyword">&amp;&amp; ( </span><span class="default">$error </span><span class="keyword">= </span><span class="default">error_get_last</span><span class="keyword">() ) ) {<br />
+&nbsp;&nbsp;&nbsp; </span><span class="default">myErrorHandler</span><span class="keyword">( </span><span class="default">$error</span><span class="keyword">[</span><span class="string">'type'</span><span class="keyword">], </span><span class="default">$error</span><span class="keyword">[</span><span class="string">'message'</span><span class="keyword">], </span><span class="default">$error</span><span class="keyword">[</span><span class="string">'file'</span><span class="keyword">], </span><span class="default">$error</span><span class="keyword">[</span><span class="string">'line'</span><span class="keyword">], </span><span class="default">null </span><span class="keyword">);<br />
+<br />
+&nbsp;&nbsp;&nbsp; </span><span class="comment">// Since the "execution of the following code continues normally", as stated in the manual,<br />
+&nbsp;&nbsp;&nbsp; // we still have to exit explicitly in case of an error<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">exit;<br />
+}<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="97063""></a>
+  <div class="note">
+   <strong class="user">darkhogg (foo) gmail (bar) com</strong>
+   <a href="#97063" class="date">30-Mar-2010 07:33</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The following code<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">eval( </span><span class="string">'?&gt; foo &lt;?php' </span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+does not throw any error, but prints the opening tag.<br />
+Adding a space after the open tag fixes it:<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">eval( </span><span class="string">'?&gt; foo &lt;?php ' </span><span class="keyword">);<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="87296""></a>
+  <div class="note">
+   <strong class="user">php at stock-consulting dot com</strong>
+   <a href="#87296" class="date">28-Nov-2008 05:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Magic constants like __FILE__ may not return what you expect if used inside eval()'d code. Instead, it'll answer something like "c:\directory\filename.php(123) : eval()'d code" (under Windows, obviously, checked with PHP5.2.6) - which can still be processed with a function like preg_replace to receive the filename of the file containing the eval().
+<br />
+
+<br />
+Example:
+<br />
+
+<br />
+<span class="default">&lt;?php
+<br />
+$filename </span><span class="keyword">= </span><span class="default">preg_replace</span><span class="keyword">(</span><span class="string">'@\(.*\(.*$@'</span><span class="keyword">, </span><span class="string">''</span><span class="keyword">, </span><span class="default">__FILE__</span><span class="keyword">);
+<br />
+echo </span><span class="default">$filename</span><span class="keyword">;
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="84140""></a>
+  <div class="note">
+   <strong class="user">marco at harddisk dot is-a-geek dot org</strong>
+   <a href="#84140" class="date">30-Jun-2008 07:44</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+eval does not work reliably in conjunction with global, at least not in the cygwin port version.<br />
+<br />
+So:<br />
+<span class="default">&lt;?PHP<br />
+</span><span class="keyword">class </span><span class="default">foo </span><span class="keyword">{<br />
+&nbsp; </span><span class="comment">//my class...<br />
+</span><span class="keyword">}<br />
+function </span><span class="default">load_module</span><span class="keyword">(</span><span class="default">$module</span><span class="keyword">) {<br />
+&nbsp; eval(</span><span class="string">"global \$"</span><span class="keyword">.</span><span class="default">$module</span><span class="keyword">.</span><span class="string">"_var;"</span><span class="keyword">);<br />
+&nbsp; eval(</span><span class="string">"\$"</span><span class="keyword">.</span><span class="default">$module</span><span class="keyword">.</span><span class="string">"_var=&amp;new foo();"</span><span class="keyword">);<br />
+&nbsp; </span><span class="comment">//various stuff ... ...<br />
+</span><span class="keyword">}<br />
+</span><span class="default">load_module</span><span class="keyword">(</span><span class="string">"foo"</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+becomes to working:<br />
+<br />
+<span class="default">&lt;?PHP<br />
+</span><span class="keyword">class </span><span class="default">foo </span><span class="keyword">{<br />
+&nbsp; </span><span class="comment">//my class...<br />
+</span><span class="keyword">}<br />
+function </span><span class="default">load_module</span><span class="keyword">(</span><span class="default">$module</span><span class="keyword">) {<br />
+&nbsp; eval(</span><span class="string">'$GLOBALS["'</span><span class="keyword">.</span><span class="default">$module</span><span class="keyword">.</span><span class="string">'_var"]=&amp;new foo();'</span><span class="keyword">);<br />
+&nbsp; </span><span class="comment">//various stuff ... ...<br />
+</span><span class="keyword">}<br />
+</span><span class="default">load_module</span><span class="keyword">(</span><span class="string">"foo"</span><span class="keyword">);<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+Note in the 2nd example, you _always_ need to use $GLOBALS[$module] to access the variable!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="81376""></a>
+  <div class="note">
+   <strong class="user">Ipseno at yahoo dot com</strong>
+   <a href="#81376" class="date">25-Feb-2008 07:24</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you attempt to call a user defined function in eval() and .php files are obfuscated by Zend encoder, it will result in a fatal error.<br />
+<br />
+Use a call_user_func() inside eval() to call your personal hand made functions.<br />
+<br />
+This is user function<br />
+<span class="default">&lt;?php<br />
+<br />
+</span><span class="keyword">function </span><span class="default">square_it</span><span class="keyword">(</span><span class="default">$nmb</span><span class="keyword">)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; return </span><span class="default">$nmb </span><span class="keyword">* </span><span class="default">$nmb</span><span class="keyword">;<br />
+}<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+//Checking if eval sees it?<br />
+<span class="default">&lt;?php<br />
+<br />
+$code </span><span class="keyword">= </span><span class="default">var_export</span><span class="keyword">( </span><span class="default">function_exists</span><span class="keyword">(</span><span class="string">'square_it'</span><span class="keyword">) );<br />
+<br />
+eval( </span><span class="default">$code </span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">//returns TRUE - so yes it does!<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+This will result in a fatal error:<br />
+PHP Fatal error:&nbsp; Call to undefined function square_it()<br />
+<span class="default">&lt;?php<br />
+<br />
+$code </span><span class="keyword">= </span><span class="string">'echo square_it(55);' </span><span class="keyword">;<br />
+<br />
+eval( </span><span class="default">$code </span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+This will work<br />
+<span class="default">&lt;?php<br />
+<br />
+$code </span><span class="keyword">= </span><span class="string">'echo call_user_func(\'square_it\', 55);' </span><span class="keyword">;<br />
+<br />
+eval( </span><span class="default">$code </span><span class="keyword">);<br />
+<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="44008""></a>
+  <div class="note">
+   
+   <a href="#44008" class="date">12-Jul-2004 06:37</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Kepp the following Quote in mind:<br />
+<br />
+If eval() is the answer, you're almost certainly asking the<br />
+wrong question. -- Rasmus Lerdorf, BDFL of PHP</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.die.html">die</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.exit.html">exit</a></div>
+ <div class="up"><a href="ref.misc.html">その他の関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール手順</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="image.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="image.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="image.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="image.installation" class="section">
+ <h2 class="title">インストール手順</h2>
+ <p class="para">
+  PHPでGDサポートを有効にするには、configure に<strong class="option configure">--with-gd[=DIR]</strong>
+を指定します。ただし、DIRは
+  GDのベースインストールディレクトリです。
+  PHPにバンドルされている推奨のGDライブラリを使用するには
+  <strong class="option configure">--with-gd</strong>
+を指定します。
+  GD ライブラリをコンパイルするには、<span class="productname">libpng</span> と
+  <span class="productname">libjpeg</span> が必要です。
+ </p>
+ <p class="para">
+  Windowsの場合、GD2 DLL <var class="filename">php_gd2.dll</var>を<var class="filename">php.ini</var>に
+  エクステンションとして指定してください。
+ </p>
+ <p class="para">
+  より多くの画像フォーマットを扱えるようにGDの能力を高めるには、
+  <em>--with-XXXX</em>のような形のオプションを指定します。
+  <table class="doctable table">
+   <caption><strong>サポートされる画像フォーマット</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>画像フォーマット</th>
+      <th>configure オプション</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><em>jpeg</em></td>
+      <td>
+       jpeg をサポートするには
+       <strong class="option configure">--with-jpeg-dir=DIR</strong>
+
+       を指定します。Jpeg 6b、7、そして 8 に対応しています。
+      </td>
+     </tr>
+
+     <tr>
+      <td><em>png</em></td>
+      <td>
+       PNGをサポートするには<strong class="option configure">--with-png-dir=DIR</strong>
+
+       を指定します。ただし、libpngは<a href="zlib.requirements.html" class="link">zlibライブラリ</a>を
+       必要とするため、<strong class="option configure">--with-zlib-dir[=DIR]</strong>
+
+       もconfigureオプションに追加する必要があります。
+      </td>
+     </tr>
+
+     <tr>
+      <td><em>xpm</em></td>
+      <td>
+       XPMをサポートするには<strong class="option configure">--with-xpm-dir=DIR</strong>
+
+       を指定します。必要なライブラリをconfigureが見つけられなかった場合は
+       X11ライブラリのパスを追加してください。
+      </td>
+     </tr>
+
+     <tr>
+      <td><em>webp</em></td>
+      <td>
+       webp をサポートするには
+       <strong class="option configure">--with-vpx-dir=DIR</strong>
+ を指定します。
+       PHP 5.5 以降で利用可能です。
+       PHP 7.0.0 以降は <strong class="option configure">--with-webp-dir=DIR</strong>
+
+       を追加する必要があります。つまり、libvpx がサポートされなくなり、かわりに
+       libwebp を用いるようになりました。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    libpng と共に PHP をコンパイルする際、GD
+    ライブラリとリンクされる同じバージョンを使用する必要があります。
+   </span>
+  </p></blockquote>
+ </p>
+ <p class="para">
+  GDがより多くのフォントを扱えるようにするには
+  <em>--with-XXXX</em>のような形のオプションを指定します。
+  <table class="doctable table">
+   <caption><strong>サポートされるフォントライブラリ</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>フォントライブラリ</th>
+      <th>configure オプション</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><em>FreeType 2</em></td>
+      <td>
+       FreeType 2 をサポートするには
+       <strong class="option configure">--with-freetype-dir=DIR</strong>
+を指定します。
+      </td>
+     </tr>
+
+     <tr>
+      <td><em>T1lib</em></td>
+      <td>
+       T1lib (Postscript Type 1 フォント) をサポートするには
+       <strong class="option configure">--with-t1lib[=DIR]</strong>
+を指定します (PHP 7.0.0 で削除されました)。
+      </td>
+     </tr>
+
+     <tr>
+      <td><em>ネイティブ TrueType 文字列関数</em></td>
+      <td>
+       ネイティブな TrueType 文字列関数 をサポートするには
+       <strong class="option configure">--enable-gd-native-ttf</strong>
+を指定します
+       (これは PHP 5.5.0 以降では何の効果もなくなりました。PHP 7.2.0 で削除される予定です)。
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121631""></a>
+  <div class="note">
+   <strong class="user">victornewman at mail dot ru</strong>
+   <a href="#121631" class="date">12-Sep-2017 07:13</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+apt-get isntall php7.0-gd install php7.0-gd on ubuntu but still not enabled so I try ./configure --with-gd=/usr/share/php7.0-gd but it gives -bash: no such a file or directory<br />
+I can see it with apt list --installed I can located with whereis php7.0-gd but compile doesn't work.<br />
+Problem last 6 hour, and continue</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120935""></a>
+  <div class="note">
+   <strong class="user">Ayonam Ray</strong>
+   <a href="#120935" class="date">05-Apr-2017 06:27</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Once you have installed php-gd, don't forget to restart the Apache server using the following command:<br />
+<br />
+&nbsp;&nbsp;&nbsp; sudo service httpd restart<br />
+<br />
+I struggled needlessly for over an hour trying to figure out why it wouldn't work after I had installed the packages along with all their dependencies.&nbsp; :-)</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120872""></a>
+  <div class="note">
+   <strong class="user">Qussayyon Qamaron: Qusai.zf2@gmailcom</strong>
+   <a href="#120872" class="date">26-Mar-2017 02:07</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+#install under Ubuntu 16.04:<br />
+&nbsp;&nbsp;&nbsp; * if you have access to PHP7.1:<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;sudo&gt; apt install php7.1-gd &amp;&amp; &lt;sudo&gt; systemctl restart apache2<br />
+&nbsp;&nbsp;&nbsp; * if you have access to PHP7.0:<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &lt;sudo&gt; apt install php7.0-gd &amp;&amp; &lt;sudo&gt; systemctl restart apache2<br />
+<br />
+------------------------------------------------<br />
+Qussayyon Qamaron: Qusai.zf2gmailcom</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120834""></a>
+  <div class="note">
+   <strong class="user">marioboy1 at hotmail dot com</strong>
+   <a href="#120834" class="date">18-Mar-2017 01:28</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I was having a gdImageCreateFromJpegCtx undefined symbol....<br />
+<br />
+the solution was found in here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=470483</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120325""></a>
+  <div class="note">
+   <strong class="user">theonestep4 at gmail dot com</strong>
+   <a href="#120325" class="date">14-Dec-2016 02:00</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+To install on CentOS:<br />
+<br />
+yum install php-gd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120116""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#120116" class="date">03-Nov-2016 09:52</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For all who use php 7 and ubuntu<br />
+<br />
+sudo apt-get install php7.0-gd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119079""></a>
+  <div class="note">
+   <strong class="user">Mike K</strong>
+   <a href="#119079" class="date">30-Mar-2016 04:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On Ubuntu I was missing the libpng-dev, libjpeg-dev (and in my case) libwebp-dev libraries, all gettable with apt-get.<br />
+<br />
+Also once those libraries are installed, including --with-png-dir --with-jpeg-dir --with-webp-dir, without any values (i.e. =/dir) appeared to be valid ... though admittedly I didn't try without (in case the configure script autodetected them).</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118884""></a>
+  <div class="note">
+   <strong class="user">svestka1999 at gmail dot com</strong>
+   <a href="#118884" class="date">23-Feb-2016 03:20</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Instructions how to compile bundled version on Linux:<br />
+<a href="http://stackoverflow.com/questions/35560150/php-gd-bundled-extension-without-recompiling-php-solution" rel="nofollow" target="_blank">http://stackoverflow.com/questions/35560150/php-gd-bundled-extension-without-recompiling-php-solution</a></span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="117694""></a>
+  <div class="note">
+   <strong class="user">amenadiel at gmail dot com</strong>
+   <a href="#117694" class="date">24-Jul-2015 06:13</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+While it is true that you can install GD with apt, that version comes without some of the traits of the internal, compiled version. <br />
+<br />
+I noticed that when I tried to call method `imageantialias`<br />
+<br />
+<a href="http://php.net/manual/es/function.imageantialias.php" rel="nofollow" target="_blank">http://php.net/manual/es/function.imageantialias.php</a></span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116953""></a>
+  <div class="note">
+   <strong class="user">Patrick</strong>
+   <a href="#116953" class="date">26-Mar-2015 11:35</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I installes php5-gd by adding<br />
+<br />
+deb <a href="http://ftp.de.debian.org/debian sid main" rel="nofollow" target="_blank">http://ftp.de.debian.org/debian sid main</a><br />
+<br />
+in /etc/apt/sources.list<br />
+<br />
+then<br />
+apt-get install php5-gd<br />
+<br />
+then i have troubles for starting apache2 but google find all troubles ...<br />
+<br />
+cd /etc/apache2<br />
+mkdir conf.d<br />
+changes in apache2.conf :<br />
+replace<br />
+&nbsp; LockFile ${APACHE_LOCK_DIR}/accept.lock<br />
+by<br />
+&nbsp; Mutex file:${APACHE_LOCK_DIR} default<br />
+comment lines&nbsp; NameVirtualHost (with a #)<br />
+a2enmod suexec (correction Suexec....)<br />
+a2enmod rewrite (correction erreur dav)<br />
+a2enmod dav_fs (correction erreur filesystem)<br />
+service apache2 start</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115989""></a>
+  <div class="note">
+   <strong class="user">leyluj21 at gmail dot com</strong>
+   <a href="#115989" class="date">23-Oct-2014 06:58</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you are using PHPBREW , the extension is called gd.<br />
+So you do.<br />
+```<br />
+phpbrew ext install gd<br />
+```<br />
+<br />
+It will compile the extension to the core.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="115676""></a>
+  <div class="note">
+   <strong class="user">james dot a dot munsch at gmail dot com</strong>
+   <a href="#115676" class="date">06-Sep-2014 07:19</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+sudo apt-get install php5-gd &amp;&amp; sudo service apache2 restart<br />
+<br />
+To install under Ubuntu 14.04.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="112692""></a>
+  <div class="note">
+   <strong class="user">MIguel G</strong>
+   <a href="#112692" class="date">14-Jul-2013 02:43</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If your are suffering with PHP53 on CentOS and GD, <br />
+just<br />
+yum install php53-gd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="109472""></a>
+  <div class="note">
+   <strong class="user">alejo dot jm at gmail dot com</strong>
+   <a href="#109472" class="date">20-Jul-2012 03:47</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On Macox lion with mac port just use:<br />
+sudo port install php5-gd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="105155""></a>
+  <div class="note">
+   <strong class="user">florian</strong>
+   <a href="#105155" class="date">31-Jul-2011 11:50</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+People having difficulties setting the --with-libdir option needs to set it like this :<br />
+<br />
+--with-libdir=lib64<br />
+<br />
+That option works fine. Doing --with-libdir=/usr/lib64 doesn't work because the configure script prepends the --prefix option before the --with-libdir option. So, doing --with-libdir=/usr/lib64 makes the configure script to look for libs in /usr/usr/lib64, which is wrong of course, and not in /usr/lib64.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="104571""></a>
+  <div class="note">
+   <strong class="user">Joseph Marlin</strong>
+   <a href="#104571" class="date">23-Jun-2011 03:07</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I also had to install the libgd package in addition to php5-gd:<br />
+<br />
+sudo apt-get install libgd2-xpm-dev*</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="103507""></a>
+  <div class="note">
+   <strong class="user">octopus at logicaloctopus dot com</strong>
+   <a href="#103507" class="date">17-Apr-2011 09:07</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I was running PHP on a SUSE box on amazon EC2.<br />
+to get gd to work all I had to do was to run:<br />
+&gt; yast -i php5_gd<br />
+<br />
+and when that completed I just restarted apache. voila!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="102971""></a>
+  <div class="note">
+   <strong class="user">boly38 at gmail dot com</strong>
+   <a href="#102971" class="date">17-Mar-2011 02:25</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+To get GD bundled under Ubuntu, the way to recompile php5 with gd is described here (french) <a href="http://doc.ubuntu-fr.org/modules_php#php5-gd" rel="nofollow" target="_blank">http://doc.ubuntu-fr.org/modules_php#php5-gd</a></span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="99856""></a>
+  <div class="note">
+   <strong class="user">elassoto at hotmail dot com</strong>
+   <a href="#99856" class="date">10-Sep-2010 10:54</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+If you have already compiled PHP and want to recompile '--with-gd', don't forget to run 'make clean' first!</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="86699""></a>
+  <div class="note">
+   <strong class="user">msc at homofaber dot com</strong>
+   <a href="#86699" class="date">30-Oct-2008 04:45</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+It should be noted that it might be pretty easy to install gd without the need to recompile php, when using debian:
+<br />
+
+<br />
+apt-get install php5-gd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="82621""></a>
+  <div class="note">
+   <strong class="user">mike at clove dot com</strong>
+   <a href="#82621" class="date">18-Apr-2008 06:40</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+jpeg [jpg] file processing doesn't work unless you build php with '--with-jpeg-dir=&lt;path to jpeg library&gt;'.<br />
+<br />
+It still doesn't work unless &lt;path to jpeg library&gt; points to the directory holding the directory holding the library unless libjpeg.&lt;whatever&gt; is in either /usr/lib or /usr/local/lib. For instance, on a mac with libjpeg.a installed via mac ports, you need '/opt/local' rather than '/opt/local/lib'</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="image.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="image.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="image.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

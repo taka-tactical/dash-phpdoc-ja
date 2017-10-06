@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Gets the stack trace</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="error.getline.html">Error::getLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="error.gettraceasstring.html">Error::getTraceAsString</a></div>
+ <div class="up"><a href="class.error.html">Error</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="error.gettrace" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Error::getTrace</h1>
+  <p class="verinfo">(バージョン情報なし。おそらく SVN 版にしか存在しないでしょう)</p><p class="refpurpose"><span class="refname">Error::getTrace</span> &mdash; <span class="dc-title">Gets the stack trace</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-error.gettrace-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>Error::getTrace</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the stack trace.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-error.gettrace-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-error.gettrace-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   Returns the stack trace as an <span class="type"><a href="language.types.array.html" class="type array">array</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-error.gettrace-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-320">
+    <p><strong>例1 <span class="function"><strong>Error::getTrace()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Error</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">();<br />}&nbsp;catch(</span><span style="color: #0000BB">Error&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTrace</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [0]=&gt;
+  array(4) {
+    [&quot;file&quot;]=&gt;
+    string(22) &quot;/home/bjori/tmp/ex.php&quot;
+    [&quot;line&quot;]=&gt;
+    int(7)
+    [&quot;function&quot;]=&gt;
+    string(4) &quot;test&quot;
+    [&quot;args&quot;]=&gt;
+    array(0) {
+    }
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-error.gettrace-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="methodname"><a href="throwable.gettrace.html" class="methodname" rel="rdfs-seeAlso">Throwable::getTrace()</a> - スタックトレースを取得する</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="error.getline.html">Error::getLine</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="error.gettraceasstring.html">Error::getTraceAsString</a></div>
+ <div class="up"><a href="class.error.html">Error</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

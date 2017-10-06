@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>変更された関数</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.new-functions.html">新しい関数</a></div>
+ <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration70.changed-functions" class="sect1">
+ <h2 class="title">変更された関数</h2>
+
+ <div class="sect2" id="migration70.changed-functions.core">
+  <h3 class="title">PHP コア</h3>
+  
+
+  <ul class="itemizedlist">
+  <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.debug-zval-dump.html" class="function">debug_zval_dump()</a></span> の出力が、&quot;long&quot; ではなく &quot;int&quot; に、
+     そして &quot;double&quot; ではなく &quot;float&quot; になりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.dirname.html" class="function">dirname()</a></span> が、オプションの第二パラメータ
+     <code class="parameter">depth</code> を受け付けるようになりました。これは、
+     カレントディレクトリから <code class="parameter">depth</code> 段階さかのぼったディレクトリ名を取得します。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.getrusage.html" class="function">getrusage()</a></span> が Windows 上でも使えるようになりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.mktime.html" class="function">mktime()</a></span> 関数と <span class="function"><a href="function.gmmktime.html" class="function">gmmktime()</a></span> 関数が、
+     <code class="parameter">is_dst</code> パラメータを受け付けなくなりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.preg-replace.html" class="function">preg_replace()</a></span> 関数が
+     &quot;\e&quot; (<strong><code>PREG_REPLACE_EVAL</code></strong>) をサポートしなくなりました。
+     かわりに <span class="function"><a href="function.preg-replace-callback.html" class="function">preg_replace_callback()</a></span> を使いましょう。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span> 関数で、<code class="parameter">category</code>
+     を文字列で渡すことができなくなりました。定数
+     <strong><code>LC_*</code></strong> を指定する必要があります。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.exec.html" class="function">exec()</a></span> 関数、<span class="function"><a href="function.system.html" class="function">system()</a></span> 関数および <span class="function"><a href="function.passthru.html" class="function">passthru()</a></span>
+     関数が、NULL バイト攻撃に対応しました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.shmop-open.html" class="function">shmop_open()</a></span> は int ではなくリソースを返すようになりました。
+     これを、<span class="function"><a href="function.shmop-size.html" class="function">shmop_size()</a></span> や
+     <span class="function"><a href="function.shmop-write.html" class="function">shmop_write()</a></span>、<span class="function"><a href="function.shmop-read.html" class="function">shmop_read()</a></span>、
+     <span class="function"><a href="function.shmop-close.html" class="function">shmop_close()</a></span>、<span class="function"><a href="function.shmop-delete.html" class="function">shmop_delete()</a></span>
+     に渡す必要があります。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.substr.html" class="function">substr()</a></span> および <span class="function"><a href="function.iconv-substr.html" class="function">iconv_substr()</a></span>は、
+     文字列の長さが開始位置と等しい場合に空文字列を返すようになりました。
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.xml-set-object.html" class="function">xml_set_object()</a></span> は、終了時に $parser の設定を手動で解除しなければいけないようになりました。
+     これはメモリリークを回避するためです。
+    </span>
+   </li>
+  </ul>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="migration70.deprecated.html">PHP 7.0.x で推奨されなくなる機能</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration70.new-functions.html">新しい関数</a></div>
+ <div class="up"><a href="migration70.html">PHP 5.6.x から PHP 7.0.x への移行</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

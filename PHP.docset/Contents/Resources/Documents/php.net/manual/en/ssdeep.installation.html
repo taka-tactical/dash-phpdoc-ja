@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール手順</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ssdeep.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ssdeep.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="ssdeep.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="ssdeep.installation" class="section">
+  <h2 class="title">インストール手順</h2>
+  <p class="para">
+   この <a href="http://pecl.php.net/" class="link external" title="Link : http://pecl.php.net/">&raquo;&nbsp;PECL</a> 拡張
+モジュールは PHP にバンドルされていません。
+  </p>
+  <p class="para">
+   この PECL 拡張モジュールをインストールする方法は、
+マニュアルの <a href="install.pecl.html" class="link">
+PECL 拡張モジュールのインストール</a> という章にあります。
+新規リリース・ダウンロード・ソースファイル・管理者情報・CHANGELOG
+といった関連する情報については、次の場所にあります。
+   <a href="http://pecl.php.net/package/ssdeep" class="link external" title="Link : http://pecl.php.net/package/ssdeep">&raquo;&nbsp;http://pecl.php.net/package/ssdeep</a>.
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="120124""></a>
+  <div class="note">
+   <strong class="user">1manfactory at gmail dot com</strong>
+   <a href="#120124" class="date">06-Nov-2016 09:01</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+How to install ssdeep for PHP<br />
+<br />
+- wget <a href="http://downloads.sourceforge.net/project/ssdeep/ssdeep-2.13/ssdeep-2.13.tar.gz" rel="nofollow" target="_blank">http://downloads.sourceforge.net/project/ssdeep/ssdeep-2.13/ssdeep-2.13.tar.gz</a><br />
+- tar zxvf ssdeep-2.13.tar.gz<br />
+- cd ssdeep-2.13<br />
+- ./configure<br />
+- make<br />
+- sudo make install<br />
+- ssdeep -h # test<br />
+- sudo pecl install ssdeep<br />
+- sudo sh -c "echo 'extension=ssdeep.so' &gt;&gt; /etc/php5/mods-available/ssdeep.ini"<br />
+- sudo php5enmod ssdeep<br />
+- sudo service apache2 restart</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="ssdeep.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="ssdeep.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="ssdeep.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

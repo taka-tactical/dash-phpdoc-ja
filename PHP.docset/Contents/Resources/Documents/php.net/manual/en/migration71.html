@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>PHP 7.0.x から PHP 7.1.x への移行</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="history.php.publications.html">PHP関連の出版物</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration71.new-features.html">新機能</a></div>
+ <div class="up"><a href="appendices.html">付録</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="migration71" class="appendix">
+ <h1>PHP 7.0.x から PHP 7.1.x への移行</h1>
+<h2>目次</h2><ul class="chunklist chunklist_appendix"><li><a href="migration71.new-features.html">新機能</a></li><li><a href="migration71.new-functions.html">新しい関数</a></li><li><a href="migration71.constants.html">新しいグローバル定数</a></li><li><a href="migration71.incompatible.html">下位互換性のない変更点</a></li><li><a href="migration71.deprecated.html">PHP 7.1.x で推奨されなくなる機能</a></li><li><a href="migration71.changed-functions.html">変更された関数</a></li><li><a href="migration71.other-changes.html">その他の変更</a></li><li><a href="migration71.windows-support.html">Windows Support</a></li></ul>
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ <div id="migration71.intro" class="sect1">
+  <p class="para">
+   このマイナーバージョンアップには数多くの
+   <a href="migration71.new-features.html" class="link">新機能</a> があります。
+   また、
+   <a href="migration70.incompatible.html" class="link">互換性がない変更</a>
+   が多少あるので、実運用環境の PHP をこのバージョンにあげる前にはテストすべきです。
+  </p>
+
+  <p class="para">
+   これらのバージョンへの移行ガイドも参照ください。
+   <a href="migration5.html" class="link">5.0.x</a>、
+   <a href="migration51.html" class="link">5.1.x</a>、
+   <a href="migration52.html" class="link">5.2.x</a>、
+   <a href="migration53.html" class="link">5.3.x</a>、
+   <a href="migration54.html" class="link">5.4.x</a>、
+   <a href="migration55.html" class="link">5.5.x</a>、
+   <a href="migration56.html" class="link">5.6.x</a> および
+   <a href="migration70.html" class="link">7.0.x</a>。
+  </p>
+ </div>
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121597""></a>
+  <div class="note">
+   <strong class="user">sales at k-ict dot org</strong>
+   <a href="#121597" class="date">02-Sep-2017 02:19</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+A safe option for migration is by installing PHP 7.1 in a Docker and test the scripts.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120408""></a>
+  <div class="note">
+   <strong class="user">shl at g8net dot com</strong>
+   <a href="#120408" class="date">04-Jan-2017 08:06</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+For fresh installation on Ubuntu 16.04<br />
+If we want to install new version &amp;&amp; Remove all php dependencies<br />
+sudo apt-get remove php* <br />
+<br />
+sudo apt-get install php7.1 php7.1-cli php7.1-common libapache2-mod-php7.1 php7.1-mysql php7.1-fpm php7.1-curl php7.1-gd php7.1-bz2 php7.1-mcrypt php7.1-json php7.1-tidy php7.1-mbstring php-redis php-memcached</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120356""></a>
+  <div class="note">
+   <strong class="user">ohcc@163com</strong>
+   <a href="#120356" class="date">21-Dec-2016 03:59</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+php 7.1+ supports utf-8 paths and I/O streams on Windows. file system functions now return utf-8 results, you don't need to convert file paths between character sets.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="history.php.publications.html">PHP関連の出版物</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="migration71.new-features.html">新機能</a></div>
+ <div class="up"><a href="appendices.html">付録</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

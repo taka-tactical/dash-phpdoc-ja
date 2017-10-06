@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>画像を変換する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagick.addnoiseimage.html">Imagick::addNoiseImage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.animateimages.html">Imagick::animateImages</a></div>
+ <div class="up"><a href="class.imagick.html">Imagick</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="imagick.affinetransformimage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::affineTransformImage</h1>
+  <p class="verinfo">(PECL imagick 2.0.0)</p><p class="refpurpose"><span class="refname">Imagick::affineTransformImage</span> &mdash; <span class="dc-title">画像を変換する</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.affinetransformimage-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>Imagick::affineTransformImage</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="class.imagickdraw.html" class="type ImagickDraw">ImagickDraw</a></span> <code class="parameter">$matrix</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   アフィン行列の指定にしたがって画像を変換します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.affinetransformimage-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">matrix</code></dt>
+
+     <dd>
+
+      <p class="para">
+       アフィン行列。
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.affinetransformimage-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   成功した場合に <strong><code>TRUE</code></strong> を返します。
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-imagick.affinetransformimage-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+    <div class="example" id="example-3658">
+      <p><strong>例1  <span class="function"><strong>Imagick::affineTransformImage()</strong></span></strong></p>
+      <div class="example-contents">
+      <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">affineTransformImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Imagick</span><span style="color: #007700">(</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$imagePath</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">ImagickDraw</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$angle&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">40&nbsp;</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$affineRotate&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"sx"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">cos</span><span style="color: #007700">(</span><span style="color: #0000BB">$angle</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"sy"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">cos</span><span style="color: #007700">(</span><span style="color: #0000BB">$angle</span><span style="color: #007700">),&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"rx"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">sin</span><span style="color: #007700">(</span><span style="color: #0000BB">$angle</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"ry"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">sin</span><span style="color: #007700">(</span><span style="color: #0000BB">$angle</span><span style="color: #007700">),&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"tx"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ty"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$draw</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affine</span><span style="color: #007700">(</span><span style="color: #0000BB">$affineRotate</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">affineTransformImage</span><span style="color: #007700">(</span><span style="color: #0000BB">$draw</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;image/jpg"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$imagick</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getImageBlob</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+    </div>
+  </p>
+ </div>
+
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="116415""></a>
+  <div class="note">
+   <strong class="user">peter dot e dot lind at gmail dot com</strong>
+   <a href="#116415" class="date">30-Dec-2014 05:27</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+This method has not been properly implemented it seems - it has no effect whatsoever on the image.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="imagick.addnoiseimage.html">Imagick::addNoiseImage</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="imagick.animateimages.html">Imagick::animateImages</a></div>
+ <div class="up"><a href="class.imagick.html">Imagick</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

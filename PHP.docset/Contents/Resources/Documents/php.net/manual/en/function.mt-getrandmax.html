@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>乱数値の最大値を表示する</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.min.html">min</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mt-rand.html">mt_rand</a></div>
+ <div class="up"><a href="ref.math.html">Math 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.mt-getrandmax" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mt_getrandmax</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">mt_getrandmax</span> &mdash; <span class="dc-title">乱数値の最大値を表示する</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.mt-getrandmax-description">
+  <h3 class="title">説明</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type">int</span> <span class="methodname"><strong>mt_getrandmax</strong></span>
+     ( <span class="methodparam">void</span>
+    )</div>
+
+  <p class="simpara">
+   <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> のコールにより返される最大の値を返します。
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mt-getrandmax-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> を引数なしでコールしたときに取得できる乱数の最大値を返します。
+   <span class="function"><a href="function.mt-rand.html" class="function">mt_rand()</a></span> の <code class="parameter">max</code>
+   に指定する値をこの値以下にしておけば、結果がスケールアップされて無作為性が低下することを避けられます。
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.mt-getrandmax-examples">
+  <h3 class="title">例</h3>
+  <p class="para">
+   <div class="example" id="example-4036"><p><strong>例1 ランダムな浮動小数点数の算出</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">randomFloat</span><span style="color: #007700">(</span><span style="color: #0000BB">$min&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$max&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$min&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">mt_rand</span><span style="color: #007700">()&nbsp;/&nbsp;</span><span style="color: #0000BB">mt_getrandmax</span><span style="color: #007700">()&nbsp;*&nbsp;(</span><span style="color: #0000BB">$max&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$min</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">randomFloat</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">randomFloat</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>上の例の出力は、
+たとえば以下のようになります。</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+float(0.91601131712832)
+float(16.511210331931)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.mt-getrandmax-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mt-rand.html" class="function" rel="rdfs-seeAlso">mt_rand()</a> - メルセンヌ・ツイスター乱数生成器を介して乱数値を生成する</span></li>
+    <li class="member"><span class="function"><a href="function.mt-srand.html" class="function" rel="rdfs-seeAlso">mt_srand()</a> - メルセンヌ・ツイスター乱数生成器にシードを指定する</span></li>
+    <li class="member"><span class="function"><a href="function.getrandmax.html" class="function" rel="rdfs-seeAlso">getrandmax()</a> - 乱数の最大値を取得する</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="117620""></a>
+  <div class="note">
+   <strong class="user">bishop at php dot net</strong>
+   <a href="#117620" class="date">10-Jul-2015 01:31</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The upper-bound of this value is platform-independent.&nbsp; PHP implements the 32-bit version of the Mersenne Twister ("mt"), so the maximum possible value is 2**31 - 1 (2147483647).</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.min.html">min</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.mt-rand.html">mt_rand</a></div>
+ <div class="up"><a href="ref.math.html">Math 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>インストール手順</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zip.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="zip.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="zip.installation" class="section">
+ <h2 class="title">インストール手順</h2>
+
+ <div class="section" id="zip.installation.new">
+
+  <div class="section" id="zip.installation.new.linux">
+   <h2 class="title">Linux systems</h2>
+   <p class="para">
+    これらの関数を利用するには、設定オプション
+    <strong class="option configure">--enable-zip</strong>
+ を使用して
+    zip サポートを有効にして PHP をコンパイルしなければなりません。
+   </p>
+   <p class="para">
+    PHP 5.6.0 からは、<strong class="option configure">--with-libzip=DIR</strong>
+
+    オプションが追加されました。これを指定すると、システムにインストールされた libzip を利用します。
+    libzip 0.11 以降が必要です。0.11.2 以降を推奨します。
+   </p>
+  </div>
+
+  <div class="section" id="zip.installation.new.windows">
+   <h2 class="title">Windows</h2>
+   <p class="para">
+    PHP 5.3 以降には、この拡張モジュールが標準で組み込まれています。
+    それより前のバージョンでは、Windows ユーザーは、これらの関数を使用するために <var class="filename">php.ini</var>
+    内の <var class="filename">php_zip.dll</var> を有効にする必要があります。
+   </p>
+  </div>
+ </div>
+
+ <div class="section" id="zip.pecl.installation">
+  <h2 class="title">PECL 経由でのインストール</h2>
+  <p class="para">
+   この PECL 拡張モジュールをインストールする方法は、
+マニュアルの <a href="install.pecl.html" class="link">
+PECL 拡張モジュールのインストール</a> という章にあります。
+新規リリース・ダウンロード・ソースファイル・管理者情報・CHANGELOG
+といった関連する情報については、次の場所にあります。
+   <a href="http://pecl.php.net/package/zip" class="link external" title="Link : http://pecl.php.net/package/zip">&raquo;&nbsp;http://pecl.php.net/package/zip</a>.
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="zip.requirements.html">要件</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="zip.configuration.html">実行時設定</a></div>
+ <div class="up"><a href="zip.setup.html">インストール/設定</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

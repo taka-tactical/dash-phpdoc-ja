@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>カーソルを次の結果に進めてその結果を返す</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocursor.maxtimems.html">MongoCursor::maxTimeMS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocursor.partial.html">MongoCursor::partial</a></div>
+ <div class="up"><a href="class.mongocursor.html">MongoCursor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mongocursor.next" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCursor::next</h1>
+  <p class="verinfo">(PECL mongo &gt;=0.9.0)</p><p class="refpurpose"><span class="refname">MongoCursor::next</span> &mdash; <span class="dc-title">カーソルを次の結果に進めてその結果を返す</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocursor.next-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname"><strong>MongoCursor::next</strong></span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocursor.next-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">この関数にはパラメータはありません。</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocursor.next-returnvalues">
+  <h3 class="title">返り値</h3>  
+  <p class="para">
+   次のドキュメントを返します。
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocursor.next-errors">
+  <h3 class="title">エラー / 例外</h3>
+  <p class="para">
+   データベースに接続できない場合に <a href="class.mongoconnectionexception.html" class="classname">MongoConnectionException</a>、
+   そしてタイムアウトに達した場合に <a href="class.mongocursortimeoutexception.html" class="classname">MongoCursorTimeoutException</a>
+   をスローします。
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocursor.next-seealso">
+  <h3 class="title">参考</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="methodname"><a href="iterator.next.html" class="methodname" rel="rdfs-seeAlso">Iterator::next()</a> - 次の要素に進む</span></li>
+  </ul>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="119005""></a>
+  <div class="note">
+   <strong class="user">will dot edgington at gmail dot com</strong>
+   <a href="#119005" class="date">16-Mar-2016 04:17</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Just a heads up- with version 1.5.4 of the mongo extension, next() is not returning the same result as its alias getNext() (<a href="http://php.net/manual/en/mongocursor.getnext.php" rel="nofollow" target="_blank">http://php.net/manual/en/mongocursor.getnext.php</a>).&nbsp; An array is returned with null values.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongocursor.maxtimems.html">MongoCursor::maxTimeMS</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongocursor.partial.html">MongoCursor::partial</a></div>
+ <div class="up"><a href="class.mongocursor.html">MongoCursor</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

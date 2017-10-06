@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Gets a record from a database as an indexed array</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numfields.html">dbase_numfields</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.dbase-get-record" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbase_get_record</h1>
+  <p class="verinfo">(PHP 5 &lt; 5.3.0, dbase 5, dbase 7)</p><p class="refpurpose"><span class="refname">dbase_get_record</span> &mdash; <span class="dc-title">
+   Gets a record from a database as an indexed array
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbase-get-record-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname"><strong>dbase_get_record</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dbase_identifier</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$record_number</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets a record from a database as an indexed array.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbase-get-record-parameters">
+  <h3 class="title">パラメータ</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dbase_identifier</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The database link identifier, returned by <span class="function"><a href="function.dbase-open.html" class="function">dbase_open()</a></span>
+       or <span class="function"><a href="function.dbase-create.html" class="function">dbase_create()</a></span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">record_number</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The index of the record between <em>1</em> and
+       <em>dbase_numrecords($dbase_identifier)</em>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbase-get-record-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   An indexed array with the record. This array will also include an associative
+   key named <em>deleted</em> which is set to 1 if the record has been 
+   marked for deletion (see <span class="function"><a href="function.dbase-delete-record.html" class="function">dbase_delete_record()</a></span>).
+  </p>
+  <p class="para">
+   各フィールドは適切な PHP の型に変換されますが、以下に挙げる例外があります。
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Date は文字列のままになります。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      DateTime は文字列に変換されます。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <strong><code>PHP_INT_MIN</code></strong>..<strong><code>PHP_INT_MAX</code></strong>
+      の範囲外の Integer は文字列になります。
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      dbase 7.0.0 より前のバージョンでは、boolean (<em>L</em>) が
+      <em>1</em> あるいは <em>0</em> に変換されていました。
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   On error, <span class="function"><strong>dbase_get_record()</strong></span> will return <strong><code>FALSE</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.dbase-get-record-changelog">
+  <h3 class="title">変更履歴</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>バージョン</th>
+      <th>説明</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>dbase 7.0.0</td>
+      <td>
+       <code class="parameter">dbase_identifier</code> is now a <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+       instead of an <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.dbase-get-record-seealso">
+  <h3 class="title">参考</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.dbase-get-record-with-names.html" class="function" rel="rdfs-seeAlso">dbase_get_record_with_names()</a> - Gets a record from a database as an associative array</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.dbase-numfields.html">dbase_numfields</a></div>
+ <div class="up"><a href="ref.dbase.html">dBase 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

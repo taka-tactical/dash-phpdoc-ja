@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Installing the MongoDB PHP Driver with PECL</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongodb.installation.html">インストール手順</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongodb.installation.homebrew.html">Installing the MongoDB PHP Driver on OSX with Homebrew</a></div>
+ <div class="up"><a href="mongodb.installation.html">インストール手順</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="mongodb.installation.pecl" class="section">
+  <h2 class="title">Installing the MongoDB PHP Driver with PECL</h2>
+
+  <p class="para">
+   この PECL 拡張モジュールをインストールする方法は、
+マニュアルの <a href="install.pecl.html" class="link">
+PECL 拡張モジュールのインストール</a> という章にあります。
+新規リリース・ダウンロード・ソースファイル・管理者情報・CHANGELOG
+といった関連する情報については、次の場所にあります。
+   <a href="http://pecl.php.net/package/mongodb" class="link external" title="Link : http://pecl.php.net/package/mongodb">&raquo;&nbsp;http://pecl.php.net/package/mongodb</a>
+  </p>
+
+  <p class="para">
+   Linux, Unix, and OS X users may run the following command to install the
+   driver:
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ sudo pecl install mongodb</pre>
+</div>
+   </div>
+
+  </p>
+
+  <blockquote class="note"><p><strong class="note">注意</strong>: 
+   <span class="simpara">
+    Installing the driver via PECL will use bundled versions of
+    <a href="https://github.com/mongodb/libbson" class="link external" title="Link : https://github.com/mongodb/libbson">&raquo;&nbsp;libbson</a> and
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external" title="Link : https://github.com/mongodb/mongo-c-driver">&raquo;&nbsp;libmongoc</a> and rely on PHP
+    to find OpenSSL (i.e. <em>PHP_SETUP_OPENSSL</em>). If the build
+    process fails to find OpenSSL, check that the OpenSSL development package
+    (e.g. <em>libssl-dev</em>) and
+    <a href="https://en.wikipedia.org/wiki/Pkg-config" class="link external" title="Link : https://en.wikipedia.org/wiki/Pkg-config">&raquo;&nbsp;pkg-config</a> are both
+    installed.
+   </span>
+  </p></blockquote>
+
+  <p class="para">
+   Add the following line to your <var class="filename">php.ini</var> file:
+   <div class="example-contents">
+<div class="inicode"><pre class="inicode">extension=mongodb.so</pre>
+</div>
+   </div>
+
+  </p>
+ </div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121443""></a>
+  <div class="note">
+   <strong class="user">asologor at gmail dot com</strong>
+   <a href="#121443" class="date">27-Jul-2017 05:48</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+On Ubuntu you can just do:<br />
+<br />
+&nbsp; sudo apt-get install php-mongodb<br />
+<br />
+or the same for specific PHP version:<br />
+<br />
+&nbsp; sudo apt-get install php5.6-mongo<br />
+<br />
+or<br />
+<br />
+&nbsp; sudo apt-get install php7.0-mongodb</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121373""></a>
+  <div class="note">
+   <strong class="user">Unmesh</strong>
+   <a href="#121373" class="date">13-Jul-2017 05:28</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The following steps worked for me on Centos7<br />
+<br />
+sudo yum install -y openssl-devel<br />
+sudo yum install pecl<br />
+sudo yum install gcc<br />
+sudo pecl install mongodb</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120675""></a>
+  <div class="note">
+   <strong class="user">maneesh dot singh at hof-university dot com</strong>
+   <a href="#120675" class="date">21-Feb-2017 08:20</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Hi,<br />
+I am looking into installation of php mongo db driver.<br />
+I have checked with phpinfo it shows mongodb module have been loaded but when I use in my code it give error "Fatal error: Uncaught Error: Class 'MongoDB' not found "<br />
+<br />
+i have another module for redis and it works perfectly . Initially I was getting same error but phpinfo was showing module is not loaded .<br />
+<br />
+I guess there is some problem with driver. I have tried all the documents and website links which mention to include extenstion=mongodb.so which i have already done.<br />
+<br />
+I am using open suse 42.2 leap with apache server.<br />
+<br />
+Could you please investigate this issue.<br />
+If you need more info please let me know.<br />
+<br />
+Thanks<br />
+Maneeshg</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120638""></a>
+  <div class="note">
+   <strong class="user">ovidius at email dot it</strong>
+   <a href="#120638" class="date">14-Feb-2017 08:11</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+after installed and added extension=mongodb to php.ini, when i run php -v i get this error: <br />
+<br />
+bus error php -v<br />
+<br />
+what could it be? the build process completed successfully.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="120133""></a>
+  <div class="note">
+   <strong class="user">rafael_xuvisco at yahoo dot com dot br</strong>
+   <a href="#120133" class="date">08-Nov-2016 10:16</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Ubuntu 16.04<br />
+<br />
+sudo apt-get install libcurl4-openssl-dev pkg-config libssl-dev libsslcommon2-dev<br />
+<br />
+sudo pecl install mongodb<br />
+<br />
+add extension=mongodb.so in fpm and cli:<br />
+<br />
+sudo vim /etc/php/7.0/fpm/conf.d/30-mongodb.ini<br />
+<br />
+sudo vim /etc/php/7.0/cli/conf.d/30-mongodb.ini<br />
+<br />
+Restart service:<br />
+<br />
+sudo systemctl restart php7.0-fpm<br />
+<br />
+sudo systemctl reload nginx</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119940""></a>
+  <div class="note">
+   <strong class="user">Anonymous</strong>
+   <a href="#119940" class="date">24-Sep-2016 03:17</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+I got an error "fatal error: pcre.h: No such file or directory" and had to also had to install another dependency<br />
+<br />
+sudo apt-get install libpcre3-dev</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119529""></a>
+  <div class="note">
+   <strong class="user">contact ? automatix : info</strong>
+   <a href="#119529" class="date">30-Jun-2016 08:28</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+An additional requirement might be pkg-config (on Ubuntu 14.04).<br />
+<br />
+$ pecl install mongodb<br />
+...<br />
+configure: error: Cannot find OpenSSL's libraries<br />
+ERROR: `/tmp/pear/temp/mongodb/configure --with-php-config=/usr/bin/php-config' failed<br />
+<br />
+But:<br />
+<br />
+$ apt-get install pkg-config<br />
+...<br />
+Setting up pkg-config (0.26-1ubuntu4) ...<br />
+$ pecl install mongodb<br />
+...<br />
+Build process completed successfully<br />
+Installing '/usr/lib/php/20151012/mongodb.so'<br />
+install ok: channel://pecl.php.net/mongodb-1.1.7<br />
+configuration option "php_ini" is not set to php.ini location<br />
+You should add "extension=mongodb.so" to php.ini</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="119486""></a>
+  <div class="note">
+   <strong class="user">Tim Greiser</strong>
+   <a href="#119486" class="date">19-Jun-2016 07:57</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+[Editor's note: fixed typo]
+<br />
+
+<br />
+There are some additional requirements you need to build the pecl package.
+<br />
+
+<br />
+sudo apt-get install libcurl4-openssl-dev pkg-config libssl-dev libsslcommon2-dev</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="mongodb.installation.html">インストール手順</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="mongodb.installation.homebrew.html">Installing the MongoDB PHP Driver on OSX with Homebrew</a></div>
+ <div class="up"><a href="mongodb.installation.html">インストール手順</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

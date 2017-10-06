@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Traversable インターフェイス</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.iterator.html">Iterator</a></div>
+ <div class="up"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="class.traversable" class="reference">
+
+ <h1 class="title"><span class="interfacename"><a href="class.traversable.html" class="interfacename">Traversable</a></span> インターフェイス</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.0.0, PHP 7)</p>
+
+
+  <div class="section" id="traversable.intro">
+   <h2 class="title">はじめに</h2>
+   <p class="para">
+    そのクラスの中身が <a href="control-structures.foreach.html" class="link">foreach</a> を使用してたどれるかどうかを検出するインターフェイスです。
+   </p>
+   <p class="para">
+    これは抽象インターフェイスであり、単体で実装することはできません。
+    <span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> あるいは
+    <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span> を実装しなければなりません。
+   </p>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     このインターフェイスを実装した内部クラス (組み込みクラス) は
+     <a href="control-structures.foreach.html" class="link">foreach</a> で使用することができます。
+     <span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> や
+     <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span> を実装する必要はありません。
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">注意</strong>: 
+    <p class="para">
+     これは内部エンジンのインターフェイスであり、PHP スクリプト内で実装することはできません。
+     そのかわりに <span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> あるいは
+     <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span> を使用しなければなりません。
+     Traversable を継承したインターフェイスを実装するときは、
+     implements 句の中でそのインターフェイスより前に
+     <span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> か
+     <span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span> を指定しておきましょう。
+    </p>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="traversable.synopsis">
+   <h2 class="title">インターフェイス概要</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <strong class="classname">Traversable</strong>
+     </span>
+     {</div>
+
+
+   }</div>
+
+
+   <p class="para">
+    このインターフェイスにはメソッドがありません。
+    traverse 可能なすべてのクラス用の基底インターフェイスとしてのみ存在しています。
+   </p>
+
+  </div>
+
+ </div>
+
+</div>
+<div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+<div id="allnotes">  <a name="121623""></a>
+  <div class="note">
+   <strong class="user">ddddddd at sss dot asd</strong>
+   <a href="#121623" class="date">08-Sep-2017 06:11</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+asddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="121273""></a>
+  <div class="note">
+   <strong class="user">douglas at reith dot com dot au</strong>
+   <a href="#121273" class="date">26-Jun-2017 05:09</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+The PHP7 iterable pseudo type will match both Traversable and array. Great for return type-hinting so that you do not have to expose your Domain to Infrastructure code, e.g. instead of a Repository returning a Cursor, it can return hint 'iterable':<br />
+<span class="default">&lt;?php<br />
+UserRepository</span><span class="keyword">::</span><span class="default">findUsers</span><span class="keyword">(): </span><span class="default">iterable<br />
+?&gt;<br />
+</span><br />
+Link: <a href="http://php.net/manual/en/migration71.new-features.php#migration71.new-features.iterable-pseudo-type" rel="nofollow" target="_blank">http://php.net/manual/en/migration71.new-features.php#migration71.new-features.iterable-pseudo-type</a><br />
+<br />
+Also, instead of:<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">if( !</span><span class="default">is_array</span><span class="keyword">( </span><span class="default">$items </span><span class="keyword">) &amp;&amp; !</span><span class="default">$items </span><span class="keyword">instanceof </span><span class="default">Traversable </span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">//Throw exception here<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+You can now do with the is_iterable() method:<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">if ( !</span><span class="default">is_iterable</span><span class="keyword">( </span><span class="default">$items </span><span class="keyword">))<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">//Throw exception here<br />
+</span><span class="default">?&gt;<br />
+</span><br />
+Link:&nbsp; <a href="http://php.net/manual/en/function.is-iterable.php" rel="nofollow" target="_blank">http://php.net/manual/en/function.is-iterable.php</a></span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="118575""></a>
+  <div class="note">
+   <strong class="user">cobaltbluedw</strong>
+   <a href="#118575" class="date">31-Dec-2015 06:50</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+NOTE:&nbsp; While objects and arrays can be traversed by foreach, they do NOT implement "Traversable", so you CANNOT check for foreach compatibility using an instanceof check.<br />
+<br />
+Example:<br />
+<br />
+$myarray = array('one', 'two', 'three');<br />
+$myobj = (object)$myarray;<br />
+<br />
+if ( !($myarray instanceof \Traversable) ) {<br />
+&nbsp;&nbsp;&nbsp; print "myarray is NOT Traversable";<br />
+}<br />
+if ( !($myobj instanceof \Traversable) ) {<br />
+&nbsp;&nbsp;&nbsp; print "myobj is NOT Traversable";<br />
+}<br />
+<br />
+foreach ($myarray as $value) {<br />
+&nbsp;&nbsp;&nbsp; print $value;<br />
+}<br />
+foreach ($myobj as $value) {<br />
+&nbsp;&nbsp;&nbsp; print $value;<br />
+}<br />
+<br />
+Output:<br />
+myarray is NOT Traversable<br />
+myobj is NOT Traversable<br />
+one<br />
+two<br />
+three<br />
+one<br />
+two<br />
+three</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="116377""></a>
+  <div class="note">
+   <strong class="user">ajf at ajf dot me</strong>
+   <a href="#116377" class="date">23-Dec-2014 09:22</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+Note that all objects can be iterated over with foreach anyway and it'll go over each property. This just describes whether or not the class implements an iterator, i.e. has custom behaviour.</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+  <a name="99195""></a>
+  <div class="note">
+   <strong class="user">kevinpeno at gmail dot com</strong>
+   <a href="#99195" class="date">02-Aug-2010 07:06</a>
+   <div class="text">
+    <div class="phpcode">
+<code><span class="html">
+While you cannot implement this interface, you can use it in your checks to determine if something is usable in for each. Here is what I use if I'm expecting something that must be iterable via foreach.<br />
+<br />
+<span class="default">&lt;?php<br />
+&nbsp;&nbsp;&nbsp; </span><span class="keyword">if( !</span><span class="default">is_array</span><span class="keyword">( </span><span class="default">$items </span><span class="keyword">) &amp;&amp; !</span><span class="default">$items </span><span class="keyword">instanceof </span><span class="default">Traversable </span><span class="keyword">)<br />
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">//Throw exception here<br />
+</span><span class="default">?&gt;</span>
+</span>
+</code>
+    </div>
+   </div>
+  </div>
+ <div class="foot"></div>
+</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="class.iterator.html">Iterator</a></div>
+ <div class="up"><a href="reserved.interfaces.html">定義済みのインターフェイスとクラス</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>

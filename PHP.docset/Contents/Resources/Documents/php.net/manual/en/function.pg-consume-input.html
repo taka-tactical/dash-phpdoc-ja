@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; CHARSET=shift-jis">
+  <title>Reads input on the connection</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+ </head>
+ <body class="docs"><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-connection-status.html">pg_connection_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-convert.html">pg_convert</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="function.pg-consume-input" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_consume_input</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7)</p><p class="refpurpose"><span class="refname">pg_consume_input</span> &mdash; <span class="dc-title">Reads input on the connection</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-consume-input-description">
+  <h3 class="title">説明</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname"><strong>pg_consume_input</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$connection</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>pg_consume_input()</strong></span> consumes any input waiting to be read
+   from the database server.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-consume-input-parameters">
+  <h3 class="title">パラメータ</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">connection</code></dt>
+
+    <dd>
+
+     <p class="para">
+      PostgreSQL database connection resource.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-consume-input-returnvalues">
+  <h3 class="title">返り値</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> if no error occurred, or <strong><code>FALSE</code></strong> if there was an error. Note that
+   <strong><code>TRUE</code></strong> does not necessarily indicate that input was waiting to be read.
+  </p>
+ </div>
+
+</div><div id="usernotes">
+ <div class="head">
+  <h3 class="title">User Contributed Notes</h3>
+ </div>
+ <div class="note">There are no user contributed notes for this page.</div>
+</div>
+<hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="function.pg-connection-status.html">pg_connection_status</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="function.pg-convert.html">pg_convert</a></div>
+ <div class="up"><a href="ref.pgsql.html">PostgreSQL 関数</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
