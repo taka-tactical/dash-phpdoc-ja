@@ -1,4 +1,4 @@
-dash-php
+dash-phpdoc
 ============
 
 Generates a [Dash](http://kapeli.com/dash) docset for [PHP](http://php.net/).
