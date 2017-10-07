@@ -108,6 +108,9 @@ try {
 	sleep(5);
 	$base_dir = "{$c_origd}/Contents/Resources/Documents/php.net/manual/en";
 
+	// replace html
+	// ** note: Do not use 'rm' command.
+	// **       It will cause device busy or 'Argument list too long' error.
 	foreach ([
 		"array*", "book.*", "class.*", "function.*", "imagick*",
 		"intro.*", "mongo*", "mysql*", "ref.*", "yaf-*",
