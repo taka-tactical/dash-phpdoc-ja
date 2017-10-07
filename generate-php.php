@@ -22,9 +22,9 @@ $cfg_ver  = '7.1';
 // *** arg1: target chm file, arg2: extract dir
 
 // Windows
-//$cfg_chm  = 'hh -decompile %2$s %1$s';
+$cfg_chm  = 'hh -decompile %2$s %1$s';
 // Mac, Linux
-$cfg_chm  = 'extract_chmLib %1$s %2$s';
+//$cfg_chm  = 'extract_chmLib %1$s %2$s';
 
 // set true, if you have font trouble with google open sans (e.g. Zeal on windows)
 $cfg_nosans = true;
@@ -67,16 +67,9 @@ echo "\nStart build PHP 7.x docset ...\n";
 echo "\nDownload original docset (en) and 'CHM' help file ...\n\n";
 
 try {
-	$out = null;
-	$ret = 0;
-
 	// get php manual (en) docset
-	exec("rm -rf {$c_rbase}/", $out, $ret);
-	//exec("mkdir -p {$c_rbase}/", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("rm -rf {$c_rbase}/");
+	//exec_ex("mkdir -p {$c_rbase}/");
 
 	if (
 		!mkdir("{$c_dbase}/", 0777, true) ||
@@ -85,16 +78,8 @@ try {
 		do_exception(__LINE__);
 	}
 
-	exec("wget {$c_url_doc}", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
-	exec("wget --trust-server-names {$c_url_chm}", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("wget {$c_url_doc}");
+	exec_ex("wget --trust-server-names {$c_url_chm}");
 
 	if (preg_match('#.+/get/(php_(manual|enhanced)_ja\.chm)/from/.+#i', $c_url_chm, $match)) {
 		$target_chm = $match[1];
@@ -109,12 +94,9 @@ try {
 	echo "\nReplace docset files for your language ...\n\n";
 
 	// extract
-	exec("tar xzf {$target_doc} -C {$c_origd} --strip-components 1", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("tar xzf {$target_doc} -C {$c_origd} --strip-components 1");
 	sleep(5);
+
 	$base_dir = "{$c_origd}/Contents/Resources/Documents/php.net/manual/en";
 
 	// replace html
@@ -135,23 +117,10 @@ try {
 	}
 
 	echo "Removing original manual/en ...\n";
-	exec("rm -rf {$c_origd}/Contents/Resources/Documents/php.net/manual/en", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
-
-	exec(sprintf($cfg_chm, $target_chm, $c_mychm), $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("rm -rf {$c_origd}/Contents/Resources/Documents/php.net/manual/en");
+	exec_ex(sprintf($cfg_chm, $target_chm, $c_mychm));
 	sleep(1);
-	exec("rm -f {$c_mychm}/res/style.css", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("rm -f {$c_mychm}/res/style.css");
 
 	// copy database
 	if (
@@ -162,16 +131,8 @@ try {
 	}
 
 	// copy & replace documents
-	exec("mv {$c_origd}/Contents/Resources/Documents/php.net {$c_dbase}/php.net", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
-	exec("mv {$c_mychm}/res {$c_dbase}/php.net/manual/en", $out, $ret);
-
-	if ($ret) {
-		do_exception(__LINE__, $ret);
-	}
+	exec_ex("mv {$c_origd}/Contents/Resources/Documents/php.net {$c_dbase}/php.net");
+	exec_ex("mv {$c_mychm}/res {$c_dbase}/php.net/manual/en");
 
 	if (!copy(
 		__DIR__ . sprintf('/%s', $cfg_nosans ? 'style-nosans.css' : 'style.css'),
@@ -275,6 +236,23 @@ echo "\nPHP 7.x docset updated !\n\n";
 // Throw Exception
 function do_exception($line, $code = -1) {
 	throw new Exception("Error at line: {$line}", $code);
+}
+
+// Exec with exception logic
+function exec_ex($cmd) {
+	if (($cmd = strval($cmd)) === '') {
+		do_exception(__LINE__);
+	}
+
+	$out = null;
+	$ret = 0;
+	exec($cmd, $out, $ret);
+
+	if ($ret) {
+		do_exception(__LINE__, $ret);
+	}
+
+	return true;
 }
 
 
