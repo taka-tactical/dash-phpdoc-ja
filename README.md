@@ -23,4 +23,4 @@ requirement
 
 - hh.exe, MSYS (Windows)
 - chmlib (Mac, Linux)
-- wget
+- wget, php
