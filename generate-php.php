@@ -103,8 +103,8 @@ try {
 	// ** note: Do not use 'rm' command.
 	// **       It will cause device busy or 'Argument list too long' error.
 	foreach ([
-		"array*", "book.*", "class.*", "function.*", "imagick*",
-		"intro.*", "mongo*", "mysql*", "ref.*", "yaf-*",
+		'array*', 'book.*', 'class.*', 'function.*', 'imagick*',
+		'intro.*', 'mongo*', 'mysql*', 'ref.*', 'yaf-*',
 	] as $val) {
 		echo "Removing original {$val} ...\n";
 
@@ -174,8 +174,8 @@ file_put_contents("{$c_cbase}/Info.plist", <<<ENDE
 </plist>
 ENDE
 );
-copy(__DIR__ . "/icon.png",    "{$c_cbase}/../icon.png");
-copy(__DIR__ . "/icon@2x.png", "{$c_cbase}/../icon@2x.png");
+copy(__DIR__ . '/icon.png',    "{$c_cbase}/../icon.png");
+copy(__DIR__ . '/icon@2x.png', "{$c_cbase}/../icon@2x.png");
 
 
 // update db (add japanese indexes)
@@ -200,7 +200,7 @@ if (!$val) {
 	$db->exec("UPDATE searchIndex SET lang = 'en'");
 }
 
-$stmt = $db->prepare("SELECT * FROM searchIndex WHERE type = ?");
+$stmt = $db->prepare('SELECT * FROM searchIndex WHERE type = ?');
 $stmt->execute([$c_guide]);
 
 $res  = $stmt->fetchAll();
@@ -220,7 +220,7 @@ foreach ($res as $row) {
 	$list[] = [$t->nodeValue, $c_guide, $row['path'], 'ja'];
 }
 
-$stmt = $db->prepare("INSERT OR IGNORE INTO searchIndex(name, type, path, lang) VALUES (?, ?, ?, ?)");
+$stmt = $db->prepare('INSERT OR IGNORE INTO searchIndex(name, type, path, lang) VALUES (?, ?, ?, ?)');
 
 foreach ($list as $val) {
 	$stmt->execute($val);
