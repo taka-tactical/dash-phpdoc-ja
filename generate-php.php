@@ -14,17 +14,17 @@ http://opensource.org/licenses/mit-license.php
 //----------------------------------------
 
 // set your language (en/ja/ru/ro/es/tr/fr/de/zh/pt_BR)
-$cfg_lang = 'ja';
-$cfg_ver  = '7.1';
+$cfg_lang = 'zh';
+$cfg_ver  = '7.4';
 
 // set your chm-extract command
 // ** must be 'sprintf() format'
 // *** arg1: target chm file, arg2: extract dir
 
 // Windows
-$cfg_chm  = 'hh -decompile %2$s %1$s';
+// $cfg_chm  = 'hh -decompile %2$s %1$s';
 // Mac, Linux
-//$cfg_chm  = 'extract_chmLib %1$s %2$s';
+$cfg_chm  = 'extract_chmLib %1$s %2$s';
 
 // set true, if you have font trouble with google open sans (e.g. Zeal on windows)
 $cfg_nosans = true;
@@ -69,7 +69,7 @@ echo "\nDownload original docset (en) and 'CHM' help file ...\n\n";
 try {
 	// get php manual (en) docset
 	exec_ex("rm -rf {$c_rbase}/");
-	//exec_ex("mkdir -p {$c_rbase}/");
+	// exec_ex("mkdir -p {$c_rbase}/");
 
 	if (
 		!mkdir("{$c_dbase}/", 0777, true) ||
@@ -81,7 +81,7 @@ try {
 	exec_ex("wget {$c_url_doc}");
 	exec_ex("wget --trust-server-names {$c_url_chm}");
 
-	if (preg_match('#.+/get/(php_(manual|enhanced)_ja\.chm)/from/.+#i', $c_url_chm, $match)) {
+	if (preg_match('#.+/get/(php_(manual|enhanced)_(en|ja|ru|ro|es|tr|fr|de|zh|pt_BR)\.chm)/from/.+#i', $c_url_chm, $match)) {
 		$target_chm = $match[1];
 		echo "\nDetect CHM file '{$target_chm}'. set as target ...\n";
 	}
@@ -97,7 +97,7 @@ try {
 	exec_ex("tar xzf {$target_doc} -C {$c_origd} --strip-components 1");
 	sleep(5);
 
-	$base_dir = "{$c_origd}/Contents/Resources/Documents/php.net/manual/en";
+	$base_dir = "{$c_origd}/Contents/Resources/Documents/www.php.net/manual/en";
 
 	// replace html
 	// ** note: Do not use 'rm' command.
@@ -117,7 +117,7 @@ try {
 	}
 
 	echo "Removing original manual/en ...\n";
-	exec_ex("rm -rf {$c_origd}/Contents/Resources/Documents/php.net/manual/en");
+	exec_ex("rm -rf {$c_origd}/Contents/Resources/Documents/www.php.net/manual/en");
 	exec_ex(sprintf($cfg_chm, $target_chm, $c_mychm));
 	sleep(1);
 	exec_ex("rm -f {$c_mychm}/res/style.css");
@@ -131,12 +131,13 @@ try {
 	}
 
 	// copy & replace documents
-	exec_ex("mv {$c_origd}/Contents/Resources/Documents/php.net {$c_dbase}/php.net");
-	exec_ex("mv {$c_mychm}/res {$c_dbase}/php.net/manual/en");
+	exec_ex("mkdir -p {$c_dbase}/www.php.net/manual");
+	exec_ex("mv {$c_origd}/Contents/Resources/Documents/www.php.net {$c_dbase}/php.net");
+	exec_ex("mv {$c_mychm}/res {$c_dbase}/www.php.net/manual/en");
 
 	if (!copy(
 		__DIR__ . sprintf('/%s', $cfg_nosans ? 'style-nosans.css' : 'style.css'),
-		"{$c_dbase}/php.net/manual/en/style.css"
+		"{$c_dbase}/www.php.net/manual/en/style.css"
 	)) {
 		do_exception(__LINE__);
 	}
@@ -178,7 +179,7 @@ copy(__DIR__ . '/icon.png',    "{$c_cbase}/../icon.png");
 copy(__DIR__ . '/icon@2x.png', "{$c_cbase}/../icon@2x.png");
 
 
-// update db (add japanese indexes)
+// update db (add target language's indexes)
 echo "\nAdd search indexes from Title ...\n\n";
 
 $db = new PDO("sqlite:{$c_rbase}/docSet.dsidx");
