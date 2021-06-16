@@ -15,7 +15,7 @@ http://opensource.org/licenses/mit-license.php
 
 // set your language (en/ja/ru/ro/es/tr/fr/de/zh/pt_BR)
 $cfg_lang = 'ja';
-$cfg_ver  = '7.1';
+$cfg_ver  = '8.0';
 
 // set your chm-extract command
 // ** must be 'sprintf() format'
@@ -63,7 +63,7 @@ $c_url_chm = "http://jp2.php.net/get/php_enhanced_{$cfg_lang}.chm/from/this/mirr
 //
 //----------------------------------------
 
-echo "\nStart build PHP 7.x docset ...\n";
+echo "\nStart build PHP {$cfg_ver} docset ...\n";
 echo "\nDownload original docset (en) and 'CHM' help file ...\n\n";
 
 try {
@@ -80,6 +80,7 @@ try {
 
 	exec_ex("wget {$c_url_doc}");
 	exec_ex("wget --trust-server-names {$c_url_chm}");
+	$match = [];
 
 	if (preg_match('#.+/get/(php_(manual|enhanced)_ja\.chm)/from/.+#i', $c_url_chm, $match)) {
 		$target_chm = $match[1];
@@ -226,7 +227,7 @@ foreach ($list as $val) {
 	$stmt->execute($val);
 }
 
-echo "\nPHP 7.x docset updated !\n\n";
+echo "\nPHP {$cfg_ver} docset updated !\n\n";
 
 
 //----------------------------------------
