@@ -66,10 +66,13 @@ $c_url_chm = "http://jp2.php.net/get/php_enhanced_{$cfg_lang}.chm/from/this/mirr
 echo "\nStart build PHP {$cfg_ver} docset ...\n";
 echo "\nDownload original docset (en) and 'CHM' help file ...\n\n";
 
+$target_chm   = basename($c_url_chm);
+$target_doc   = basename($c_url_doc);
+$clean_on_err = false;
+
 try {
 	// get php manual (en) docset
-	exec_ex("rm -rf {$c_rbase}/");
-	//exec_ex("mkdir -p {$c_rbase}/");
+	remove_dir("{$c_rbase}");
 
 	if (
 		!mkdir("{$c_dbase}/", 0777, true) ||
@@ -90,7 +93,6 @@ try {
 		$target_chm = basename($c_url_chm);
 		echo "\nDetect CHM failure, fallback to '{$target_chm}'. set as target ...\n";
 	}
-	$target_doc = basename($c_url_doc);
 
 	echo "\nReplace docset files for your language ...\n\n";
 
@@ -98,7 +100,7 @@ try {
 	exec_ex("tar xzf {$target_doc} -C {$c_origd} --strip-components 1");
 	sleep(5);
 
-	$base_dir = "{$c_origd}/Contents/Resources/Documents/php.net/manual/en";
+	$base_dir = "{$c_origd}/Contents/Resources/Documents/www.php.net/manual/en";
 
 	// replace html
 	// ** note: Do not use 'rm' command.
@@ -118,10 +120,13 @@ try {
 	}
 
 	echo "Removing original manual/en ...\n";
-	exec_ex("rm -rf {$c_origd}/Contents/Resources/Documents/php.net/manual/en");
+	remove_dir($base_dir);
 	exec_ex(sprintf($cfg_chm, $target_chm, $c_mychm));
 	sleep(1);
-	exec_ex("rm -f {$c_mychm}/res/style.css");
+
+	if (!unlink("{$c_mychm}/res/style.css")) {
+		do_exception(__LINE__);
+	}
 
 	// copy database
 	if (
@@ -132,25 +137,42 @@ try {
 	}
 
 	// copy & replace documents
-	exec_ex("mv {$c_origd}/Contents/Resources/Documents/php.net {$c_dbase}/php.net");
-	exec_ex("mv {$c_mychm}/res {$c_dbase}/php.net/manual/en");
+	if (!rename("{$c_origd}/Contents/Resources/Documents/php.net", "{$c_dbase}/php.net")) {
+		do_exception(__LINE__);
+	}
+	if (!rename("{$c_origd}/Contents/Resources/Documents/www.php.net", "{$c_dbase}/www.php.net")) {
+		do_exception(__LINE__);
+	}
+	if (!rename("{$c_mychm}/res", "{$c_dbase}/www.php.net/manual/en")) {
+		do_exception(__LINE__);
+	}
 
 	if (!copy(
 		__DIR__ . sprintf('/%s', $cfg_nosans ? 'style-nosans.css' : 'style.css'),
-		"{$c_dbase}/php.net/manual/en/style.css"
+		"{$c_dbase}/www.php.net/manual/en/style.css"
 	)) {
 		do_exception(__LINE__);
 	}
 }
 catch (Exception $e) {
+	$clean_on_err = true;
 	throw new Exception("\nPHP docset build failed.\nFix error and try again.\n\n", -1, $e);
 }
 finally {
 	// clean up
-	exec("rm -rf " . __DIR__ . "/{$target_doc}");
-	exec("rm -rf " . __DIR__ . "/{$target_chm}");
-	exec("rm -rf {$c_origd}");
-	exec("rm -rf {$c_mychm}");
+	if ($clean_on_err) {
+		@unlink(__DIR__ . "/{$target_doc}");
+		@unlink(__DIR__ . "/{$target_chm}");
+
+		try { remove_dir("{$c_origd}"); } catch (Exception $e) { }
+		try { remove_dir("{$c_mychm}"); } catch (Exception $e) { }
+	} else {
+		unlink(__DIR__ . "/{$target_doc}");
+		unlink(__DIR__ . "/{$target_chm}");
+
+		remove_dir("{$c_origd}");
+		remove_dir("{$c_mychm}");
+	}
 }
 
 // gen Info.plist
@@ -166,7 +188,7 @@ file_put_contents("{$c_cbase}/Info.plist", <<<ENDE
 	<key>DocSetPlatformFamily</key>
 	<string>php</string>
 	<key>dashIndexFilePath</key>
-	<string>php.net/manual/en/index.html</string>
+	<string>www.php.net/manual/en/index.html</string>
 	<key>DashDocSetFamily</key>
 	<string>dashtoc</string>
 	<key>isDashDocset</key>
@@ -234,26 +256,70 @@ echo "\nPHP {$cfg_ver} docset updated !\n\n";
 // Helper functions
 //----------------------------------------
 
-// Throw Exception
+/**
+ * Throw Exception
+ *
+ * @param mixed $line
+ * @param integer $code
+ * @throws Exception
+ */
 function do_exception($line, $code = -1) {
 	throw new Exception("Error at line: {$line}", $code);
 }
 
-// Exec with exception logic
+/**
+ * Exec with exception logic
+ *
+ * @param string $cmd
+ * @return boolean
+ */
 function exec_ex($cmd) {
 	if (($cmd = strval($cmd)) === '') {
 		do_exception(__LINE__);
 	}
 
-	$out = null;
+	$out = [];
 	$ret = 0;
+
+	echo "Exec: {$cmd}\n";
 	exec($cmd, $out, $ret);
+
+	$log = implode("\n", $out);
+	echo "Exec status: {$ret}\nExec output: {$log}\n\n";
 
 	if ($ret) {
 		do_exception(__LINE__, $ret);
 	}
 
 	return true;
+}
+
+/**
+ * Remove directory recursively
+ *
+ * @param string $dir
+ */
+function remove_dir($dir) {
+	if ($dir === "" || !is_dir($dir)) {
+		return;
+	}
+
+	$iterator = new RecursiveIteratorIterator(
+		new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS),
+		RecursiveIteratorIterator::CHILD_FIRST
+	);
+
+	foreach ($iterator as $item) {
+		if ($item->isDir()) {
+			rmdir($item->getPathname());
+		} else {
+			unlink($item->getPathname());
+		}
+	}
+
+	if (!rmdir($dir)) {
+		do_exception(__LINE__);
+	}
 }
 
 
