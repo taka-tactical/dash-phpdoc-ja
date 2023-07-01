@@ -5,7 +5,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>phpdoc-ja</string>
 	<key>CFBundleName</key>
-	<string>PHP 8.0-ja</string>
+	<string>PHP 8.2-ja</string>
 	<key>DocSetPlatformFamily</key>
 	<string>php</string>
 	<key>dashIndexFilePath</key>
