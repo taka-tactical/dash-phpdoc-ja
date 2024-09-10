@@ -18,7 +18,7 @@ $cfg_lang_list = ['ja', 'en', 'es', 'tr', 'fr', 'de', 'zh', 'pt_BR', 'ru'];
 $cfg_lang = $cfg_lang_list[0];
 
 // fallback version number
-$cfg_ver = '8.0';
+$cfg_ver = '8.3';
 
 // set your chm-extract command
 // ** must be 'sprintf() format'
@@ -174,9 +174,6 @@ try {
     }
 
     // copy & replace documents
-    if (!rename("{$c_origd}/Contents/Resources/Documents/php.net", "{$c_dbase}/php.net")) {
-        do_exception(__LINE__);
-    }
     if (!rename("{$c_origd}/Contents/Resources/Documents/www.php.net", "{$c_dbase}/www.php.net")) {
         do_exception(__LINE__);
     }
